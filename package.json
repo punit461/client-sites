@@ -1,0 +1,13 @@
+{
+  "name": "client-sites",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static demo websites for local businesses, deployed to GitHub Pages.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "dev": "node tools/serve.mjs",
+    "check": "node tools/build.mjs --check"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "example-business-city",
+  "business": {
+    "name": "Example Business",
+    "tagline": "One honest line about why locals choose them",
+    "category": "Category",
+    "about": "Two or three sentences in the owner's voice. What they do, how long they've done it, what makes people come back.",
+    "established": "",
+    "rating": "4.8",
+    "review_count": "132"
+  },
+  "contact": {
+    "phone": "+911234567890",
+    "whatsapp": "911234567890",
+    "email": "hello@example.com",
+    "address": "Street, Area, City 000000",
+    "area": "Area",
+    "city": "City",
+    "maps_url": "https://maps.google.com/?cid=0",
+    "lat": "",
+    "lng": ""
+  },
+  "socials": { "instagram": "https://instagram.com/example" },
+  "hours": ["Monday: 9:00 AM – 8:00 PM", "Sunday: Closed"],
+  "services": [
+    { "title": "Service one", "description": "One line on what it is.", "price": "" },
+    { "title": "Service two", "description": "", "price": "" },
+    { "title": "Service three", "description": "", "price": "" }
+  ],
+  "gallery": [
+    { "src": "assets/photo-01.jpg", "alt": "Storefront" }
+  ],
+  "reviews": [
+    { "author": "A customer", "rating": 5, "text": "A real review, at least forty characters long.", "source": "Google" }
+  ],
+  "whatsapp": {
+    "number": "911234567890",
+    "float": true,
+    "prefill": "Hi Example Business! I found you online. Could you share details?",
+    "label": "Chat on WhatsApp"
+  },
+  "theme": { "primary": "#123a5c", "accent": "#e08a3c", "font": "inter", "mood": "clean" },
+  "meta": {
+    "title": "Example Business — Category in City",
+    "description": "Up to 155 characters, written for a human, containing the category and the city.",
+    "noindex": true,
+    "demo_banner": true
+  },
+  "credits": { "photos": "Google Places Photos", "built_by": "You" }
+}

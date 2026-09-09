@@ -1,28 +1,35 @@
 /**
- * Builds every folder under sites/ into _site/, which GitHub Pages serves.
+ * Builds every folder under sites/car-wash/ into _site/, which GitHub Pages serves.
  *
- * Two kinds of site folder are supported on purpose:
- *   sites/<slug>/site.json    -> rendered with the shared template (the fast path)
- *   sites/<slug>/index.html   -> copied verbatim (hand-built or one-off designs)
- * If both exist, index.html wins — a hand edit should never be silently
- * overwritten by a regenerated template.
+ * Three kinds of project folder are supported on purpose:
+ *   sites/car-wash/<slug>/next.config.*  -> `next build` (output: 'export'), out/ copied in
+ *   sites/car-wash/<slug>/index.html     -> copied verbatim (hand-built one-offs)
+ *   sites/car-wash/<slug>/site.json      -> rendered with the shared template
+ * They are checked in that order, so a hand edit is never silently overwritten
+ * by a regenerated template.
  *
- *   node tools/build.mjs            build everything
- *   node tools/build.mjs <slug>     build one site
- *   node tools/build.mjs --check    validate configs, write nothing
+ * Everything lands under one origin (_site/<slug>/) — no project ever gets a
+ * dev-server port of its own.
+ *
+ *   node tools/build.mjs                  build everything
+ *   node tools/build.mjs <slug>           build one project
+ *   node tools/build.mjs <slug> --force   rebuild even when out/ looks current
+ *   node tools/build.mjs --check          validate configs, write nothing
+ *   node tools/build.mjs --no-clean       keep _site/ (the dev server uses this)
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { render } from './template.mjs';
+import { SITES, OUT, slugs, kindOf, newestMtime, writeShell } from './projects.mjs';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SITES = path.join(ROOT, 'sites');
-const OUT = path.join(ROOT, '_site');
+const isWin = process.platform === 'win32';
+const npm = isWin ? 'npm.cmd' : 'npm';
 
 const args = process.argv.slice(2);
 const checkOnly = args.includes('--check');
 const noClean = args.includes('--no-clean');
+const force = args.includes('--force');
 const only = args.find((a) => !a.startsWith('-'));
 
 const REQUIRED = [['business.name', 'the business name']];
@@ -48,24 +55,51 @@ function copyDir(from, to) {
   return n;
 }
 
-function slugs() {
-  if (!fs.existsSync(SITES)) return [];
-  return fs.readdirSync(SITES, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && !d.name.startsWith('_') && !d.name.startsWith('.'))
-    .map((d) => d.name)
-    .filter((name) => (only ? name === only : true))
-    .sort();
+// Next.js apps are real projects, statically exported (output: 'export') so
+// they land in _site/<slug>/ next to the plain HTML sites — same origin, no
+// dev-server port to keep alive or clash with another project.
+function buildNextApp(dir, outDir, { checkOnly }) {
+  const problems = [];
+  if (checkOnly) return { mode: 'next', problems };
+
+  if (!fs.existsSync(path.join(dir, 'node_modules'))) {
+    console.log(`    installing dependencies for ${path.basename(dir)}...`);
+    const lock = fs.existsSync(path.join(dir, 'package-lock.json'));
+    execFileSync(npm, [lock ? 'ci' : 'install'], { cwd: dir, stdio: 'inherit', shell: isWin });
+  }
+
+  const exportDir = path.join(dir, 'out');
+  if (force || !fs.existsSync(exportDir) || newestMtime(dir) > newestMtime(exportDir)) {
+    console.log(`    building ${path.basename(dir)}...`);
+    execFileSync(npm, ['run', 'build'], { cwd: dir, stdio: 'inherit', shell: isWin });
+  } else {
+    console.log(`    ${path.basename(dir)} export is current — reusing out/`);
+  }
+
+  if (!fs.existsSync(exportDir)) {
+    problems.push({ level: 'error', msg: 'next build produced no out/ — check output: "export" in next.config' });
+    return { mode: 'skipped', problems };
+  }
+
+  fs.rmSync(outDir, { recursive: true, force: true });
+  copyDir(exportDir, outDir);
+  return { mode: 'next', problems };
 }
 
 function buildSite(slug) {
   const dir = path.join(SITES, slug);
   const outDir = path.join(OUT, slug);
   const configPath = path.join(dir, 'site.json');
-  const handBuilt = path.join(dir, 'index.html');
   const problems = [];
   let site = null;
+  const kind = kindOf(slug);
 
-  if (fs.existsSync(handBuilt)) {
+  if (kind === 'next') {
+    const result = buildNextApp(dir, outDir, { checkOnly });
+    return { slug, title: slug, ...result };
+  }
+
+  if (kind === 'verbatim') {
     if (!checkOnly) { copyDir(dir, outDir); }
     return { slug, mode: 'verbatim', problems, title: slug };
   }
@@ -111,7 +145,7 @@ function buildSite(slug) {
 }
 
 function portfolioIndex(results) {
-  const live = results.filter((r) => r.mode === 'rendered' || r.mode === 'verbatim');
+  const live = results.filter((r) => r.mode === 'rendered' || r.mode === 'verbatim' || r.mode === 'next');
   const cards = live.map((r) => `
       <a class="card" href="./${r.slug}/">
         <strong>${(r.title || r.slug).replace(/</g, '&lt;')}</strong>
@@ -147,10 +181,12 @@ footer{margin-top:3rem;color:var(--muted);font-size:.85rem}
 }
 
 // ---------------------------------------------------------------- run
-const names = slugs();
+const names = slugs().filter((name) => (only ? name === only : true));
 if (!names.length) {
-  console.log('No sites yet. Add one at sites/<slug>/site.json');
-  process.exit(0);
+  console.log(only
+    ? `No project called "${only}" under sites/car-wash/.`
+    : 'No sites yet. Add one at sites/car-wash/<slug>/site.json');
+  process.exit(only ? 1 : 0);
 }
 if (!checkOnly) {
   // The dev server passes --no-clean: wiping _site mid-request would 404 the
@@ -171,10 +207,12 @@ for (const r of results) {
 }
 
 if (!checkOnly && !only) {
-  fs.writeFileSync(path.join(OUT, 'index.html'), portfolioIndex(results));
+  // Prefer the hand-made dashboard (sites/car-wash/index.html), which gets the
+  // project list baked into it; fall back to the generated portfolio index.
+  if (!writeShell()) fs.writeFileSync(path.join(OUT, 'index.html'), portfolioIndex(results));
   fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
   fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 }
 
-console.log(`\n${results.length} site(s), ${errors} error(s).`);
+console.log(`\n${results.length} project(s), ${errors} error(s).`);
 process.exit(errors ? 1 : 0);

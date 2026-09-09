@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Launch Projects — Car Wash</title>
+<style>
+:root{
+  --bg:#0e1116;--surface:#171c23;--line:#28303a;--fg:#e8ecf1;--muted:#9aa6b3;
+  --accent:#4f8cff;--next:#111;--static:#16a34a;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f6f7f9;--surface:#ffffff;--line:#e3e7ec;--fg:#14181d;--muted:#5b6672;--accent:#2f6fe0;--next:#111;--static:#15803d;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;
+  padding:clamp(1.5rem,5vw,3rem) clamp(1rem,5vw,2rem)}
+main{max-width:980px;margin:0 auto}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2rem}
+header h1{font-size:clamp(1.6rem,4vw,2.1rem);margin:0 0 .2rem}
+header p{color:var(--muted);margin:0}
+.back{color:var(--accent);text-decoration:none;font-size:.9rem;white-space:nowrap}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.card{display:flex;flex-direction:column;gap:.5rem;padding:1.3rem 1.4rem;border:1px solid var(--line);
+  border-radius:14px;background:var(--surface);cursor:pointer;user-select:none;transition:opacity .35s,transform .15s,box-shadow .15s,border-color .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card.disappearing{opacity:0;pointer-events:none}
+.row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.name{font-size:1.05rem;font-weight:650}
+.badge{font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:.18rem .5rem;border-radius:999px;color:#fff}
+.badge.next{background:var(--next)}.badge.static{background:var(--static)}
+.desc{color:var(--muted);font-size:.9rem;margin:0}
+.url{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;color:var(--accent)}
+.launch{margin-top:.3rem}
+.launch-btn{display:block;width:100%;background:var(--accent);color:#fff;border:0;border-radius:9px;
+  padding:.55rem .9rem;font-weight:600;font-size:.85rem;cursor:pointer;font-family:inherit;text-align:center}
+.done{display:none;text-align:center;padding:3rem 1rem;color:var(--muted)}
+.done strong{display:block;font-size:1.2rem;color:var(--fg);margin-bottom:.4rem}
+.reset{display:inline-block;margin-top:1rem;background:var(--surface);color:var(--fg);
+  border:1px solid var(--line);border-radius:9px;padding:.55rem 1rem;font-weight:600;cursor:pointer;font-family:inherit}
+.hint{margin-top:2.5rem;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;color:var(--muted);font-size:.85rem}
+.hint code{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:.05rem .4rem}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div>
+    <h1>Launch projects</h1>
+    <p>Click a card to open that project in a new tab — the card disappears.</p>
+  </div>
+  <a class="back" href="./">&#8592; Back to dashboard</a>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="done" id="done">
+  <strong>All projects launched &#10003;</strong>
+  <span>Every project is open in its own tab.</span>
+  <div><button class="reset" id="reset">Reset cards</button></div>
+</div>
+
+<div class="hint">
+  Run <code>npm run dev</code> from the repo root, then reload this page. Cards you click open in a new
+  tab and are remembered as launched (until you press <b>Reset cards</b>).
+</div>
+</main>
+
+<!-- Baked in by tools/projects.mjs at build time — the same list the dashboard uses. -->
+<script id="project-data" type="application/json">[]</script>
+
+<script>
+const K = 'carwash.launched.v1';
+let PROJECTS = [];
+try {
+  PROJECTS = JSON.parse(document.getElementById('project-data').textContent || '[]')
+    .map((p) => ({ key: p.slug, name: p.name, type: p.kind === 'next' ? 'next' : 'static',
+                   desc: p.description, url: p.url }));
+} catch { PROJECTS = []; }
+
+function launched() { try { return JSON.parse(localStorage.getItem(K) || '[]'); } catch { return []; } }
+
+const grid = document.getElementById('grid');
+const done = document.getElementById('done');
+
+function render() {
+  const gone = launched();
+  grid.innerHTML = '';
+  let shown = 0;
+  for (const p of PROJECTS) {
+    if (gone.includes(p.key)) continue;
+    shown++;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML =
+      '<div class="row"><span class="name"></span><span class="badge ' + p.type + '"></span></div>' +
+      '<p class="desc"></p>' +
+      '<span class="url"></span>' +
+      '<div class="launch"><span class="launch-btn">Launch &#8599;</span></div>';
+    card.querySelector('.name').textContent = p.name;
+    card.querySelector('.badge').textContent = p.type === 'next' ? 'Next.js' : 'Static';
+    card.querySelector('.desc').textContent = p.desc;
+    card.querySelector('.url').textContent = p.url;
+
+    card.addEventListener('click', () => {
+      window.open(p.url, '_blank', 'noopener');
+      card.classList.add('disappearing');
+      const list = launched();
+      if (!list.includes(p.key)) list.push(p.key);
+      localStorage.setItem(K, JSON.stringify(list));
+      setTimeout(() => { render(); }, 350);
+    });
+    grid.appendChild(card);
+  }
+  done.style.display = shown ? 'none' : 'block';
+}
+
+document.getElementById('reset').addEventListener('click', () => {
+  localStorage.removeItem(K);
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

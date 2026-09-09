@@ -1,7 +1,8 @@
 {
-  "name": "wash1",
+  "name": "wash",
   "version": "0.1.0",
   "private": true,
+  "description": "Car wash landing page — Next.js, MUI, Redux Toolkit, Framer Motion.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

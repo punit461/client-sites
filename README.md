@@ -143,8 +143,10 @@ silently republished under another.
 With `basePrefix: "/client-sites"` in `client-sites.config.json`:
 
 ```
-_site/                                    ->  /client-sites/
-_site/about/                              ->  /client-sites/about/
+_site/                                    ->  /client-sites/            dashboard
+_site/about/  contact/  privacy/  terms/  ->  /client-sites/about/ ...    content pages
+_site/projects/                           ->  /client-sites/projects/     searchable list
+_site/car-wash/index.html                 ->  /client-sites/car-wash/    the category page
 _site/car-wash/car-wash-template1/        ->  /client-sites/car-wash/car-wash-template1/
 _site/car-wash/car-wash-template2/        ->  /client-sites/car-wash/car-wash-template2/
 ```
@@ -155,18 +157,56 @@ repo. CI overrides it from the repo name, so renaming the repo needs no edit.
 
 ## The dashboard
 
-`dashboard/` is a normal Next.js app — App Router, `src/app/`. It has a project
-list and an `/about` page; adding `/privacy` means adding
-`dashboard/src/app/privacy/page.tsx`.
+`dashboard/` is a normal Next.js app — App Router, `src/app/`. Two levels, the
+same shape as the folders:
 
-It cannot read the filesystem, because it is a static export, so the project
+- **`/`** — one card per category, with its project count.
+- **`/<category>/`** — the sites in that category, each with its status and a
+  link that opens the published page.
+
+Plus `/projects` (every project, searchable), `/about`, `/contact`,
+`/privacy` and `/terms`. Adding another page is adding a file:
+`dashboard/src/app/<name>/page.tsx`.
+
+A category page is a real route, so it exports to `_site/<category>/index.html`
+— right beside the published projects at `_site/<category>/<project>/`. Sibling
+paths, no conflict, which is why a category can own its natural URL.
+
+The consequence is that **a category folder cannot be named after one of the
+dashboard's own pages** (`about`, `contact`, `privacy`, `terms`, `projects`).
+Its category page would be shadowed by the real one and never render, so
+`npm run check` fails on it by name.
+
+The dashboard is a static export and cannot read the filesystem, so the project
 list is baked in at build time as `dashboard/src/generated/projects.json`
-(written by `tools/manifest.mjs`, and committed so a fresh clone works). Search
-and filtering then run in the browser.
+(written by `tools/manifest.mjs`, committed so a fresh clone works). Search and
+filtering then run in the browser.
 
-One constraint: a category folder must not share its name with a dashboard
-route. A category called `about` would collide with `/about`. The build stops
-and says so rather than overwriting anything.
+## Site-wide settings
+
+`client-sites.config.json` is read at build time and feeds the dashboard's
+title, footer and content pages:
+
+```json
+{
+  "title": "Client Sites",
+  "tagline": "Websites for local businesses, built one category at a time.",
+  "owner": "Client Sites",
+  "contact": { "email": "", "phone": "", "location": "" },
+  "basePrefix": "/client-sites",
+  "outDir": "_site"
+}
+```
+
+`contact` starts empty and the contact page says so rather than showing an
+address nobody chose. Fill it in once and the contact, privacy and terms pages
+all pick it up. `owner` is the name those pages refer to.
+
+The privacy and terms pages describe this setup accurately as it stands — static
+pages, no analytics, no cookies, no forms — and claim no company details or
+jurisdiction. Read them before treating them as legal documents, and update
+them if the site ever starts collecting anything.
+
 
 ## Project metadata
 
@@ -190,8 +230,19 @@ The card subtitle comes from the project's `package.json` `description`.
 `sites/<category>/category.json`
 
 ```json
-{ "name": "Car Wash", "description": "Landing pages for car wash businesses." }
+{
+  "name": "Car Wash",
+  "description": "Landing pages for car wash and auto detailing businesses.",
+  "icon": "",
+  "hue": 160
+}
 ```
+
+`name` and `description` are the category card and the heading on its page.
+Both remaining fields are optional: `icon` is a single emoji, and without one
+the card draws a monogram ("Car Wash" -> "CW"). `hue` (0-359) overrides the
+colour, which is otherwise derived from the folder name — so every new category
+gets a distinct, stable colour without anyone choosing one.
 
 ## GitHub Pages
 

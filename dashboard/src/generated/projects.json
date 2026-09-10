@@ -1,11 +1,20 @@
 {
   "title": "Client Sites",
-  "tagline": "Every client project in this repo, grouped by category.",
+  "tagline": "Websites for local businesses, built one category at a time.",
+  "owner": "Client Sites",
+  "contact": {
+    "email": "",
+    "phone": "",
+    "location": ""
+  },
   "categories": [
     {
       "id": "car-wash",
       "name": "Car Wash",
-      "description": "Landing pages for car wash and auto detailing businesses.",
+      "description": "Landing pages for car wash, auto detailing and ceramic coating businesses.",
+      "icon": "",
+      "hue": 160,
+      "monogram": "CW",
       "projects": [
         {
           "id": "car-wash/car-wash-template1",
@@ -44,6 +53,24 @@
           "route": "/car-wash/car-wash-template2/"
         }
       ]
+    },
+    {
+      "id": "dental",
+      "name": "Dental",
+      "description": "Clinics and dental practices — appointments, treatments and team pages.",
+      "icon": "",
+      "hue": 2,
+      "monogram": "DE",
+      "projects": []
+    },
+    {
+      "id": "laundry",
+      "name": "Laundry",
+      "description": "Pickup-and-delivery laundry, dry cleaning and ironing services.",
+      "icon": "",
+      "hue": 77,
+      "monogram": "LA",
+      "projects": []
     }
   ]
 }

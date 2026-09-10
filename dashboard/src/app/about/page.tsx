@@ -1,97 +1,98 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { basePath } from "@/lib/projects";
+import { STATUS_HELP, STATUS_LABEL, STATUS_ORDER, site } from "@/lib/projects";
 
 export const metadata: Metadata = {
-  title: "How this works",
-  description: "How client projects are organised, previewed and delivered.",
+  title: "About",
+  description: "How these websites are organised, previewed and handed over.",
 };
 
 export default function About() {
   return (
     <div className="wrap prose">
-      <h1>How this works</h1>
-      <p>
-        One repo, one folder per client site. Every folder is a standalone Next.js
-        app that exports to static files, so it can be published here alongside the
-        others or lifted out and handed to a client on its own.
+      <h1>About</h1>
+      <p className="lede">
+        {site.owner} builds websites for local businesses — one category at a
+        time, one folder per client.
       </p>
 
-      <h2>The shape</h2>
-      <pre>
-        <code>{`sites/
-  car-wash/
-    car-wash-template1/
-    car-wash-template2/
-  laundry/
-  dental/`}</code>
-      </pre>
+      <h2>How the work is organised</h2>
       <p>
-        Exactly two levels: a category, then a project. A new category exists the
-        moment you name one — there is nothing to register.
+        Every site here is a self-contained project. It has its own code, its own
+        dependencies and its own build, and it shares nothing with the others.
+        That sounds like extra work, and it is — but it means a change made for
+        one business can never alter another business&apos;s live website.
+      </p>
+      <p>
+        Projects are grouped into categories: car wash, laundry, dental, and
+        whatever comes next. Each category holds the sites built for that kind of
+        business, including the templates that new ones start from.
       </p>
 
-      <h2>Starting a project</h2>
-      <pre>
-        <code>npm run new -- car-wash/shine-auto-spa --from car-wash/car-wash-template1</code>
-      </pre>
-      <p>
-        That copies a template rather than referencing it, so nothing you do to the
-        new site can affect one that is already live.
-      </p>
-
-      <h2>Showing a client</h2>
-      <pre>
-        <code>{`npm run build      # every project into _site/
-npm run preview    # serves _site/ exactly as it will be published`}</code>
-      </pre>
-      <p>
-        The preview serves the built files, so what a client sees is what goes live.
-        While actually building a page, work in the project itself with{" "}
-        <code>npm run dev</code> for hot reload.
-      </p>
-
-      <h2>Delivering it</h2>
-      <pre>
-        <code>npm run release -- car-wash/shine-auto-spa</code>
-      </pre>
-      <p>
-        The project is copied out, installed and rebuilt with no path prefix, so the
-        result sits at a domain root. Upload the contents of the{" "}
-        <code>out/</code> folder to any static host; a{" "}
-        <code>HANDOVER.md</code> next to it says how.
-      </p>
-
-      <h2>Statuses</h2>
-      <ul>
+      <h2>How a site gets built</h2>
+      <ol>
         <li>
-          <b>Template</b> — a starting point, not for a client.
+          <strong>Start from a template.</strong> A finished layout for that kind
+          of business, copied so it can be changed freely.
         </li>
         <li>
-          <b>Draft</b> — being built.
+          <strong>Make it theirs.</strong> Real services, real prices, real
+          photos, real opening hours.
         </li>
         <li>
-          <b>With client</b> — waiting on their feedback.
+          <strong>Show the owner.</strong> They get a link and can look at the
+          real thing on a phone, not a picture of it.
         </li>
         <li>
-          <b>Approved</b> — agreed, not yet handed over.
+          <strong>Change what they ask for.</strong> Usually a few rounds.
         </li>
         <li>
-          <b>Delivered</b> — live on their hosting.
+          <strong>Hand it over.</strong> Once they are happy, the site is built
+          as plain files and put on whichever hosting they prefer.
+        </li>
+      </ol>
+
+      <h2>What the labels mean</h2>
+      <dl>
+        {STATUS_ORDER.map((status) => (
+          <div key={status}>
+            <dt>{STATUS_LABEL[status]}</dt>
+            <dd>{STATUS_HELP[status]}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <h2>What a finished site is</h2>
+      <ul className="facts">
+        <li>
+          Plain HTML, CSS and JavaScript — no database, no server to keep
+          running, nothing to renew but the domain and the hosting.
+        </li>
+        <li>
+          Fast on a phone, because that is where nearly every local search
+          happens.
+        </li>
+        <li>
+          Hostable anywhere: the business&apos;s own hosting, or a free static
+          host. The files belong to them.
+        </li>
+        <li>
+          Editable later — the source comes with the handover, along with the two
+          commands needed to rebuild it.
         </li>
       </ul>
+
+      <h2>The sites listed here</h2>
       <p>
-        A project&apos;s status, title and client name live in its{" "}
-        <code>project.json</code>.
+        Anything marked <em>Template</em> is a starting point, not a real
+        business. Sites still in progress use placeholder content, and their
+        pages are kept out of search results until the business agrees the site
+        is theirs.
       </p>
 
       <p>
-        This page is published under <code>{basePath || "/"}</code>/about/ — proof that
-        the dashboard is a normal Next.js app: add a file, get a page.
-      </p>
-
-      <p>
-        <Link href="/">Back to the projects</Link>
+        <Link href="/projects">Browse every project</Link> or{" "}
+        <Link href="/contact">get in touch</Link>.
       </p>
     </div>
   );

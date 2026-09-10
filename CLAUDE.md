@@ -17,6 +17,22 @@ releases/                      client handovers (gitignored)
 project; a folder containing projects is a category. Nothing is registered
 anywhere — `tools/projects.mjs` discovers them.
 
+## The dashboard
+
+Two levels, mirroring the folders: `/` is one card per category, `/<category>/`
+lists that category's sites. `/projects` is the flat searchable list;
+`/about`, `/contact`, `/privacy` and `/terms` are content pages. Add a page by
+adding `dashboard/src/app/<name>/page.tsx` — and add its name to
+`RESERVED_CATEGORY_NAMES` (see below).
+
+Styling is one hand-written stylesheet (`src/app/globals.css`) with CSS custom
+properties, no Tailwind and no UI library, so the dashboard never needs a
+version bump because a UI library moved. Category colours come from a `--hue`
+set inline per card, derived from the folder name in `tools/projects.mjs`.
+
+Text that a client might read (About, Privacy, Terms, Contact) is written for a
+business owner, not a developer. The commands live in this file and the README.
+
 ## Rules
 
 **Every project is standalone.** A project must never import from outside its
@@ -86,8 +102,13 @@ version the same across the dashboard and the projects.
   project list is generated into `dashboard/src/generated/projects.json` and is
   committed; `tools/build.mjs` and `tools/dev.mjs` regenerate it, and CI checks
   it is current.
-- A category folder must not share a name with a dashboard route (`about`,
-  `privacy`, `_next`). The build stops if one does.
+- The dashboard publishes a page at `/<category>/`, which exports to
+  `_site/<category>/index.html` beside the projects in `_site/<category>/<project>/`.
+  So a category folder must not be named after one of the dashboard's own pages
+  — `about`, `contact`, `privacy`, `terms`, `projects` — or its category page
+  is shadowed and never renders. `RESERVED_CATEGORY_NAMES` in
+  `tools/projects.mjs` is the list, and `npm run check` fails on it. Add to it
+  when you add a top-level dashboard page.
 - `.build-stamp.json` beside a project records the base path its `out/` was
   built for, so an export made for one path is never republished under another.
   Delete it, or pass `--force`, to force a rebuild.

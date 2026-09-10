@@ -1,0 +1,7 @@
+{
+  "title": "Car Wash — Template 1",
+  "client": "",
+  "status": "template",
+  "tags": ["booking form", "services grid", "dark", "MUI"],
+  "notes": "Section-per-folder layout with a Redux booking flow. Copy it for a new client rather than editing it in place."
+}

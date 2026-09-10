@@ -1,0 +1,49 @@
+{
+  "title": "Client Sites",
+  "tagline": "Every client project in this repo, grouped by category.",
+  "categories": [
+    {
+      "id": "car-wash",
+      "name": "Car Wash",
+      "description": "Landing pages for car wash and auto detailing businesses.",
+      "projects": [
+        {
+          "id": "car-wash/car-wash-template1",
+          "category": "car-wash",
+          "name": "car-wash-template1",
+          "title": "Car Wash — Template 1",
+          "client": "",
+          "status": "template",
+          "tags": [
+            "booking form",
+            "services grid",
+            "dark",
+            "MUI"
+          ],
+          "notes": "Section-per-folder layout with a Redux booking flow. Copy it for a new client rather than editing it in place.",
+          "description": "Car wash landing page — Next.js, MUI, Redux Toolkit, Framer Motion.",
+          "relDir": "sites/car-wash/car-wash-template1",
+          "route": "/car-wash/car-wash-template1/"
+        },
+        {
+          "id": "car-wash/car-wash-template2",
+          "category": "car-wash",
+          "name": "car-wash-template2",
+          "title": "Car Wash — Template 2",
+          "client": "",
+          "status": "template",
+          "tags": [
+            "stats band",
+            "before / after",
+            "light",
+            "MUI"
+          ],
+          "notes": "Alternate look with a stats band and a CTA section. Copy it for a new client rather than editing it in place.",
+          "description": "Alternate car wash landing page — Next.js, MUI, Redux Toolkit, Framer Motion.",
+          "relDir": "sites/car-wash/car-wash-template2",
+          "route": "/car-wash/car-wash-template2/"
+        }
+      ]
+    }
+  ]
+}

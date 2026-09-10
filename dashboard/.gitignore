@@ -1,0 +1,7 @@
+/node_modules
+/.next/
+/out/
+.build-stamp.json
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store

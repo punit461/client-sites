@@ -1,15 +1,18 @@
 {
   "name": "client-sites",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Static demo websites for local businesses, deployed to GitHub Pages.",
+  "description": "A dashboard and a folder per client site — every one a standalone Next.js app, statically exported.",
   "scripts": {
     "build": "node tools/build.mjs",
-    "dev": "node tools/serve.mjs",
-    "serve": "node tools/serve.mjs",
-    "start:all": "node tools/start-all.mjs",
-    "check": "node tools/build.mjs --check"
+    "preview": "node tools/preview.mjs",
+    "dev": "node tools/dev.mjs",
+    "list": "node tools/list.mjs",
+    "new": "node tools/new-project.mjs",
+    "release": "node tools/release.mjs",
+    "check": "node tools/build.mjs --check",
+    "manifest": "node tools/manifest.mjs"
   },
   "engines": { "node": ">=20" }
 }

@@ -73,6 +73,17 @@ projects are Next.js apps, and the dashboard is one too. Do not add a
 `site.json` renderer, a `sites/*/index.html` copied verbatim, or a second
 definition of what counts as a project.
 
+## Branches
+
+`main` is where work happens; `deploy` is what is live. The only thing that
+triggers GitHub Actions is a push to `deploy` (a PR merge into it counts).
+Promote with `git checkout deploy && git merge main && git push`.
+
+Do not add a `pull_request` trigger back to the workflow. It was what made a
+build start on every push to any branch with a PR open, and it adds no safety —
+the publish steps already run only after the build succeeds, so a broken build
+cannot reach the live site.
+
 ## Commands
 
 ```bash

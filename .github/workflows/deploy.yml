@@ -1,9 +1,24 @@
 name: Build and publish
 
+# Publishing happens from one branch and one branch only: deploy.
+#
+# A merge into deploy is itself a push to deploy, so this covers both "merge the
+# PR" and "push straight to it". Nothing else starts a run — not a push to main,
+# not a feature branch, not opening or updating a pull request. Day-to-day work
+# on main costs no Actions minutes and cannot touch the live site.
+#
+# To promote what is on main:
+#     git checkout deploy && git merge main && git push
+#
+# There is deliberately no pull_request trigger. It was what made a build start
+# on every push to any branch that had a PR open, and it bought no safety: the
+# publish steps below only run after the build succeeds, so a broken build can
+# never reach the live site anyway.
 on:
   push:
-    branches: [main]
-  pull_request:
+    branches: [deploy]
+  # Manual runs are allowed from any branch, but only deploy publishes — see the
+  # guards on the publish steps. Useful for checking a branch builds in CI.
   workflow_dispatch:
 
 # One deploy at a time; a newer push supersedes an in-flight one.
@@ -34,9 +49,9 @@ jobs:
             dashboard/package-lock.json
             sites/*/*/package-lock.json
 
-      # Structural problems — a project that cannot export, or one that
-      # hardcodes basePath — fail here in seconds rather than after every
-      # project has been compiled.
+      # Structural problems — a project that cannot export, one that hardcodes
+      # basePath, a category named after a dashboard page — fail here in
+      # seconds rather than after every project has been compiled.
       - name: Check every project
         run: node tools/build.mjs --check
 
@@ -60,18 +75,18 @@ jobs:
             echo "| ${path%/} | \`$BASE_PREFIX/${path}\` |" >> $GITHUB_STEP_SUMMARY
           done
 
+      # A manual run on another branch stops here: it proves the branch builds
+      # without publishing it.
       - uses: actions/configure-pages@v5
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/deploy'
 
       - uses: actions/upload-pages-artifact@v3
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/deploy'
         with:
           path: _site
 
-  # Pull requests build as a check but never publish, so a broken project fails
-  # the PR instead of reaching a client's link.
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/deploy'
     needs: build
     runs-on: ubuntu-latest
     environment:

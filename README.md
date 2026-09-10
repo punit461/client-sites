@@ -246,13 +246,37 @@ gets a distinct, stable colour without anyone choosing one.
 
 ## GitHub Pages
 
-Settings → Pages → Build and deployment → **Source: GitHub Actions**, then push
-to `main`. `.github/workflows/deploy.yml` builds every project and publishes
-`_site/`. Pull requests build without deploying, so a broken project fails the
-PR instead of the live site.
+Two branches, on purpose:
 
-The first CI run installs every project's dependencies and compiles every one of
+| Branch | What it is |
+| --- | --- |
+| `main` | Where the work happens. Nothing here is published, and pushing to it starts no Actions run. |
+| `deploy` | What is live. A push to it — including a PR merge — builds everything and publishes it. |
+
+To put the current state of `main` live:
+
+```bash
+git checkout deploy && git merge main && git push
+```
+
+That is the only thing that deploys. A push to `main`, a feature branch, or
+opening a pull request all start nothing, so ordinary work costs no Actions
+minutes and cannot touch the live site.
+
+Nothing broken can be published either: the publish steps run only after
+`node tools/build.mjs` succeeds, so a failed build leaves the previous version
+up and the run goes red instead.
+
+`workflow_dispatch` allows a manual run from any branch. On a branch other than
+`deploy` it builds but does not publish — a way to check in CI that a branch
+compiles.
+
+**One-time setup:** Settings → Pages → Build and deployment → **Source: GitHub
+Actions**. Sites land at `https://<owner>.github.io/client-sites/`.
+
+The first run installs every project's dependencies and compiles every one of
 them, so expect a few minutes.
+
 
 ## Adding a category
 

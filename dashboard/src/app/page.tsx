@@ -1,53 +1,64 @@
-import ProjectBrowser from "@/components/ProjectBrowser";
-import { basePath, categories, projects, site } from "@/lib/projects";
+import CategoryCard from "@/components/CategoryCard";
+import { categories, counts, site } from "@/lib/projects";
 
+/** The dashboard: one card per category, which opens the projects inside it. */
 export default function Home() {
-  const live = projects.filter((project) => project.status !== "template").length;
-
   return (
     <>
-      <div className="wrap hero">
-        <h1>{site.title}</h1>
-        <p>{site.tagline}</p>
-        <p className="counts">
-          <span>
-            <b>{projects.length}</b> projects
-          </span>
-          <span>
-            <b>{categories.length}</b> categories
-          </span>
-          <span>
-            <b>{live}</b> for clients
-          </span>
-          <span>
-            <b>{projects.length - live}</b> templates
-          </span>
+      <section className="wrap hero">
+        <p className="eyebrow">
+          <span className="dot" aria-hidden />
+          <b>{counts.projects}</b> projects across <b>{counts.categories}</b> categories
         </p>
-      </div>
+        <h1>{site.title}</h1>
+        <p className="lede">{site.tagline}</p>
 
-      {projects.length === 0 ? (
-        <div className="wrap">
-          <p className="empty">
-            <strong>No projects yet.</strong>
-            Add one with <code>npm run new -- &lt;category&gt;/&lt;project&gt;</code>.
-          </p>
+        <div className="stats">
+          <div className="stat">
+            <span className="v">{counts.categories}</span>
+            <span className="k">Categories</span>
+          </div>
+          <div className="stat">
+            <span className="v">{counts.projects}</span>
+            <span className="k">Projects</span>
+          </div>
+          <div className="stat">
+            <span className="v">{counts.templates}</span>
+            <span className="k">Templates</span>
+          </div>
+          <div className="stat">
+            <span className="v">{counts.forClients}</span>
+            <span className="k">For clients</span>
+          </div>
+          <div className="stat">
+            <span className="v">{counts.delivered}</span>
+            <span className="k">Delivered</span>
+          </div>
         </div>
-      ) : (
-        <ProjectBrowser categories={categories} />
-      )}
+      </section>
 
-      <footer className="foot">
-        <div className="wrap">
-          <p>
-            Every card is its own Next.js app, exported to static files and published
-            under <code>{basePath || "/"}</code>.
-          </p>
-          <p>
-            Not built yet? Run <code>npm run build</code> at the repo root, then{" "}
-            <code>npm run preview</code>.
-          </p>
+      <section className="wrap section">
+        <div className="section-head">
+          <h2>Browse by category</h2>
+          <span className="aside">Open a category to see its sites</span>
         </div>
-      </footer>
+
+        {categories.length === 0 ? (
+          <div className="notice">
+            <strong>No categories yet.</strong>
+            <span>A category is a folder under <code>sites/</code>. Create one and its first project together:</span>
+            <pre>
+              <code>npm run new -- car-wash/first-site --from &lt;existing&gt;</code>
+            </pre>
+          </div>
+        ) : (
+          <div className="cards">
+            {categories.map((category) => (
+              <CategoryCard key={category.id} category={category} />
+            ))}
+          </div>
+        )}
+      </section>
     </>
   );
 }

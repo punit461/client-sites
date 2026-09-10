@@ -11,7 +11,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { MANIFEST_FILE, TITLE, TAGLINE, ROOT } from './config.mjs';
+import { MANIFEST_FILE, TITLE, TAGLINE, OWNER, CONTACT, ROOT } from './config.mjs';
 import { listCategories } from './projects.mjs';
 
 /** Absolute paths must never reach a published page. */
@@ -21,6 +21,8 @@ export function buildManifest() {
   return {
     title: TITLE,
     tagline: TAGLINE,
+    owner: OWNER,
+    contact: CONTACT,
     categories: listCategories().map((category) => ({
       ...category,
       projects: category.projects.map(publicFields),

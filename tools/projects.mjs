@@ -17,6 +17,15 @@ import { SITES_DIR } from './config.mjs';
 
 const hidden = (name) => name.startsWith('_') || name.startsWith('.') || name === 'node_modules';
 
+/**
+ * The dashboard publishes a page per category at /<category>/, so a category
+ * folder cannot be named after one of the dashboard's own pages — its category
+ * page would be shadowed by the real one and never render.
+ */
+export const RESERVED_CATEGORY_NAMES = new Set([
+  '_next', 'about', 'contact', 'privacy', 'terms', 'projects', '404',
+]);
+
 const readJson = (file) => {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return null; }
 };
@@ -35,6 +44,22 @@ export const humanize = (slug) => slug
   .replace(/\s+/g, ' ')
   .trim()
   .replace(/\b\w/g, (c) => c.toUpperCase());
+
+/** The same name always yields the same colour, so cards never shuffle hues. */
+const hueOf = (text) => {
+  let hash = 0;
+  for (const char of text) hash = (hash * 31 + char.codePointAt(0)) % 360;
+  return hash;
+};
+
+/** "Car Wash" -> "CW", "Dental" -> "DE". Two letters keep the tile balanced. */
+const monogramOf = (name) => {
+  const words = name.trim().split(' ').filter(Boolean);
+  const letters = words.length > 1
+    ? words[0][0] + words[1][0]
+    : (words[0] || '?').slice(0, 2);
+  return letters.toUpperCase();
+};
 
 /** A folder is a project only if it is a Next.js app. Nothing else is built. */
 export function isNextApp(dir) {
@@ -98,6 +123,11 @@ export function describeCategory(category) {
     id: category,
     name: meta.name || humanize(category),
     description: meta.description || '',
+    /** Optional emoji; without one the dashboard draws a monogram instead. */
+    icon: meta.icon || '',
+    /** Stable 0-359 hue from the name, so colours never shift as folders change. */
+    hue: typeof meta.hue === 'number' ? meta.hue : hueOf(category),
+    monogram: monogramOf(meta.name || humanize(category)),
     projects,
   };
 }
@@ -117,6 +147,18 @@ export function findProject(id) {
   if (!category || !name || rest.length) return null;
   if (!isNextApp(path.join(SITES_DIR, category, name))) return null;
   return describeProject(category, name);
+}
+
+/** A category is a dashboard route as well as a folder, so its name is checked too. */
+export function checkCategory(category) {
+  const problems = [];
+  if (RESERVED_CATEGORY_NAMES.has(category.id)) {
+    problems.push({
+      level: 'error',
+      msg: `"${category.id}" is one of the dashboard's own pages — its category page would never render. Rename the folder.`,
+    });
+  }
+  return problems;
 }
 
 /**

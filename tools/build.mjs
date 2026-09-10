@@ -23,7 +23,7 @@ import {
   ROOT, OUT_DIR, DASHBOARD_DIR, BASE_PREFIX, isWin, npm,
 } from './config.mjs';
 import {
-  listProjects, findProject, newestMtime, checkProject,
+  listProjects, listCategories, findProject, newestMtime, checkProject, checkCategory,
 } from './projects.mjs';
 import { copyDir, flattenPrefetchPayloads } from './fsx.mjs';
 import { writeManifest } from './manifest.mjs';
@@ -102,6 +102,15 @@ function exportApp({ dir, label, basePath, outDir, preserve }) {
 // ------------------------------------------------------------------ lint
 function lint(projects) {
   let errors = 0;
+
+  // Category names are dashboard routes now, so they are validated too.
+  for (const category of listCategories()) {
+    for (const problem of checkCategory(category)) {
+      errors += problem.level === 'error' ? 1 : 0;
+      console.log(`[FAIL] sites/${category.id}`);
+      console.log(`         ${problem.level}: ${problem.msg}`);
+    }
+  }
   for (const project of projects) {
     const problems = checkProject(project);
     const errs = problems.filter((p) => p.level === 'error');
@@ -150,17 +159,6 @@ if (!only) {
     outDir: OUT_DIR,
     preserve: new Set(listProjects().map((project) => project.category)),
   });
-  // The dashboard owns the root of the bundle, so a category folder must not
-  // share its name with one of the dashboard's own routes (/about, /privacy...).
-  const dashboardRoutes = new Set(fs.readdirSync(path.join(DASHBOARD_DIR, 'out')));
-  for (const category of new Set(listProjects().map((p) => p.category))) {
-    if (dashboardRoutes.has(category)) {
-      console.error('');
-      console.error(`Category "${category}" collides with the dashboard's own /${category} route.`);
-      console.error('Rename the category folder or that dashboard route.');
-      process.exit(1);
-    }
-  }
 }
 
 if (!dashboardOnly) {

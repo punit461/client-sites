@@ -36,6 +36,14 @@ export const MANIFEST_FILE = path.join(DASHBOARD_DIR, 'src', 'generated', 'proje
 export const BASE_PREFIX = normalizePrefix(process.env.BASE_PREFIX ?? config.basePrefix ?? '');
 export const TITLE = config.title || 'Client Sites';
 export const TAGLINE = config.tagline || '';
+/** Shown on the About / Privacy / Terms pages, which need a name to refer to. */
+export const OWNER = config.owner || config.title || 'Client Sites';
+/** Left blank until filled in; the contact page says so rather than inventing one. */
+export const CONTACT = {
+  email: config.contact?.email || '',
+  phone: config.contact?.phone || '',
+  location: config.contact?.location || '',
+};
 export const PREVIEW_PORT = Number(process.env.PORT || 4321);
 
 export const isWin = process.platform === 'win32';

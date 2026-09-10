@@ -1,134 +1,160 @@
 /**
- * One definition of "a project", shared by the builder (tools/build.mjs), the
- * dev server's dashboard API (tools/serve.mjs) and the dashboard page itself.
+ * One definition of "a project", shared by the builder, the manifest generator,
+ * the preview server and the scaffolder.
  *
- * Every project lives at sites/car-wash/<slug>/ and is built into _site/<slug>/,
- * so they all end up on one origin. Nothing here ever starts a dev server or
- * claims a port: a project is "opened" by pointing the browser at /<slug>/.
+ * The tree is exactly two levels deep and every leaf is a standalone Next.js
+ * app that is statically exported:
+ *
+ *     sites/<category>/<project>/     ->  _site/<category>/<project>/
+ *
+ * That shape is the whole point: a project never imports from the repo around
+ * it, so delivering one is "copy the folder out, npm install, npm run build".
+ * Anything shared lives in tools/ and only runs at build time.
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { SITES_DIR } from './config.mjs';
 
-export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-export const SITES = path.join(ROOT, 'sites', 'car-wash');
-export const OUT = path.join(ROOT, '_site');
-
-/** Three ways a folder can become a page, in the order build.mjs prefers them. */
-export function kindOf(slug) {
-  const dir = path.join(SITES, slug);
-  if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) return null;
-  if (isNextApp(dir)) return 'next';
-  if (fs.existsSync(path.join(dir, 'index.html'))) return 'verbatim';
-  if (fs.existsSync(path.join(dir, 'site.json'))) return 'config';
-  return null;
-}
-
-export function isNextApp(dir) {
-  if (!fs.existsSync(dir)) return false;
-  if (fs.readdirSync(dir).some((f) => /^next\.config\./.test(f))) return true;
-  const pkgFile = path.join(dir, 'package.json');
-  if (!fs.existsSync(pkgFile)) return false;
-  try {
-    const pkg = JSON.parse(fs.readFileSync(pkgFile, 'utf8'));
-    return Boolean({ ...pkg.dependencies, ...pkg.devDependencies }.next);
-  } catch { return false; }
-}
-
-export function slugs() {
-  if (!fs.existsSync(SITES)) return [];
-  return fs.readdirSync(SITES, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && !d.name.startsWith('_') && !d.name.startsWith('.'))
-    .map((d) => d.name)
-    .filter((name) => kindOf(name))
-    .sort();
-}
+const hidden = (name) => name.startsWith('_') || name.startsWith('.') || name === 'node_modules';
 
 const readJson = (file) => {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return null; }
 };
 
-// "car-wash-template1" -> "Car Wash Template 1". Only a fallback: a site.json
-// business name is always the better label when there is one.
-const humanize = (slug) => slug
+const dirNames = (dir) => (fs.existsSync(dir)
+  ? fs.readdirSync(dir, { withFileTypes: true })
+    .filter((e) => e.isDirectory() && !hidden(e.name))
+    .map((e) => e.name)
+    .sort()
+  : []);
+
+/** "car-wash-template1" -> "Car Wash Template 1" (fallback when no title is set). */
+export const humanize = (slug) => slug
   .replace(/[-_]+/g, ' ')
   .replace(/([a-z])(\d)/gi, '$1 $2')
+  .replace(/\s+/g, ' ')
+  .trim()
   .replace(/\b\w/g, (c) => c.toUpperCase());
 
-/** Newest mtime under dir, ignoring build artefacts — tells us if out/ is stale. */
-export function newestMtime(dir, skip = new Set(['node_modules', '.next', 'out'])) {
+/** A folder is a project only if it is a Next.js app. Nothing else is built. */
+export function isNextApp(dir) {
+  if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) return false;
+  if (fs.readdirSync(dir).some((f) => /^next\.config\.(ts|js|mjs|cjs)$/.test(f))) return true;
+  const pkg = readJson(path.join(dir, 'package.json'));
+  return Boolean(pkg && { ...pkg.dependencies, ...pkg.devDependencies }.next);
+}
+
+/**
+ * Newest mtime under dir, ignoring build artefacts — tells us if out/ is stale.
+ * .build-stamp.json is written just after a build, so counting it would make
+ * every project look changed and defeat the whole check.
+ */
+export function newestMtime(
+  dir,
+  skip = new Set(['node_modules', '.next', 'out', '.build-stamp.json']),
+) {
   let latest = 0;
   if (!fs.existsSync(dir)) return latest;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (skip.has(entry.name)) continue;
     const full = path.join(dir, entry.name);
-    latest = Math.max(latest, entry.isDirectory() ? newestMtime(full, skip) : fs.statSync(full).mtimeMs);
+    latest = Math.max(latest, entry.isDirectory()
+      ? newestMtime(full, skip)
+      : fs.statSync(full).mtimeMs);
   }
   return latest;
 }
 
-/** Has this project been built into _site/ yet, and is that build still current? */
-export function statusOf(slug) {
-  const dir = path.join(SITES, slug);
-  const built = path.join(OUT, slug, 'index.html');
-  if (!fs.existsSync(built)) return { built: false, builtAt: null, stale: true };
-  const builtAt = fs.statSync(built).mtimeMs;
-  return { built: true, builtAt, stale: newestMtime(dir) > builtAt };
-}
-
-export function describe(slug) {
-  const dir = path.join(SITES, slug);
-  const kind = kindOf(slug);
-  const site = readJson(path.join(dir, 'site.json'));
-  const pkg = readJson(path.join(dir, 'package.json'));
-
-  let name = site?.business?.name || humanize(slug);
-  let description = '';
-  if (site) {
-    description = [site.business?.category, site.contact?.city].filter(Boolean).join(' · ');
-  } else if (pkg?.description) {
-    description = pkg.description;
-  }
-  if (!description) {
-    description = kind === 'next' ? 'Next.js app, statically exported.' : 'Static page.';
-  }
+export function describeProject(category, name) {
+  const dir = path.join(SITES_DIR, category, name);
+  const pkg = readJson(path.join(dir, 'package.json')) || {};
+  const meta = readJson(path.join(dir, 'project.json')) || {};
 
   return {
-    slug,
+    id: `${category}/${name}`,
+    category,
     name,
-    kind,                       // next | config | verbatim
-    label: kind === 'next' ? 'Next.js' : 'Static',
-    description,
-    url: `/${slug}/`,
-    // A Next app has a real install + compile step, so the dashboard warns
-    // that the first build takes a while.
-    heavy: kind === 'next',
+    title: meta.title || humanize(name),
+    client: meta.client || '',
+    status: meta.status || 'draft',
+    tags: Array.isArray(meta.tags) ? meta.tags : [],
+    notes: meta.notes || '',
+    description: meta.description || pkg.description || 'Next.js app, statically exported.',
+    dir,
+    relDir: path.posix.join('sites', category, name),
+    /** Where it lands in the build, relative to the base prefix. */
+    route: `/${category}/${name}/`,
   };
 }
 
-export function listProjects({ withStatus = false } = {}) {
-  return slugs().map((slug) => (withStatus ? { ...describe(slug), ...statusOf(slug) } : describe(slug)));
+export function describeCategory(category) {
+  const dir = path.join(SITES_DIR, category);
+  const meta = readJson(path.join(dir, 'category.json')) || {};
+  const projects = dirNames(dir)
+    .filter((name) => isNextApp(path.join(dir, name)))
+    .map((name) => describeProject(category, name));
+
+  return {
+    id: category,
+    name: meta.name || humanize(category),
+    description: meta.description || '',
+    projects,
+  };
+}
+
+/** Every category folder, including ones that are still empty. */
+export function listCategories() {
+  return dirNames(SITES_DIR).map(describeCategory);
+}
+
+export function listProjects() {
+  return listCategories().flatMap((c) => c.projects);
+}
+
+export function findProject(id) {
+  const parts = String(id).split(path.win32.sep).join('/').split('/').filter(Boolean);
+  const [category, name, ...rest] = parts;
+  if (!category || !name || rest.length) return null;
+  if (!isNextApp(path.join(SITES_DIR, category, name))) return null;
+  return describeProject(category, name);
 }
 
 /**
- * Copies the hand-written dashboard + launcher into _site/, baking the project
- * list into them. The pages then work in two modes: against the dev server they
- * call /__api/* to build on demand, and on GitHub Pages (no API) they fall back
- * to this baked-in list and just link to the already-built pages.
+ * Structural lint. Two of these matter enough to fail a build:
+ * a project that cannot export, and a project pinned to one URL — the second
+ * would hand a client a site whose assets only load under our Pages path.
  */
-export function writeShell() {
-  const data = JSON.stringify(listProjects()).replace(/</g, '\u003c');
-  let wrote = false;
-  for (const name of ['index.html', 'launcher.html']) {
-    const src = path.join(SITES, name);
-    if (!fs.existsSync(src)) continue;
-    const html = fs.readFileSync(src, 'utf8').replace(
-      /(<script id="project-data" type="application\/json">)[\s\S]*?(<\/script>)/,
-      (_m, open, close) => `${open}${data}${close}`,
-    );
-    fs.mkdirSync(OUT, { recursive: true });
-    fs.writeFileSync(path.join(OUT, name), html);
-    if (name === 'index.html') wrote = true;
+export function checkProject(project) {
+  const problems = [];
+  const pkgFile = path.join(project.dir, 'package.json');
+  const pkg = readJson(pkgFile);
+
+  if (!pkg) problems.push({ level: 'error', msg: 'no readable package.json' });
+  else {
+    if (!{ ...pkg.dependencies, ...pkg.devDependencies }.next) {
+      problems.push({ level: 'error', msg: 'next is not a dependency' });
+    }
+    if (!pkg.scripts?.build) problems.push({ level: 'error', msg: 'no "build" script' });
+    if (!pkg.description) problems.push({ level: 'warn', msg: 'package.json has no description (used as the card subtitle)' });
   }
-  return wrote;
+
+  const configFile = fs.readdirSync(project.dir).find((f) => /^next\.config\.(ts|js|mjs|cjs)$/.test(f));
+  if (!configFile) problems.push({ level: 'error', msg: 'no next.config.* — cannot be exported' });
+  else {
+    const config = fs.readFileSync(path.join(project.dir, configFile), 'utf8');
+    if (!/output\s*:\s*["']export["']/.test(config)) {
+      problems.push({ level: 'error', msg: `${configFile} does not set output: "export"` });
+    }
+    if (/basePath\s*:\s*["']\//.test(config)) {
+      problems.push({ level: 'error', msg: `${configFile} hardcodes basePath — use process.env.NEXT_PUBLIC_BASE_PATH so the project can also be delivered on its own domain` });
+    }
+    if (!/NEXT_PUBLIC_BASE_PATH/.test(config)) {
+      problems.push({ level: 'warn', msg: `${configFile} ignores NEXT_PUBLIC_BASE_PATH — it will not work under the dashboard's sub-path` });
+    }
+  }
+
+  if (!fs.existsSync(path.join(project.dir, 'project.json'))) {
+    problems.push({ level: 'warn', msg: 'no project.json (title, client and status fall back to defaults)' });
+  }
+  return problems;
 }

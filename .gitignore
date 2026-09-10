@@ -1,4 +1,15 @@
+# build output
 _site/
+out/
+.next/
+.build-stamp.json
+
+# client handovers — regenerate with: npm run release -- <category>/<project>
+releases/
+
 node_modules/
+*.tsbuildinfo
+next-env.d.ts
+
 .DS_Store
 *.log

@@ -1,0 +1,6 @@
+{
+  "title": "Client Sites",
+  "tagline": "Every client project in this repo, grouped by category.",
+  "basePrefix": "/client-sites",
+  "outDir": "_site"
+}

@@ -1,112 +1,215 @@
 # client-sites
 
-Public repo. Static demo sites for local businesses, deployed to GitHub Pages by
-Actions on every push to `main`.
+A dashboard and one folder per client site. **Every folder is a standalone
+Next.js app**, statically exported — which is what makes both halves of the plan
+work: they can all be published together as one site, and any single one can be
+lifted out and delivered to a client on its own.
 
-**Nothing in here may contain a lead's email, phone note, or any prospecting
-data.** That lives in the private ops repo. What ships here is what a business
-owner would be comfortable seeing.
+```
+client-sites/
+  dashboard/                        the main project — lists everything
+  sites/
+    car-wash/                       a category
+      category.json                 its display name
+      car-wash-template1/           a project (Next.js app)
+      car-wash-template2/
+    laundry/                        add a category by creating the folder
+  tools/                            build, preview, scaffold, release
+  client-sites.config.json          title, tagline, base path
+```
+
+Exactly two levels under `sites/`: **category, then project**. Nothing else is
+built, and nothing needs registering — a folder that is a Next.js app is a
+project, and a folder containing one is a category.
 
 ## Commands
 
+Run these from the repo root.
+
 ```bash
-npm run dev            # dashboard + every project on http://localhost:4321
-npm run build          # -> _site/
-npm run check          # validate every site.json, write nothing
-node tools/build.mjs <slug>           # build just one
-node tools/build.mjs <slug> --force   # rebuild it even if the export looks current
+npm run build                                   # everything into _site/
 ```
 
-No dependencies, no install step for the tooling itself — Node 20+ and the
-standard library. (The Next.js projects install their own dependencies the
-first time they are built.)
+```bash
+npm run preview                                 # serve _site/ exactly as it will be published
+```
+
+```bash
+npm run list                                    # what exists, and what would fail a build
+```
+
+```bash
+npm run new -- car-wash/shine-auto-spa --from car-wash/car-wash-template1
+```
+
+```bash
+npm run release -- car-wash/shine-auto-spa      # standalone build to hand over
+```
+
+| Command | What it does |
+| --- | --- |
+| `npm run build` | Builds the dashboard and every project into `_site/`. Reuses a project's export if nothing changed. |
+| `npm run build car-wash/x` | Builds one project, leaving the rest of `_site/` alone. |
+| `npm run build -- --force` | Rebuilds even when the exports look current. |
+| `npm run preview` | Serves `_site/` at the same base path it will be published under. Static only — no compiling. |
+| `npm run dev` | The dashboard with hot reload. For working on the dashboard itself. |
+| `npm run list` | Every category and project, with status and any structural problems. |
+| `npm run check` | The same checks, as a pass/fail — this is what CI runs. |
+| `npm run new` | Starts a project by copying an existing one. |
+| `npm run release` | Copies one project out and builds it for the client's own hosting. |
+
+There is no `npm install` at the root: the tooling is plain Node with no
+dependencies. Each project installs its own.
+
+## The workflow
+
+**1 — Start a project by copying a template.**
+
+```bash
+npm run new -- car-wash/shine-auto-spa --from car-wash/car-wash-template1
+```
+
+A copy, not a reference. Editing it can never change a site that is already
+live. The new project gets a `project.json` holding its title, client and
+status.
+
+**2 — Build the page.** Work in the project itself, with hot reload:
+
+```bash
+cd sites/car-wash/shine-auto-spa && npm install && npm run dev
+```
+
+**3 — Show the client.** Build the bundle and serve it:
+
+```bash
+npm run build && npm run preview
+```
+
+The preview serves the built files, so what the client sees is exactly what
+will be live. Push to `main` and the same bundle is published to GitHub Pages,
+which is usually the easier thing to send them a link to.
+
+**4 — Deliver it once they agree.**
+
+```bash
+npm run release -- car-wash/shine-auto-spa
+```
+
+That copies the folder to `releases/shine-auto-spa/`, installs it, and builds
+it **with no path prefix** — so `releases/shine-auto-spa/out/` can be uploaded
+to the root of any host. A `HANDOVER.md` is written beside it with the steps for
+Netlify, cPanel, S3 and GitHub Pages. The copy is frozen: later work in
+`sites/` cannot change what the client was given.
+
+If the client wants it in a sub-folder of their domain instead:
+
+```bash
+npm run release -- car-wash/shine-auto-spa --base-path /washes
+```
+
+## The one rule that makes this work
+
+**Never hardcode `basePath` in a project's `next.config.ts`.** Read it from the
+environment:
+
+```ts
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+const nextConfig: NextConfig = {
+  output: "export",
+  basePath,
+  trailingSlash: true,
+  images: { unoptimized: true },
+};
+```
+
+The same source folder then produces two different, correct builds:
+
+| Built by | `NEXT_PUBLIC_BASE_PATH` | Result |
+| --- | --- | --- |
+| `npm run build` in the project | *(unset)* | Every URL root-relative — a client's own domain. |
+| `npm run build` at the root | `/client-sites/car-wash/x` | Lands beside the other projects on Pages. |
+| `npm run release` | *(unset, or `--base-path`)* | The handover build. |
+
+`npm run check` fails the build if a project hardcodes `basePath`, because that
+mistake is invisible until a client's site loads with no CSS.
+
+A project's export is stamped with the base path it was built for
+(`.build-stamp.json`, gitignored), so an export made for one path is never
+silently republished under another.
+
+## Where things end up
+
+With `basePrefix: "/client-sites"` in `client-sites.config.json`:
+
+```
+_site/                                    ->  /client-sites/
+_site/about/                              ->  /client-sites/about/
+_site/car-wash/car-wash-template1/        ->  /client-sites/car-wash/car-wash-template1/
+_site/car-wash/car-wash-template2/        ->  /client-sites/car-wash/car-wash-template2/
+```
+
+`/client-sites` is the repo name, because GitHub Pages serves a project repo
+under it. Set `basePrefix` to `""` for a custom domain or a `<user>.github.io`
+repo. CI overrides it from the repo name, so renaming the repo needs no edit.
 
 ## The dashboard
 
-`npm run dev` opens a dashboard at `http://localhost:4321` listing every
-project. Clicking one **builds it on demand and opens it in its own tab**, with
-the build log streaming into the console drawer while you wait.
+`dashboard/` is a normal Next.js app — App Router, `src/app/`. It has a project
+list and an `/about` page; adding `/privacy` means adding
+`dashboard/src/app/privacy/page.tsx`.
 
-Every project is served from that one origin as `/<slug>/`. Nothing here runs
-`next dev` or claims a port per project, so opening four projects costs one
-port, and there is no set of dev servers to keep alive or to clash with
-whatever else you have running.
+It cannot read the filesystem, because it is a static export, so the project
+list is baked in at build time as `dashboard/src/generated/projects.json`
+(written by `tools/manifest.mjs`, and committed so a fresh clone works). Search
+and filtering then run in the browser.
 
-Two consequences worth knowing:
+One constraint: a category folder must not share its name with a dashboard
+route. A category called `about` would collide with `/about`. The build stops
+and says so rather than overwriting anything.
 
-- A Next.js project is only rebuilt when you ask for it (a card click, the
-  rebuild button, or `npm run build`) — compiling on every page request would
-  make the preview unusable. The card says *Source changed* when its export is
-  older than the sources.
-- A `site.json` project is cheap to render, so it still rebuilds on refresh:
-  edit the JSON, reload the page, see the change.
+## Project metadata
 
-The dashboard also works on GitHub Pages, where there is no server to build
-anything: `tools/projects.mjs` bakes the project list into the page at build
-time, and the cards simply link to what was published.
+Optional, and only used by the dashboard.
 
-## Adding a site
+`sites/<category>/<project>/project.json`
 
-Normally: `hustle handoff <slug>` from the ops repo writes the folder for you.
-By hand, copy `sites/car-wash/_template/`:
-
-```
-sites/car-wash/<slug>/
-  site.json        rendered by tools/template.mjs      <- the normal path
-  assets/*.jpg     referenced from site.json as "assets/<name>"
-  index.html       OPTIONAL: a hand-built page, copied verbatim instead
-  next.config.ts   OPTIONAL: a full Next.js app, statically exported
+```json
+{
+  "title": "Shine Auto Spa",
+  "client": "Shine Auto Spa, Pune",
+  "status": "in-review",
+  "tags": ["booking form", "dark"],
+  "notes": "Waiting on their gallery photos."
+}
 ```
 
-Those three are checked in reverse order: a Next config wins over an
-`index.html`, which wins over a `site.json` — a hand edit is never silently
-overwritten by a regenerated template.
+`status` is one of `template`, `draft`, `in-review`, `approved`, `delivered`.
+The card subtitle comes from the project's `package.json` `description`.
 
-A Next.js project needs `output: 'export'` and `basePath: '/<slug>'` in its
-next config so its export lands correctly under the shared origin. Its
-`package.json` `description` becomes the card's subtitle on the dashboard.
+`sites/<category>/category.json`
 
-`sites/car-wash/_template/README.md` documents the `site.json` fields.
+```json
+{ "name": "Car Wash", "description": "Landing pages for car wash businesses." }
+```
 
-## The build
+## GitHub Pages
 
-`tools/build.mjs` renders each folder into `_site/<slug>/` and writes the
-dashboard at the root. `tools/projects.mjs` is the single place that decides
-what counts as a project, shared by the builder, the dev server's API and the
-dashboard page. It **fails the build** when:
+Settings → Pages → Build and deployment → **Source: GitHub Actions**, then push
+to `main`. `.github/workflows/deploy.yml` builds every project and publishes
+`_site/`. Pull requests build without deploying, so a broken project fails the
+PR instead of the live site.
 
-- `business.name` is missing
-- `site.json` isn't valid JSON
-- any `TODO:` placeholder survived from the brief
+The first CI run installs every project's dependencies and compiles every one of
+them, so expect a few minutes.
 
-That last one is the important one: CI runs on pull requests, so a half-filled
-brief fails the PR instead of reaching a client's inbox. Missing WhatsApp
-number, phone, tagline or images are warnings, not errors — you'll see them in
-the build log.
+## Adding a category
 
-## What every rendered page has
+Create `sites/<category>/` and put a project in it — or just name it, and the
+scaffolder creates both:
 
-Single HTML file, ~15 KB, no JS framework, no CDN except Google Fonts. Sticky
-nav, hero with the business's own photo, services grid, gallery, Google reviews,
-opening hours, contact block, `LocalBusiness` JSON-LD, light and dark themes.
+```bash
+npm run new -- dental/bright-smile --from car-wash/car-wash-template1
+```
 
-And three WhatsApp entry points, because for local businesses that's the channel
-customers actually use: the hero CTA, the contact block, and a floating button
-that follows you down the page. `whatsapp.number` is digits only with the country
-code and no `+`; get it wrong and all three disappear.
-
-## Demo safety
-
-Demo pages default to `meta.noindex: true` (robots meta + a `robots.txt`
-disallow) and `meta.demo_banner: true` (a "sample site, not affiliated" strip
-linking back to the portfolio index).
-
-Turn both off **only after the business has agreed the site is theirs**. Before
-that, an unrequested copy of a real business ranking against them in search is a
-genuine problem, and the banner is what makes the outreach honest.
-
-## GitHub Pages setup
-
-See [.github/workflows/README.md](.github/workflows/README.md). Short version:
-public repo, Settings → Pages → Source: GitHub Actions, push to `main`. Sites
-land at `https://<owner>.github.io/client-sites/<slug>/`.
+Category names become URL segments, so keep them lowercase with dashes.

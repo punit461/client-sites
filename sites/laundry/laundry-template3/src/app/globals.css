@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/**
+ * Crisp & Co.'s design tokens. A dark, night-blue surface lit by two accents:
+ * ice (the interactive colour) and gold (the membership one). Everything
+ * visual comes from here, so re-skinning for a client is editing this block
+ * rather than hunting through JSX.
+ */
+@theme inline {
+  --color-night: #05070f;
+  --color-deep: #090e1b;
+  --color-surface: #101728;
+  --color-surface-2: #16203a;
+  --color-mist: #eef2fb;
+  --color-mist-soft: #a7b4cc;
+  --color-mist-faint: #6f7f9c;
+  --color-line: #1d2841;
+  --color-ice: #7cd9f5;
+  --color-ice-deep: #35b5da;
+  --color-gold: #e3c186;
+  --color-gold-deep: #c9a15c;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-panel: 26px;
+}
+
+@layer base {
+  html {
+    /* Dark by design, so native controls (scrollbars, date pickers) match. */
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    /* The sticky header would otherwise cover the top of every anchored section. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-night);
+    color: var(--color-mist);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* Aurora blobs and parallax layers overhang; never scroll the page sideways. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(124, 217, 245, 0.28);
+    color: var(--color-mist);
+  }
+
+  /* A visible focus ring everywhere, since most controls here are custom. */
+  :focus-visible {
+    outline: 2px solid var(--color-ice);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.032em;
+    line-height: 1.03;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Display sizes, fluid from a 320px phone to a 1920px desktop. */
+  .display-xl {
+    font-size: clamp(2.3rem, 6.1vw, 5.25rem);
+  }
+
+  .display-lg {
+    font-size: clamp(1.9rem, 4.1vw, 3.5rem);
+  }
+
+  .display-md {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 0.71rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  /**
+   * The frosted card this whole page is built from. A one-pixel light edge on
+   * a dark surface is what separates panels here — there are no shadows to do
+   * it, because a shadow is invisible against near-black.
+   */
+  .panel {
+    background-image: linear-gradient(
+      158deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.014)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    /**
+     * Standard property only. Lightning CSS adds `-webkit-backdrop-filter`
+     * from the browser targets — writing it by hand here does the opposite of
+     * what it looks like, because the hand-written prefix wins the dedupe and
+     * the unprefixed declaration is dropped from the build entirely.
+     */
+    backdrop-filter: blur(14px) saturate(130%);
+  }
+
+  /* The faint dot grid behind the page — it stops flat black reading as unstyled. */
+  .starfield::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: radial-gradient(rgba(124, 217, 245, 0.08) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 35%, transparent 100%);
+  }
+
+  /* Hides a horizontally scrollable rail's scrollbar without disabling it. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /**
+   * The ticker. The track holds its children twice, so translating it by half
+   * its width lands the copy exactly where the original was — seamless loop,
+   * no JS, no measuring.
+   */
+  .marquee-track {
+    animation: marquee 34s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/**
+ * One switch for everything decorative. Framer Motion reads the same media
+ * query in useReducedMotion(), so JS-driven and CSS-driven motion stop together
+ * rather than one of them carrying on. The marquee is named explicitly: left to
+ * the blanket rule it would finish its travel instantly instead of standing still.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/**
+ * Kayal House's tokens. A dark house: ink-green ground, bone for type, brass
+ * for anything that should catch the eye and a single lagoon blue-green for the
+ * cooler notes. Deliberately nothing like the ivory of template 1 or the cream
+ * of template 2 — this one is read at dusk.
+ *
+ * The site is dark at every viewport and does not follow the system theme: the
+ * photography, the scrims over it and the brass are all built for one ground.
+ */
+@theme inline {
+  --color-ink: #0d1411;
+  --color-ink-2: #131c18;
+  --color-ink-3: #1b2620;
+  --color-brass: #c8a24e;
+  --color-brass-deep: #a5822f;
+  --color-lagoon: #5a9b91;
+  --color-bone: #f3eee4;
+  --color-bone-soft: #bdb6a8;
+  --color-bone-faint: #8b8478;
+  --color-line: #24302a;
+  --color-line-soft: #1c2621;
+  --color-surface: #131c18;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.3), 0 18px 44px rgba(0, 0, 0, 0.36);
+  --shadow-lift: 0 2px 6px rgba(0, 0, 0, 0.35), 0 34px 70px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+    /* Form controls and scrollbars should come up dark too. */
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* The hero plate and the suite rail overhang; never scroll the page sideways. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(200, 162, 78, 0.35);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Dark date and time pickers, rather than one white square per field. */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) sepia(0.4) saturate(3) hue-rotate(5deg);
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Display sizes, fluid from a 320px phone to a 1920px desktop. */
+  .display-xl {
+    font-size: clamp(2.5rem, 6.4vw, 5.75rem);
+  }
+
+  .display-lg {
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+  }
+
+  .display-md {
+    font-size: clamp(1.55rem, 2.5vw, 2.2rem);
+  }
+
+  /* Mono is the whole indexing system: section numbers, times, distances. */
+  .mono {
+    font-family: var(--font-mono), ui-monospace, "SFMono-Regular", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .label {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  /* A hairline that reads as brass without being a border colour. */
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--color-brass) 0%,
+      color-mix(in srgb, var(--color-brass) 25%, transparent) 38%,
+      transparent 100%
+    );
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

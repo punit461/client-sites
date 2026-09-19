@@ -143,6 +143,25 @@
           "description": "Travel-journal homestay — bento experiences, stylised area map and a photo journal.",
           "relDir": "sites/home-stay/home-stay-template2",
           "route": "/home-stay/home-stay-template2/"
+        },
+        {
+          "id": "home-stay/home-stay-template3",
+          "category": "home-stay",
+          "name": "home-stay-template3",
+          "title": "Home Stay — Template 3 (Kayal House)",
+          "client": "",
+          "status": "template",
+          "tags": [
+            "dark",
+            "heritage",
+            "suite rail",
+            "stepped enquiry",
+            "Tailwind"
+          ],
+          "notes": "Kayal House: the dark, brass-and-bone take — a waterfront heritage house with a suite carousel, a day-at-the-house timeline and a three-step enquiry.",
+          "description": "Waterfront heritage homestay — dark brass-and-bone palette, suite carousel and a stepped enquiry.",
+          "relDir": "sites/home-stay/home-stay-template3",
+          "route": "/home-stay/home-stay-template3/"
         }
       ]
     },
@@ -189,6 +208,24 @@
           "description": "Bold laundry-tech landing page — horizontal scroll journey, pricing calculator and order tracking.",
           "relDir": "sites/laundry/laundry-template2",
           "route": "/laundry/laundry-template2/"
+        },
+        {
+          "id": "laundry/laundry-template3",
+          "category": "laundry",
+          "name": "laundry-template3",
+          "title": "Laundry — Template 3 (Crisp & Co.)",
+          "client": "",
+          "status": "template",
+          "tags": [
+            "dark",
+            "membership plans",
+            "stain finder",
+            "Tailwind"
+          ],
+          "notes": "Crisp & Co.: a dark, aurora-lit members' laundry concierge — an expanding service accordion, membership plans with a bags-per-month recommender, and a searchable stain guide. Copy it rather than editing it in place.",
+          "description": "Members' laundry concierge landing page — dark aurora theme, membership plans and a stain finder.",
+          "relDir": "sites/laundry/laundry-template3",
+          "route": "/laundry/laundry-template3/"
         }
       ]
     }

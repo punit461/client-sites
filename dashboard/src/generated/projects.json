@@ -191,33 +191,6 @@
           "route": "/laundry/laundry-template2/"
         }
       ]
-    },
-    {
-      "id": "pet-care",
-      "name": "Pet Care",
-      "description": "",
-      "icon": "",
-      "hue": 95,
-      "monogram": "PC",
-      "projects": []
-    },
-    {
-      "id": "real-estate",
-      "name": "Real Estate",
-      "description": "",
-      "icon": "",
-      "hue": 91,
-      "monogram": "RE",
-      "projects": []
-    },
-    {
-      "id": "travel",
-      "name": "Travel",
-      "description": "",
-      "icon": "",
-      "hue": 354,
-      "monogram": "TR",
-      "projects": []
     }
   ]
 }

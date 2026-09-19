@@ -149,13 +149,23 @@ export function findProject(id) {
   return describeProject(category, name);
 }
 
-/** A category is a dashboard route as well as a folder, so its name is checked too. */
+/**
+ * A category is a dashboard route as well as a folder, so its name is checked
+ * too — and so is whether git can see it at all.
+ */
 export function checkCategory(category) {
   const problems = [];
   if (RESERVED_CATEGORY_NAMES.has(category.id)) {
     problems.push({
       level: 'error',
       msg: `"${category.id}" is one of the dashboard's own pages — its category page would never render. Rename the folder.`,
+    });
+  }
+  if (!category.projects.length
+    && !fs.existsSync(path.join(SITES_DIR, category.id, 'category.json'))) {
+    problems.push({
+      level: 'error',
+      msg: `sites/${category.id} has no projects and no category.json, so it holds nothing git can track. It shows on your dashboard and then vanishes in CI, where the manifest is regenerated without it and the up-to-date check fails. Add sites/${category.id}/category.json, or remove the folder.`,
     });
   }
   return problems;

@@ -118,6 +118,12 @@ version the same across the dashboard and the projects.
   is shadowed and never renders. `RESERVED_CATEGORY_NAMES` in
   `tools/projects.mjs` is the list, and `npm run check` fails on it. Add to it
   when you add a top-level dashboard page.
+- **An empty category folder does not exist to CI.** Git tracks files, not
+  directories, so `sites/pet-care/` with nothing in it is on your disk and
+  never in the repo: your manifest lists the category, CI regenerates one
+  without it, and the "manifest is up to date" check fails with a diff you
+  cannot see locally. `checkCategory` in `tools/projects.mjs` fails on it now.
+  Give a category a `category.json` the moment you create its folder.
 - `.build-stamp.json` beside a project records the base path its `out/` was
   built for, so an export made for one path is never republished under another.
   Delete it, or pass `--force`, to force a rebuild.

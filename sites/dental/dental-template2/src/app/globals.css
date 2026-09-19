@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/**
+ * Vivera's design tokens. Forest green carries the primary actions; coral is
+ * reserved for the few things that genuinely need to stand out. Deliberately
+ * not medical blue.
+ */
+@theme inline {
+  --color-forest: #153c36;
+  --color-forest-deep: #0d2a26;
+  --color-mint: #dcefe8;
+  --color-mint-deep: #b7dccf;
+  --color-paper: #fafaf7;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f3ef;
+  --color-line: #e3e6e0;
+  --color-ink: #1b2422;
+  --color-ink-soft: #55615c;
+  --color-ink-faint: #8b9691;
+  --color-coral: #e98272;
+  --color-coral-deep: #d16453;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --shadow-soft: 0 1px 2px rgba(21, 60, 54, 0.04), 0 12px 30px rgba(21, 60, 54, 0.06);
+  --shadow-lift: 0 2px 6px rgba(21, 60, 54, 0.06), 0 24px 56px rgba(21, 60, 54, 0.12);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-mint);
+  }
+
+  /* Healthcare UI: a keyboard user must never lose their place. */
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .display-xl {
+    font-size: clamp(2.1rem, 5vw, 4.2rem);
+  }
+
+  .display-lg {
+    font-size: clamp(1.8rem, 3.6vw, 3rem);
+  }
+
+  .display-md {
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+  }
+
+  .label {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

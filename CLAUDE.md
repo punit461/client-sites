@@ -90,14 +90,23 @@ cannot reach the live site.
 npm run build                          # dashboard + every project -> _site/
 npm run build car-wash/x               # one project
 npm run preview                        # serve _site/ as it will be published
-npm run dev                            # dashboard with hot reload
+npm run dev                            # dashboard (hot reload) + every built site, one origin
 npm run list                           # what exists, plus structural problems
 npm run check                          # pass/fail version of the above (CI)
 npm run new -- <cat>/<proj> --from <cat>/<proj>
 npm run release -- <cat>/<proj>        # standalone build for the client
 ```
 
-To work on a site itself, use its own dev server:
+`npm run dev` runs Next's dev server for the dashboard on a private port and
+puts a small router in front of it (`tools/dev.mjs`), serving
+`/<category>/<project>/` from that project's `out/` and proxying everything
+else, HMR socket included. That is what makes the project cards work without
+giving any project a port of its own. It serves under the same base prefix as a
+real build, so an export stays valid when you switch between `dev` and `build`
+instead of being rebuilt for a different path each time.
+
+Because sites are served from their last export, editing one changes nothing
+until you rebuild it. To iterate on a site, use its own dev server:
 `cd sites/<category>/<project> && npm run dev`.
 
 ## Next.js version
@@ -120,6 +129,12 @@ version the same across the dashboard and the projects.
   is shadowed and never renders. `RESERVED_CATEGORY_NAMES` in
   `tools/projects.mjs` is the list, and `npm run check` fails on it. Add to it
   when you add a top-level dashboard page.
+- **An empty category folder does not exist to CI.** Git tracks files, not
+  directories, so `sites/pet-care/` with nothing in it is on your disk and
+  never in the repo: your manifest lists the category, CI regenerates one
+  without it, and the "manifest is up to date" check fails with a diff you
+  cannot see locally. `checkCategory` in `tools/projects.mjs` fails on it now.
+  Give a category a `category.json` the moment you create its folder.
 - `.build-stamp.json` beside a project records the base path its `out/` was
   built for, so an export made for one path is never republished under another.
   Delete it, or pass `--force`, to force a rebuild.

@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/**
+ * LOOP's tokens. High contrast on warm paper: near-black type, one lime accent
+ * used as a fill (never as text on light — it would fail contrast), and very
+ * large radii. Re-skinning for a client is editing this block.
+ */
+@theme inline {
+  --color-paper: #f4f1ea;
+  --color-paper-2: #eae5db;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #55514b;
+  --color-ink-faint: #8b857c;
+  --color-line: #ddd7cb;
+  --color-lime: #d4f24b;
+  --color-lime-deep: #b4d321;
+  --color-night: #111110;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-xl2: 28px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* The journey rail and parallax layers overhang; never scroll the page sideways. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Oversized editorial type, fluid from 320px to 1920px. */
+  .type-mega {
+    font-size: clamp(2.05rem, 9vw, 9rem);
+    line-height: 0.88;
+  }
+
+  .type-xl {
+    font-size: clamp(1.75rem, 6vw, 5.5rem);
+    line-height: 0.92;
+  }
+
+  .type-lg {
+    font-size: clamp(1.5rem, 3.6vw, 3.25rem);
+  }
+
+  /* Oversized stage/section numerals. */
+  .numeral {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 0.8;
+  }
+
+  .label {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /**
+   * The grain. A tiny SVG turbulence tiled over the page at low opacity — it
+   * is what stops a flat warm-white background looking like unstyled HTML.
+   * pointer-events:none so it never intercepts a click.
+   */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

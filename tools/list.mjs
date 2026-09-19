@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { BASE_PREFIX, OUT_DIR } from './config.mjs';
-import { listCategories, checkProject } from './projects.mjs';
+import { listCategories, checkProject, checkCategory } from './projects.mjs';
 
 const categories = listCategories();
 if (!categories.length) {
@@ -15,6 +15,9 @@ let errors = 0;
 
 for (const category of categories) {
   console.log(`\n${category.name}  (sites/${category.id})`);
+  const categoryProblems = checkCategory(category);
+  errors += categoryProblems.filter((p) => p.level === 'error').length;
+  for (const p of categoryProblems) console.log(`  ${p.level}: ${p.msg}`);
   if (!category.projects.length) console.log('  — empty —');
 
   for (const project of category.projects) {

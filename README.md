@@ -52,7 +52,7 @@ npm run release -- car-wash/shine-auto-spa      # standalone build to hand over
 | `npm run build car-wash/x` | Builds one project, leaving the rest of `_site/` alone. |
 | `npm run build -- --force` | Rebuilds even when the exports look current. |
 | `npm run preview` | Serves `_site/` at the same base path it will be published under. Static only — no compiling. |
-| `npm run dev` | The dashboard with hot reload. For working on the dashboard itself. |
+| `npm run dev` | The dashboard with hot reload at `http://localhost:3000<base prefix>/`, with every built site reachable beside it — so the project cards open real sites. Sites are served from their last build; the dashboard is the part that hot-reloads. |
 | `npm run list` | Every category and project, with status and any structural problems. |
 | `npm run check` | The same checks, as a pass/fail — this is what CI runs. |
 | `npm run new` | Starts a project by copying an existing one. |

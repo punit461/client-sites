@@ -12,7 +12,7 @@ export default function ProjectsPage() {
   return (
     <section className="wrap section" style={{ paddingTop: "clamp(2rem, 5vw, 3rem)" }}>
       <div className="section-head">
-        <h2>All projects</h2>
+        <h1>All projects</h1>
         <span className="aside">Across every category</span>
       </div>
 

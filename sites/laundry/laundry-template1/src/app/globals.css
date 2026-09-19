@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/**
+ * FreshFold's design tokens. Everything visual comes from here, so re-skinning
+ * the site for a client is editing this block rather than hunting through JSX.
+ */
+@theme inline {
+  --color-bg: #fbfaf7;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f2ed;
+  --color-ink: #0c1b2a;
+  --color-ink-soft: #4a5b6d;
+  --color-ink-faint: #8593a1;
+  --color-line: #e7e3da;
+  --color-accent: #0e9f6e;
+  --color-accent-dark: #087f58;
+  --color-accent-soft: #e7f6ef;
+  --color-gold: #c08a3e;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-card: 20px;
+
+  --shadow-soft: 0 1px 2px rgba(12, 27, 42, 0.04), 0 12px 32px rgba(12, 27, 42, 0.06);
+  --shadow-lift: 0 2px 4px rgba(12, 27, 42, 0.05), 0 24px 56px rgba(12, 27, 42, 0.12);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* The sticky header would otherwise cover the top of every anchored section. */
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* Parallax and the horizontal rails can overhang; never let that scroll the page. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(14, 159, 110, 0.18);
+  }
+
+  /* A visible focus ring everywhere, since most controls here are custom. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Editorial display sizes, fluid from a 320px phone to a 1920px desktop. */
+  .display-xl {
+    font-size: clamp(2.15rem, 6.4vw, 5.25rem);
+  }
+
+  .display-lg {
+    font-size: clamp(1.85rem, 4.6vw, 3.75rem);
+  }
+
+  .display-md {
+    font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent-dark);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Hides a horizontally scrollable rail's scrollbar without disabling it. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/**
+ * One switch for everything decorative. Framer Motion reads the same media
+ * query in useReducedMotion(), so JS-driven and CSS-driven motion stop together
+ * rather than one of them carrying on.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

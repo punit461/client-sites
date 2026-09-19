@@ -1,0 +1,65 @@
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BadgeCheck,
+  Calendar,
+  Check,
+  Clock,
+  CreditCard,
+  Droplets,
+  Gem,
+  House,
+  Leaf,
+  MapPin,
+  Package,
+  PackageCheck,
+  Phone,
+  Recycle,
+  Shirt,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  Timer,
+  Truck,
+  User,
+  Wallet,
+  WashingMachine,
+  Wind,
+  type LucideIcon,
+} from "lucide-react";
+
+/**
+ * Data files name an icon as a string; this map turns it into a component.
+ * Keeping the union derived from the map means a typo in a data file is a
+ * compile error rather than a blank space on the page.
+ */
+export const icons = {
+  arrowRight: ArrowRight,
+  arrowUpRight: ArrowUpRight,
+  badgeCheck: BadgeCheck,
+  calendar: Calendar,
+  check: Check,
+  clock: Clock,
+  creditCard: CreditCard,
+  droplets: Droplets,
+  gem: Gem,
+  house: House,
+  leaf: Leaf,
+  mapPin: MapPin,
+  package: Package,
+  packageCheck: PackageCheck,
+  phone: Phone,
+  recycle: Recycle,
+  shirt: Shirt,
+  shieldCheck: ShieldCheck,
+  sparkles: Sparkles,
+  star: Star,
+  timer: Timer,
+  truck: Truck,
+  user: User,
+  wallet: Wallet,
+  washingMachine: WashingMachine,
+  wind: Wind,
+} satisfies Record<string, LucideIcon>;
+
+export type IconName = keyof typeof icons;

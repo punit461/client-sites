@@ -1,0 +1,12 @@
+{
+  "title": "Laundry — Template 1 (FreshFold)",
+  "client": "",
+  "status": "template",
+  "tags": [
+    "parallax hero",
+    "booking flow",
+    "light",
+    "Tailwind"
+  ],
+  "notes": "FreshFold: an editorial, light-themed laundry brand with a parallax hero, a six-step booking modal and a draggable before/after slider. Copy it for a new client rather than editing it in place."
+}

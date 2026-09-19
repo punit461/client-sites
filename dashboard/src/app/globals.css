@@ -326,6 +326,7 @@ code,
   border-bottom: 1px solid var(--line);
 }
 
+.section-head h1,
 .section-head h2 {
   margin: 0;
   font-size: 1.05rem;

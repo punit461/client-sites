@@ -79,14 +79,23 @@ definition of what counts as a project.
 npm run build                          # dashboard + every project -> _site/
 npm run build car-wash/x               # one project
 npm run preview                        # serve _site/ as it will be published
-npm run dev                            # dashboard with hot reload
+npm run dev                            # dashboard (hot reload) + every built site, one origin
 npm run list                           # what exists, plus structural problems
 npm run check                          # pass/fail version of the above (CI)
 npm run new -- <cat>/<proj> --from <cat>/<proj>
 npm run release -- <cat>/<proj>        # standalone build for the client
 ```
 
-To work on a site itself, use its own dev server:
+`npm run dev` runs Next's dev server for the dashboard on a private port and
+puts a small router in front of it (`tools/dev.mjs`), serving
+`/<category>/<project>/` from that project's `out/` and proxying everything
+else, HMR socket included. That is what makes the project cards work without
+giving any project a port of its own. It serves under the same base prefix as a
+real build, so an export stays valid when you switch between `dev` and `build`
+instead of being rebuilt for a different path each time.
+
+Because sites are served from their last export, editing one changes nothing
+until you rebuild it. To iterate on a site, use its own dev server:
 `cd sites/<category>/<project> && npm run dev`.
 
 ## Next.js version

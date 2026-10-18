@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/**
+ * D.R.D.O KG School's design tokens: warm paper, teal, sunshine and a coral
+ * accent. Everything visual comes from here, so re-skinning is editing this
+ * block rather than hunting through JSX.
+ */
+@theme inline {
+  --color-bg: #fffdf8;
+  --color-surface: #ffffff;
+  --color-surface-2: #fff4e0;
+  --color-ink: #23303a;
+  --color-ink-soft: #55616b;
+  --color-ink-faint: #87929b;
+  --color-line: #eadfca;
+  /* Darker than a pure coral so white button text passes WCAG AA. */
+  --color-accent: #c94f32;
+  --color-accent-dark: #a83f26;
+  --color-teal: #1f7a70;
+  --color-teal-dark: #155a53;
+  --color-sun: #f4b63f;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-card: 22px;
+
+  --shadow-soft: 0 1px 2px rgba(35, 48, 58, 0.04), 0 12px 30px rgba(35, 48, 58, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* The sticky header would otherwise cover the top of every anchored section. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: rgba(244, 182, 63, 0.35);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), "Segoe UI", system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .display-xl {
+    font-size: clamp(2.3rem, 6vw, 4rem);
+  }
+
+  .display-lg {
+    font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /*
+   * Copy still to come from the school (see src/data/pending.ts). Loud on
+   * purpose: nothing marked like this should survive to handover.
+   */
+  .todo {
+    background: #fff0a8;
+    color: #6b5200;
+    border-bottom: 2px dashed #d4a800;
+    border-radius: 4px;
+    padding: 0 0.3em;
+    font-style: italic;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

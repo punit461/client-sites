@@ -238,6 +238,24 @@
       "monogram": "SC",
       "projects": [
         {
+          "id": "school/drdo-kg-school",
+          "category": "school",
+          "name": "drdo-kg-school",
+          "title": "D.R.D.O KG School",
+          "client": "D.R.D.O KG School, C V Raman Nagar, Bengaluru",
+          "status": "draft",
+          "tags": [
+            "kindergarten",
+            "one page",
+            "Google Maps embed",
+            "Tailwind"
+          ],
+          "notes": "Copied from laundry/laundry-template1. Content taken from the school's Google Maps listing; waiting on the school's own photos, logo, hours, class ages and admission details (highlighted yellow on the page).",
+          "description": "Kindergarten website for D.R.D.O KG School, C V Raman Nagar, Bengaluru — Next.js, Tailwind CSS v4, Framer Motion, Lucide.",
+          "relDir": "sites/school/drdo-kg-school",
+          "route": "/school/drdo-kg-school/"
+        },
+        {
           "id": "school/new-pratham-public-school",
           "category": "school",
           "name": "new-pratham-public-school",

@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/**
+ * New Pratham Public School — design tokens.
+ *
+ * The palette comes from the campus itself: the coral of the school building,
+ * the saffron and leaf of the house colours, and a warm cream instead of
+ * white so photographs sit on something that feels like paper. Everything
+ * visual on the site derives from this block.
+ */
+@theme inline {
+  --color-ink: #1d2433;
+  --color-ink-soft: #4b5468;
+  --color-ink-faint: #8a92a6;
+
+  --color-coral: #e4572e;
+  --color-coral-deep: #c2441f;
+  --color-coral-wash: #fdeee8;
+
+  --color-saffron: #f4b740;
+  --color-saffron-deep: #d99a1a;
+  --color-saffron-wash: #fff5dc;
+
+  --color-leaf: #3f9a6e;
+  --color-leaf-deep: #2d7a55;
+  --color-leaf-wash: #e6f4ec;
+
+  --color-sky: #2f7fc1;
+  --color-sky-wash: #e8f1fa;
+
+  --color-cream: #fbf8f2;
+  --color-surface: #ffffff;
+  --color-surface-2: #f3eee4;
+  --color-line: #e6e0d3;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-card: 22px;
+
+  --shadow-soft: 0 1px 2px rgba(29, 36, 51, 0.04), 0 14px 34px rgba(29, 36, 51, 0.07);
+  --shadow-lift: 0 2px 6px rgba(29, 36, 51, 0.06), 0 28px 60px rgba(29, 36, 51, 0.14);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* The sticky header would otherwise cover the top of every anchored section. */
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(244, 183, 64, 0.45);
+  }
+
+  /* Visible focus everywhere: parents fill forms, children browse the gallery. */
+  :focus-visible {
+    outline: 3px solid var(--color-sky);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    /* Photographs with a baked-in aspect keep their space while loading. */
+    background-color: var(--color-surface-2);
+  }
+}
+
+@layer components {
+  /* Fluid display sizes from a 320px phone to a 1920px desktop. */
+  .display-xl {
+    font-size: clamp(2.3rem, 5.6vw, 4.7rem);
+  }
+
+  .display-lg {
+    font-size: clamp(1.9rem, 4vw, 3.2rem);
+  }
+
+  .display-md {
+    font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-coral-deep);
+  }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* A faint dotted paper texture for section backgrounds. */
+  .dots {
+    background-image: radial-gradient(rgba(29, 36, 51, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Hides a horizontally scrollable rail's scrollbar without disabling it. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The hero's entrance: pure CSS so it plays before any JavaScript arrives. */
+  .rise {
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* The hand-drawn underline used on key words in headings. */
+  .underline-saffron {
+    background-image: linear-gradient(transparent 68%, rgba(244, 183, 64, 0.65) 68%, rgba(244, 183, 64, 0.65) 92%, transparent 92%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * One switch for everything decorative. Framer Motion reads the same media
+ * query in useReducedMotion(), so JS-driven and CSS-driven motion stop
+ * together rather than one of them carrying on.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

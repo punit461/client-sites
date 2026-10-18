@@ -1,0 +1,43 @@
+{
+  "source": "Google Maps place listing",
+  "capturedAt": "2026-10-18",
+  "mapsUrl": "https://www.google.com/maps/place/New+Pratham+Public+School/@12.9921823,77.6665202,17z/data=!4m6!3m5!1s0x3bae114794a98065:0xc908ecc094aa8e55!8m2!3d12.9921823!4d77.6665202!16s%2Fg%2F1q6j83bnv",
+  "placeFeatureId": "0x3bae114794a98065:0xc908ecc094aa8e55",
+  "knowledgeGraphId": "/g/1q6j83bnv",
+  "name": "New Pratham Public School",
+  "nameKannada": "ನ್ಯೂ ಪ್ರಥಮ್ ಪಬ್ಲಿಕ್ ಸ್ಕೂಲ್",
+  "category": "CBSE School",
+  "address": "2nd Main Rd, Pai Layout, Dooravani Nagar, Bengaluru, Karnataka 560093",
+  "plusCode": "XMR8+VJ Bengaluru, Karnataka",
+  "coordinates": { "lat": 12.9921823, "lng": 77.6665202 },
+  "phone": "080 2272 5593",
+  "phoneTel": "tel:08022725593",
+  "website": "http://www.newprathampublicschool.in/",
+  "statusAtCapture": "Closed · Opens 7:30 am Mon",
+  "hours": {
+    "Sunday": "Closed",
+    "Monday": "7:30 am – 3:30 pm (Hours might differ – Maha Navami holiday note)",
+    "Tuesday": "7:30 am – 3:30 pm (Hours might differ – Vijayadashami/Ayudha Puja holiday note)",
+    "Wednesday": "7:30 am – 3:30 pm",
+    "Thursday": "7:30 am – 3:30 pm",
+    "Friday": "7:30 am – 3:30 pm",
+    "Saturday": "7:30 am – 3:30 pm"
+  },
+  "rating": null,
+  "reviewCount": null,
+  "reviewsNote": "No star rating, review count or Reviews tab exists on the listing (verified in full desktop Google Maps). The listing has no public Google reviews.",
+  "tabs": ["Overview", "About"],
+  "aboutTab": { "Offerings": ["Affiliated with CBSE"] },
+  "photoTabs": ["All", "Community", "Videos", "Street View & 360°"],
+  "peopleAlsoSearchFor": [
+    { "name": "Presidency School, Kasturinagar", "category": "CBSE School", "reviews": "No reviews" },
+    { "name": "Pratham International School", "category": "ICSE School", "reviews": "No reviews" },
+    { "name": "Pragathi School -CBSE School", "category": "CBSE School", "reviews": "No reviews" },
+    { "name": "National Public School, KR Puram (NPS KR Puram)", "category": "Educational institution", "reviews": "4.4 stars, 68 reviews" },
+    { "name": "National Public School - Hope Farm, Whitefield", "category": "CBSE School", "reviews": "No reviews" }
+  ],
+  "photoCount": 38,
+  "postsNote": "Posting is currently turned off",
+  "streetView": "Available (Street View control present on the listing)",
+  "panelTextRaw": "See photos\nNew Pratham Public School\nನ್ಯೂ ಪ್ರಥಮ್ ಪಬ್ಲಿಕ್ ಸ್ಕೂಲ್\nCBSE School\nDirections\nSave\nNearby\nSend to phone\nShare\n2nd Main Rd, Pai Layout, Dooravani Nagar, Bengaluru, Karnataka 560093\nClosed · Opens 7:30 am Mon\nnewprathampublicschool.in\n080 2272 5593\nXMR8+VJ Bengaluru, Karnataka\nSuggest an edit\nPhotos\n38 Photos\nAdd photos & videos\nPosting is currently turned off\nDetails\nAbout this data"
+}

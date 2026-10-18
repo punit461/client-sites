@@ -1,0 +1,1976 @@
+{
+  "base": "http://www.newprathampublicschool.in/",
+  "crawledAt": "2026-10-18T07:39:44.131Z",
+  "pages": [
+    {
+      "url": "http://www.newprathampublicschool.in/index.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "index",
+      "file": "pages/index.md",
+      "raw": "raw-html/index.html",
+      "headings": [
+        {
+          "level": 2,
+          "text": "what we offer"
+        },
+        {
+          "level": 6,
+          "text": "Vision"
+        },
+        {
+          "level": 6,
+          "text": "Mission"
+        },
+        {
+          "level": 6,
+          "text": "Learning Process"
+        },
+        {
+          "level": 6,
+          "text": "Creative Lessons"
+        },
+        {
+          "level": 2,
+          "text": "A Few words about us"
+        },
+        {
+          "level": 2,
+          "text": "About School"
+        },
+        {
+          "level": 2,
+          "text": "Parent’s Feedback"
+        },
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 8,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/about.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "about",
+      "file": "pages/about.md",
+      "raw": "raw-html/about.html",
+      "headings": [
+        {
+          "level": 2,
+          "text": "About New Pratham Public School"
+        },
+        {
+          "level": 2,
+          "text": "Message from Chairman"
+        },
+        {
+          "level": 2,
+          "text": "Message from Managing Trustee"
+        },
+        {
+          "level": 2,
+          "text": "Message from Principal"
+        },
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 4,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/facilities.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "facilities",
+      "file": "pages/facilities.md",
+      "raw": "raw-html/facilities.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/admissions.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "admissions",
+      "file": "pages/admissions.md",
+      "raw": "raw-html/admissions.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/photogallery.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "photogallery",
+      "file": "pages/photogallery.md",
+      "raw": "raw-html/photogallery.html",
+      "headings": [
+        {
+          "level": 4,
+          "text": "✨International Tea Day✨"
+        },
+        {
+          "level": 4,
+          "text": "“Divine Day of Knowledge and Wisdom”"
+        },
+        {
+          "level": 4,
+          "text": "“No Homework, Only Adventure!”"
+        },
+        {
+          "level": 4,
+          "text": "“Let us honor our language and culture through education.”"
+        },
+        {
+          "level": 4,
+          "text": "“Goodbyes are not forever, they are just a step toward new beginnings.”"
+        },
+        {
+          "level": 4,
+          "text": "“Bell Rings, Fun Begins”, “Together we learned, together we laughed, we celebrate together.”"
+        },
+        {
+          "level": 4,
+          "text": "School assembly shapes discipline, builds confidence, and brings students together, making it an important part of school life."
+        },
+        {
+          "level": 4,
+          "text": "“Like kites in the sky, may our students rise high with knowledge and values.” (Happy Sankranti)"
+        },
+        {
+          "level": 4,
+          "text": "DIWALI _ A DAY OF JOY, LIGHT AND LEARNING"
+        },
+        {
+          "level": 4,
+          "text": "Clay modeling activity by grade 2"
+        },
+        {
+          "level": 4,
+          "text": "Environment Day activity by pre-primary"
+        },
+        {
+          "level": 4,
+          "text": "Kannada Rajyotsava celebration"
+        },
+        {
+          "level": 4,
+          "text": "Dental Checkup"
+        },
+        {
+          "level": 4,
+          "text": "Classroom Activity by Grade 1"
+        },
+        {
+          "level": 4,
+          "text": "Independence day Pyramid formation"
+        },
+        {
+          "level": 4,
+          "text": "Environment Day Activity by Grade 1"
+        },
+        {
+          "level": 4,
+          "text": "Educational trip to Vidhana Soudha"
+        },
+        {
+          "level": 4,
+          "text": "Educational trip to Jawaharlal Nehru Planetarium"
+        },
+        {
+          "level": 4,
+          "text": "Educational trip"
+        },
+        {
+          "level": 4,
+          "text": "Rangoli Competition"
+        },
+        {
+          "level": 4,
+          "text": "Field trip to Nature's Paradise resort"
+        },
+        {
+          "level": 4,
+          "text": "Independence Day- Pyramid formation"
+        },
+        {
+          "level": 4,
+          "text": "Yoga Session"
+        },
+        {
+          "level": 4,
+          "text": "Pre-primary Activity"
+        },
+        {
+          "level": 4,
+          "text": "Where Education meets entertainment...."
+        },
+        {
+          "level": 4,
+          "text": "Where Education meets Entertainment......"
+        },
+        {
+          "level": 4,
+          "text": "Capacity Building Program by CBSE COE"
+        },
+        {
+          "level": 4,
+          "text": "Onam Celebration"
+        },
+        {
+          "level": 4,
+          "text": "Red Day"
+        },
+        {
+          "level": 4,
+          "text": "Training- Implementation of technology in classroom"
+        },
+        {
+          "level": 4,
+          "text": "Tiger's Day"
+        },
+        {
+          "level": 4,
+          "text": "Investiture Ceremony 25-26"
+        },
+        {
+          "level": 4,
+          "text": "Nutrition Week Activity"
+        },
+        {
+          "level": 4,
+          "text": "Doctor's Day"
+        },
+        {
+          "level": 4,
+          "text": "Father's day"
+        },
+        {
+          "level": 4,
+          "text": "Environment Day Activity"
+        },
+        {
+          "level": 4,
+          "text": "Environment Day"
+        },
+        {
+          "level": 4,
+          "text": "Annual Day"
+        },
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 62,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/videogallery.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "videogallery",
+      "file": "pages/videogallery.md",
+      "raw": "raw-html/videogallery.html",
+      "headings": [
+        {
+          "level": 4,
+          "text": "ENVIRONMENT DAY CELEBRATION"
+        },
+        {
+          "level": 4,
+          "text": "NAVARATRI CELEBRATION"
+        },
+        {
+          "level": 4,
+          "text": "GANDHI JAYANTI CELEBRATION"
+        },
+        {
+          "level": 4,
+          "text": "INTERNATIONAL YOGA DAY CELEBRATION"
+        },
+        {
+          "level": 4,
+          "text": "KRISHNA JANMASHTAMI CELEBRATION"
+        },
+        {
+          "level": 4,
+          "text": "INTERNATIONAL TIGERS DAY CELEBRATION"
+        },
+        {
+          "level": 4,
+          "text": "Parents Orientation Programme at New Pratham Public School"
+        },
+        {
+          "level": 4,
+          "text": "First Day at New Pratham Public School"
+        },
+        {
+          "level": 4,
+          "text": "Farewell Day"
+        },
+        {
+          "level": 4,
+          "text": "Independence Day celebration"
+        },
+        {
+          "level": 4,
+          "text": "Sports Day celebration at New Pratham Public School"
+        },
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/noticeboard.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "noticeboard",
+      "file": "pages/noticeboard.md",
+      "raw": "raw-html/noticeboard.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/careers.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "careers",
+      "file": "pages/careers.md",
+      "raw": "raw-html/careers.html",
+      "headings": [
+        {
+          "level": 3,
+          "text": "Available Jobs"
+        },
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/circulars.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "circulars",
+      "file": "pages/circulars.md",
+      "raw": "raw-html/circulars.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/teachers.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "teachers",
+      "file": "pages/teachers.md",
+      "raw": "raw-html/teachers.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 1,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/achievements.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "achievements",
+      "file": "pages/achievements.md",
+      "raw": "raw-html/achievements.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Pragmatic women leaders in education - award"
+        },
+        {
+          "level": 5,
+          "text": "Excellent educonnectln - award"
+        },
+        {
+          "level": 5,
+          "text": "Victory quantum - inter school sports meet"
+        },
+        {
+          "level": 5,
+          "text": "Abacus - a celebration of mental math excellence"
+        },
+        {
+          "level": 5,
+          "text": "India k-12 awards (ika) - 2025"
+        },
+        {
+          "level": 5,
+          "text": "The power play- inter school competition"
+        },
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 7,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/clubs.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "clubs",
+      "file": "pages/clubs.md",
+      "raw": "raw-html/clubs.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 0
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/contact.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "contact",
+      "file": "pages/contact.md",
+      "raw": "raw-html/contact.html",
+      "headings": [
+        {
+          "level": 2,
+          "text": "RequestA call Back"
+        },
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 0,
+      "formCount": 1
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/paststudentstc.php",
+      "status": 200,
+      "title": "New Pratham Public School",
+      "slug": "paststudentstc",
+      "file": "pages/paststudentstc.md",
+      "raw": "raw-html/paststudentstc.html",
+      "headings": [
+        {
+          "level": 5,
+          "text": "Resources"
+        },
+        {
+          "level": 5,
+          "text": "Contact Us"
+        },
+        {
+          "level": 5,
+          "text": "LOCATION"
+        },
+        {
+          "level": 5,
+          "text": "MY ACCOUNT"
+        }
+      ],
+      "imageCount": 1,
+      "tableCount": 1,
+      "formCount": 0
+    }
+  ],
+  "navigation": [
+    {
+      "text": "newpratham@gmail.com",
+      "href": "http://www.newprathampublicschool.in/index.php",
+      "sub": []
+    },
+    {
+      "text": "Home (current)",
+      "href": "http://www.newprathampublicschool.in/index.php",
+      "sub": []
+    },
+    {
+      "text": "About Us",
+      "href": "http://www.newprathampublicschool.in/about.php",
+      "sub": []
+    },
+    {
+      "text": "Facilities",
+      "href": "http://www.newprathampublicschool.in/facilities.php",
+      "sub": []
+    },
+    {
+      "text": "Admissions",
+      "href": "http://www.newprathampublicschool.in/admissions.php",
+      "sub": []
+    },
+    {
+      "text": "Gallery",
+      "href": "http://www.newprathampublicschool.in/index.php",
+      "sub": [
+        {
+          "text": "Photos",
+          "href": "http://www.newprathampublicschool.in/photogallery.php"
+        },
+        {
+          "text": "Videos",
+          "href": "http://www.newprathampublicschool.in/videogallery.php"
+        }
+      ]
+    },
+    {
+      "text": "Resources",
+      "href": "http://www.newprathampublicschool.in/index.php",
+      "sub": [
+        {
+          "text": "Notice board",
+          "href": "http://www.newprathampublicschool.in/noticeboard.php"
+        },
+        {
+          "text": "Careers",
+          "href": "http://www.newprathampublicschool.in/careers.php"
+        },
+        {
+          "text": "Circulars",
+          "href": "http://www.newprathampublicschool.in/circulars.php"
+        },
+        {
+          "text": "teachers",
+          "href": "http://www.newprathampublicschool.in/teachers.php"
+        },
+        {
+          "text": "Achievements",
+          "href": "http://www.newprathampublicschool.in/achievements.php"
+        },
+        {
+          "text": "clubs",
+          "href": "http://www.newprathampublicschool.in/clubs.php"
+        },
+        {
+          "text": "Books",
+          "href": "http://www.newprathampublicschool.in/images/books/books.pdf"
+        }
+      ]
+    },
+    {
+      "text": "Contact Us",
+      "href": "http://www.newprathampublicschool.in/contact.php",
+      "sub": []
+    },
+    {
+      "text": "Mandatory Disclosure",
+      "href": "http://www.newprathampublicschool.in/mandatorydisclosure",
+      "sub": []
+    }
+  ],
+  "externalLinks": [
+    {
+      "url": "https://www.facebook.com/profile.php?id=61574280760755",
+      "foundOn": [
+        "http://www.newprathampublicschool.in/index.php",
+        "http://www.newprathampublicschool.in/about.php",
+        "http://www.newprathampublicschool.in/facilities.php",
+        "http://www.newprathampublicschool.in/admissions.php",
+        "http://www.newprathampublicschool.in/photogallery.php",
+        "http://www.newprathampublicschool.in/videogallery.php",
+        "http://www.newprathampublicschool.in/noticeboard.php",
+        "http://www.newprathampublicschool.in/careers.php",
+        "http://www.newprathampublicschool.in/circulars.php",
+        "http://www.newprathampublicschool.in/teachers.php",
+        "http://www.newprathampublicschool.in/achievements.php",
+        "http://www.newprathampublicschool.in/clubs.php",
+        "http://www.newprathampublicschool.in/contact.php",
+        "http://www.newprathampublicschool.in/paststudentstc.php"
+      ]
+    },
+    {
+      "url": "https://www.instagram.com/newprathampublicschool",
+      "foundOn": [
+        "http://www.newprathampublicschool.in/index.php",
+        "http://www.newprathampublicschool.in/about.php",
+        "http://www.newprathampublicschool.in/facilities.php",
+        "http://www.newprathampublicschool.in/admissions.php",
+        "http://www.newprathampublicschool.in/photogallery.php",
+        "http://www.newprathampublicschool.in/videogallery.php",
+        "http://www.newprathampublicschool.in/noticeboard.php",
+        "http://www.newprathampublicschool.in/careers.php",
+        "http://www.newprathampublicschool.in/circulars.php",
+        "http://www.newprathampublicschool.in/teachers.php",
+        "http://www.newprathampublicschool.in/achievements.php",
+        "http://www.newprathampublicschool.in/clubs.php",
+        "http://www.newprathampublicschool.in/contact.php",
+        "http://www.newprathampublicschool.in/paststudentstc.php"
+      ]
+    },
+    {
+      "url": "https://wa.me/7204347528?text=Hello%20NewPratham%20Public%20School,%20I%20need%20some%20information.%20Please%20reply%20to%20me.",
+      "foundOn": [
+        "http://www.newprathampublicschool.in/index.php",
+        "http://www.newprathampublicschool.in/about.php",
+        "http://www.newprathampublicschool.in/facilities.php",
+        "http://www.newprathampublicschool.in/admissions.php",
+        "http://www.newprathampublicschool.in/photogallery.php",
+        "http://www.newprathampublicschool.in/videogallery.php",
+        "http://www.newprathampublicschool.in/noticeboard.php",
+        "http://www.newprathampublicschool.in/careers.php",
+        "http://www.newprathampublicschool.in/circulars.php",
+        "http://www.newprathampublicschool.in/teachers.php",
+        "http://www.newprathampublicschool.in/achievements.php",
+        "http://www.newprathampublicschool.in/clubs.php",
+        "http://www.newprathampublicschool.in/contact.php",
+        "http://www.newprathampublicschool.in/paststudentstc.php"
+      ]
+    },
+    {
+      "url": "http://www.infolynx.in/website/",
+      "foundOn": [
+        "http://www.newprathampublicschool.in/index.php",
+        "http://www.newprathampublicschool.in/about.php",
+        "http://www.newprathampublicschool.in/facilities.php",
+        "http://www.newprathampublicschool.in/admissions.php",
+        "http://www.newprathampublicschool.in/photogallery.php",
+        "http://www.newprathampublicschool.in/videogallery.php",
+        "http://www.newprathampublicschool.in/noticeboard.php",
+        "http://www.newprathampublicschool.in/careers.php",
+        "http://www.newprathampublicschool.in/circulars.php",
+        "http://www.newprathampublicschool.in/teachers.php",
+        "http://www.newprathampublicschool.in/achievements.php",
+        "http://www.newprathampublicschool.in/clubs.php",
+        "http://www.newprathampublicschool.in/contact.php",
+        "http://www.newprathampublicschool.in/paststudentstc.php"
+      ]
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=com.vskol.newpratham",
+      "foundOn": [
+        "http://www.newprathampublicschool.in/admissions.php"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "url": "http://www.newprathampublicschool.in/images/books/books.pdf",
+      "kind": "document",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php",
+        "http://www.newprathampublicschool.in/about.php",
+        "http://www.newprathampublicschool.in/facilities.php",
+        "http://www.newprathampublicschool.in/admissions.php",
+        "http://www.newprathampublicschool.in/photogallery.php",
+        "http://www.newprathampublicschool.in/videogallery.php",
+        "http://www.newprathampublicschool.in/noticeboard.php",
+        "http://www.newprathampublicschool.in/careers.php",
+        "http://www.newprathampublicschool.in/circulars.php",
+        "http://www.newprathampublicschool.in/teachers.php",
+        "http://www.newprathampublicschool.in/achievements.php",
+        "http://www.newprathampublicschool.in/clubs.php",
+        "http://www.newprathampublicschool.in/contact.php",
+        "http://www.newprathampublicschool.in/paststudentstc.php"
+      ],
+      "local": "assets/images/books/books.pdf",
+      "bytes": 889,
+      "contentType": "application/pdf",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/school1.jpg",
+      "kind": "image",
+      "alt": [
+        "logo"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php",
+        "http://www.newprathampublicschool.in/about.php",
+        "http://www.newprathampublicschool.in/facilities.php",
+        "http://www.newprathampublicschool.in/admissions.php",
+        "http://www.newprathampublicschool.in/photogallery.php",
+        "http://www.newprathampublicschool.in/videogallery.php",
+        "http://www.newprathampublicschool.in/noticeboard.php",
+        "http://www.newprathampublicschool.in/careers.php",
+        "http://www.newprathampublicschool.in/circulars.php",
+        "http://www.newprathampublicschool.in/teachers.php",
+        "http://www.newprathampublicschool.in/achievements.php",
+        "http://www.newprathampublicschool.in/clubs.php",
+        "http://www.newprathampublicschool.in/contact.php",
+        "http://www.newprathampublicschool.in/paststudentstc.php"
+      ],
+      "local": "assets/images/school1.jpg",
+      "bytes": 198175,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/newpratham/carousal4.jpg",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php"
+      ],
+      "local": "assets/newpratham/carousal4.jpg",
+      "bytes": 344284,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/newpratham/carousal2.png",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php"
+      ],
+      "local": "assets/newpratham/carousal2.png",
+      "bytes": 580665,
+      "contentType": "image/png",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/newpratham/carousal3.png",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php"
+      ],
+      "local": "assets/newpratham/carousal3.png",
+      "bytes": 644323,
+      "contentType": "image/png",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/newpratham/carousal1.png",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php"
+      ],
+      "local": "assets/newpratham/carousal1.png",
+      "bytes": 660475,
+      "contentType": "image/png",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/newpratham/carousal5.png",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php"
+      ],
+      "local": "assets/newpratham/carousal5.png",
+      "bytes": 431906,
+      "contentType": "image/png",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/newpratham/carousal6.png",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php"
+      ],
+      "local": "assets/newpratham/carousal6.png",
+      "bytes": 711173,
+      "contentType": "image/png",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/newpratham/butterflykid1.png",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/index.php"
+      ],
+      "local": "assets/newpratham/butterflykid1.png",
+      "bytes": 496081,
+      "contentType": "image/png",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/chairman.jpeg",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/about.php"
+      ],
+      "local": "assets/images/chairman.jpeg",
+      "bytes": 178517,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/trustee.jpeg",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/about.php"
+      ],
+      "local": "assets/images/trustee.jpeg",
+      "bytes": 92133,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/principal.jpeg",
+      "kind": "image",
+      "alt": [],
+      "referrers": [
+        "http://www.newprathampublicschool.in/about.php"
+      ],
+      "local": "assets/images/principal.jpeg",
+      "bytes": 72190,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/8iga0v8ti5.17",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/8iga0v8ti5.17",
+      "bytes": 265973,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/qklxwtfd5x.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/qklxwtfd5x.jpg",
+      "bytes": 3370793,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/loybqv03v0.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/loybqv03v0.jpg",
+      "bytes": 3078404,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/0rxzz0y6j.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/0rxzz0y6j.jpg",
+      "bytes": 1714250,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/600k03jpt.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/600k03jpt.jpg",
+      "bytes": 2892480,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/6nnm4fa7pz.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/6nnm4fa7pz.jpg",
+      "bytes": 284006,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/jm0b9ayd76.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/jm0b9ayd76.jpg",
+      "bytes": 447510,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/ltmz70b67q.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/ltmz70b67q.jpg",
+      "bytes": 361597,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/hgivsbqsij.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/hgivsbqsij.jpg",
+      "bytes": 1014173,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/u2339w2mi3.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/u2339w2mi3.jpg",
+      "bytes": 1181550,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/zwajwleil4.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/zwajwleil4.jpg",
+      "bytes": 1060624,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/ql1q43pmva.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/ql1q43pmva.jpg",
+      "bytes": 3178093,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/qcpim3jnz3.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/qcpim3jnz3.jpg",
+      "bytes": 3205083,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/alqz9k79us.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/alqz9k79us.jpg",
+      "bytes": 3133482,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/qjej23zz6.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/qjej23zz6.jpg",
+      "bytes": 2362196,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/ciuo445urb.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/ciuo445urb.jpg",
+      "bytes": 668160,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/5cqf64hwrg.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/5cqf64hwrg.jpg",
+      "bytes": 883737,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/j4sginlkhv.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/j4sginlkhv.jpg",
+      "bytes": 3154660,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/2q4geecmll.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/2q4geecmll.jpg",
+      "bytes": 3179480,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/km25g43wch.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/km25g43wch.jpg",
+      "bytes": 1999803,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/nmwyxabpu.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/nmwyxabpu.jpg",
+      "bytes": 3259689,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/lgcdly1nc0.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/lgcdly1nc0.jpg",
+      "bytes": 2688842,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/a2jzciy2wf.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/a2jzciy2wf.jpg",
+      "bytes": 2520426,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/zjmitryry.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/zjmitryry.jpg",
+      "bytes": 2832987,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/1ltbm95q2m.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/1ltbm95q2m.jpg",
+      "bytes": 2916559,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/2la3fw40p5.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/2la3fw40p5.jpg",
+      "bytes": 2572382,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/upt99mpj9.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/upt99mpj9.jpg",
+      "bytes": 169471,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/hfpdtk6eqi.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/hfpdtk6eqi.jpg",
+      "bytes": 232678,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/lou449kgg.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/lou449kgg.jpg",
+      "bytes": 288324,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/yowthx2lxr.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/yowthx2lxr.jpg",
+      "bytes": 324046,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/xaqemnx0a5.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/xaqemnx0a5.jpg",
+      "bytes": 290885,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/igav7eb91z.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/igav7eb91z.jpg",
+      "bytes": 2845634,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/3v5dfdp2cw.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/3v5dfdp2cw.jpg",
+      "bytes": 2958709,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/rf90ptg45.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/rf90ptg45.jpg",
+      "bytes": 1332083,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/wd8rd8n6j1.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/wd8rd8n6j1.jpg",
+      "bytes": 2788202,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/2uqe6tyuad.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/2uqe6tyuad.jpg",
+      "bytes": 244691,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/23qncf12qz.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/23qncf12qz.jpg",
+      "bytes": 1442913,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/k8pkmqshyg.02",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/k8pkmqshyg.02",
+      "bytes": 136299,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/fs9oipfc1p.03",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/fs9oipfc1p.03",
+      "bytes": 354281,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/1lxkvsifd.03",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/1lxkvsifd.03",
+      "bytes": 176727,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/3sezqxdk3y.02",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/3sezqxdk3y.02",
+      "bytes": 288125,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/vk1qwyd7y1.02",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/vk1qwyd7y1.02",
+      "bytes": 130804,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/xxyrfilny3.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/xxyrfilny3.jpg",
+      "bytes": 231583,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/eerbd497zd.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/eerbd497zd.jpg",
+      "bytes": 338757,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/3na6diixx3.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/3na6diixx3.jpg",
+      "bytes": 348809,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/yzn4p9yyj0.03",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/yzn4p9yyj0.03",
+      "bytes": 289102,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/16poz2qef.02",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/16poz2qef.02",
+      "bytes": 257705,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/n3lllid70j.01",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/n3lllid70j.01",
+      "bytes": 299011,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/u6xlda1m6k.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/u6xlda1m6k.jpg",
+      "bytes": 157581,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/md49ko70y2.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/md49ko70y2.jpg",
+      "bytes": 1605090,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/u1cw3i700z.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/u1cw3i700z.jpg",
+      "bytes": 292731,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/fty9dvs2dt.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/fty9dvs2dt.jpg",
+      "bytes": 1447603,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/gf6hszgc1.04",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/gf6hszgc1.04",
+      "bytes": 233272,
+      "contentType": "",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/szs9ldhind.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/szs9ldhind.jpg",
+      "bytes": 174275,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/x6yx9eoopw.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/x6yx9eoopw.jpg",
+      "bytes": 232280,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/nyfwkazeg.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/nyfwkazeg.jpg",
+      "bytes": 1413556,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/hf1b4y0877.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/hf1b4y0877.jpg",
+      "bytes": 2228751,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/pce1jlgm60.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/pce1jlgm60.jpg",
+      "bytes": 2316274,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/vstenk3jgv.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/vstenk3jgv.jpg",
+      "bytes": 2338185,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/ibxrmvm25.jpg",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/ibxrmvm25.jpg",
+      "bytes": 2476234,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/photogallery/t6fqex1wdw.png",
+      "kind": "image",
+      "alt": [
+        "Image Gallery"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/photogallery.php"
+      ],
+      "local": "assets/images/photogallery/t6fqex1wdw.png",
+      "bytes": 580665,
+      "contentType": "image/png",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/achievements/ui1v3ned28.jpeg",
+      "kind": "image",
+      "alt": [
+        "Pragmatic women leaders in education - award"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/achievements.php"
+      ],
+      "local": "assets/images/achievements/ui1v3ned28.jpeg",
+      "bytes": 143500,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/achievements/8p0388wg68.jpeg",
+      "kind": "image",
+      "alt": [
+        "Excellent educonnectln - award"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/achievements.php"
+      ],
+      "local": "assets/images/achievements/8p0388wg68.jpeg",
+      "bytes": 419412,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/achievements/hjvlqr5rt.jpg",
+      "kind": "image",
+      "alt": [
+        "Victory quantum - inter school sports meet"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/achievements.php"
+      ],
+      "local": "assets/images/achievements/hjvlqr5rt.jpg",
+      "bytes": 2917248,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/achievements/g8w3t5il4q.jpg",
+      "kind": "image",
+      "alt": [
+        "Abacus - a celebration of mental math excellence"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/achievements.php"
+      ],
+      "local": "assets/images/achievements/g8w3t5il4q.jpg",
+      "bytes": 95400,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/achievements/skym7891or.jpeg",
+      "kind": "image",
+      "alt": [
+        "India k-12 awards (ika) - 2025"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/achievements.php"
+      ],
+      "local": "assets/images/achievements/skym7891or.jpeg",
+      "bytes": 219098,
+      "contentType": "image/jpeg",
+      "status": 200
+    },
+    {
+      "url": "http://www.newprathampublicschool.in/images/achievements/9evouos6vg.",
+      "kind": "image",
+      "alt": [
+        "The power play- inter school competition"
+      ],
+      "referrers": [
+        "http://www.newprathampublicschool.in/achievements.php"
+      ],
+      "local": "assets/images/achievements/9evouos6vg.",
+      "bytes": 97742,
+      "contentType": "",
+      "status": 200
+    }
+  ],
+  "errors": [
+    {
+      "url": "http://www.newprathampublicschool.in/mandatorydisclosure",
+      "error": "non-html application/pdf",
+      "status": 200
+    }
+  ]
+}

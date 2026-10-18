@@ -228,6 +228,35 @@
           "route": "/laundry/laundry-template3/"
         }
       ]
+    },
+    {
+      "id": "school",
+      "name": "School",
+      "description": "Kindergartens and schools — admissions, facilities, gallery and contact pages.",
+      "icon": "",
+      "hue": 348,
+      "monogram": "SC",
+      "projects": [
+        {
+          "id": "school/new-pratham-public-school",
+          "category": "school",
+          "name": "new-pratham-public-school",
+          "title": "New Pratham Public School",
+          "client": "New Pratham Public School, Dooravani Nagar, Bengaluru",
+          "status": "draft",
+          "tags": [
+            "school",
+            "CBSE",
+            "admissions",
+            "photo gallery",
+            "Tailwind"
+          ],
+          "notes": "Redesign of www.newprathampublicschool.in. All copy and photos come from the old site (scraped 2026-10-18, see source/). Enquiry form sends via WhatsApp/email — no backend.",
+          "description": "CBSE school website — admissions, facilities, gallery, achievements and contact.",
+          "relDir": "sites/school/new-pratham-public-school",
+          "route": "/school/new-pratham-public-school/"
+        }
+      ]
     }
   ]
 }

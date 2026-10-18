@@ -1,0 +1,7 @@
+{
+  "title": "New Pratham Public School",
+  "client": "New Pratham Public School, Dooravani Nagar, Bengaluru",
+  "status": "draft",
+  "tags": ["school", "CBSE", "admissions", "photo gallery", "Tailwind"],
+  "notes": "Redesign of www.newprathampublicschool.in. All copy and photos come from the old site (scraped 2026-10-18, see source/). Enquiry form sends via WhatsApp/email — no backend."
+}

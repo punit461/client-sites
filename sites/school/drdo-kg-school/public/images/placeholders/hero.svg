@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-  <rect width="1600" height="900" fill="#2a9d8f"/>
-  <!-- Label sits near the top so it doesn't clash with the hero headline -->
-  <text x="50%" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff" fill-opacity=".8">Hero photo placeholder</text>
-  <text x="50%" y="182" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#ffffff" fill-opacity=".7">Replace with images/hero.jpg</text>
-</svg>

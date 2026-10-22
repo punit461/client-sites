@@ -1,0 +1,35 @@
+{
+  "name": "scool-template-3",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Premium school website template — editorial design, admissions journey, news, gallery, Next.js 16, Tailwind CSS v4, Framer Motion, React Three Fiber.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5",
+    "@react-three/fiber": "^9",
+    "framer-motion": "^13.4.0",
+    "lucide-react": "^1.47.0",
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hook-form": "^7",
+    "three": "^0.180.0",
+    "zod": "^4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.180.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

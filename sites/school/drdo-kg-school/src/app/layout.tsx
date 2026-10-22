@@ -1,84 +1,85 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_2, Nunito } from "next/font/google";
+import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
-import { brand, contact } from "@/data/site";
+import DemoBanner from "@/components/layout/DemoBanner";
+import FloatingActions from "@/components/layout/FloatingActions";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import JsonLd from "@/components/ui/JsonLd";
+import { contact, school } from "@/content/school";
+import { robotsMetadata, schoolJsonLd, siteUrl } from "@/lib/seo";
 
-/** A rounded, friendly display face for headings and a soft sans for reading. */
-const display = Baloo_2({
+/** An editorial serif with optical sizes for headlines; a calm grotesk for everything else. */
+const display = Newsreader({
   variable: "--font-display",
   subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const sans = Nunito({
+const sans = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${brand.name} — ${brand.kind} in ${brand.area}`,
-    template: `%s · ${brand.name}`,
+    default: `${school.name} — Kindergarten in ${contact.address.locality}, ${contact.address.city}`,
+    template: `%s · ${school.name}`,
   },
-  description: brand.description,
+  description: school.description,
+  applicationName: school.name,
   keywords: [
-    "kindergarten C V Raman Nagar",
-    "KG school Bengaluru",
-    "nursery LKG UKG Bengaluru",
+    school.name,
+    school.fullName,
+    `kindergarten in ${contact.address.locality}`,
+    `preschool in ${contact.address.city}`,
     "DRDO KG School",
-    "preschool Kaggadasapura",
+    "nursery LKG UKG admissions",
   ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: `${brand.name} — ${brand.tagline}`,
-    description: brand.description,
+    title: school.name,
+    description: school.description,
     type: "website",
     locale: "en_IN",
-    siteName: brand.name,
+    siteName: school.name,
+    url: "/",
   },
-  robots: { index: true, follow: true },
+  twitter: { card: "summary_large_image", title: school.name, description: school.description },
+  robots: robotsMetadata,
+  formatDetection: { telephone: false },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1f7a70",
+  themeColor: "#1a2a5e",
   width: "device-width",
   initialScale: 1,
 };
 
-/**
- * Structured data for the school, generated from the same data the page
- * renders. Hours and email are left out until the school confirms them.
- */
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Preschool",
-  name: brand.name,
-  alternateName: brand.nameKannada,
-  description: brand.description,
-  telephone: contact.phone,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: contact.street,
-    addressLocality: `${contact.locality}, ${contact.city}`,
-    addressRegion: contact.region,
-    postalCode: contact.postalCode,
-    addressCountry: "IN",
-  },
-  geo: { "@type": "GeoCoordinates", latitude: contact.geo.lat, longitude: contact.geo.lng },
-};
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <body className={`${display.variable} ${sans.variable} antialiased`}>
+        <span id="top" tabIndex={-1} className="sr-only">
+          Top of page
+        </span>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-accent focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-sm focus:bg-gold focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-navy-deep"
         >
-          Skip to content
+          Skip to main content
         </a>
-        {children}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <Header />
+        <main id="main" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
+        <Footer />
+        <DemoBanner />
+        <FloatingActions />
+        <JsonLd data={schoolJsonLd()} />
       </body>
     </html>
   );

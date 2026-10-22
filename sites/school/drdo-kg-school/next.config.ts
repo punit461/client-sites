@@ -21,8 +21,10 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     // Required by output: "export" — there is no server to optimise images.
-    // Photos are local (public/images/), prefixed via asset() in src/lib/images.ts.
+    // Photos are requested at the right width from the CDN instead (see
+    // src/lib/images.ts).
     unoptimized: true,
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
 };
 

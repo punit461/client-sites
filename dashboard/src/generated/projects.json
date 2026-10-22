@@ -23,12 +23,7 @@
           "title": "Car Wash — Template 1",
           "client": "",
           "status": "template",
-          "tags": [
-            "booking form",
-            "services grid",
-            "dark",
-            "MUI"
-          ],
+          "tags": ["booking form", "services grid", "dark", "MUI"],
           "notes": "Section-per-folder layout with a Redux booking flow. Copy it for a new client rather than editing it in place.",
           "description": "Car wash landing page — Next.js, MUI, Redux Toolkit, Framer Motion.",
           "relDir": "sites/car-wash/car-wash-template1",
@@ -41,12 +36,7 @@
           "title": "Car Wash — Template 2",
           "client": "",
           "status": "template",
-          "tags": [
-            "stats band",
-            "before / after",
-            "light",
-            "MUI"
-          ],
+          "tags": ["stats band", "before / after", "light", "MUI"],
           "notes": "Alternate look with a stats band and a CTA section. Copy it for a new client rather than editing it in place.",
           "description": "Alternate car wash landing page — Next.js, MUI, Redux Toolkit, Framer Motion.",
           "relDir": "sites/car-wash/car-wash-template2",
@@ -115,12 +105,7 @@
           "title": "Home Stay — Template 1 (Ridgeline Retreat)",
           "client": "",
           "status": "template",
-          "tags": [
-            "cinematic hero",
-            "rooms",
-            "editorial",
-            "Tailwind"
-          ],
+          "tags": ["cinematic hero", "rooms", "editorial", "Tailwind"],
           "notes": "Ridgeline: a calm, editorial boutique-retreat site with room detail pages, experiences and a gallery lightbox.",
           "description": "Luxury nature-retreat homestay — cinematic hero, room showcase and an availability search.",
           "relDir": "sites/home-stay/home-stay-template1",
@@ -133,12 +118,7 @@
           "title": "Home Stay — Template 2 (Wander & Pine)",
           "client": "",
           "status": "template",
-          "tags": [
-            "travel journal",
-            "bento grid",
-            "warm",
-            "Tailwind"
-          ],
+          "tags": ["travel journal", "bento grid", "warm", "Tailwind"],
           "notes": "Wander & Pine: a warmer, younger take — polaroids, handwritten accents, a stylised explore map and seasonal guides.",
           "description": "Travel-journal homestay — bento experiences, stylised area map and a photo journal.",
           "relDir": "sites/home-stay/home-stay-template2",
@@ -180,12 +160,7 @@
           "title": "Laundry — Template 1 (FreshFold)",
           "client": "",
           "status": "template",
-          "tags": [
-            "parallax hero",
-            "booking flow",
-            "light",
-            "Tailwind"
-          ],
+          "tags": ["parallax hero", "booking flow", "light", "Tailwind"],
           "notes": "FreshFold: an editorial, light-themed laundry brand with a parallax hero, a six-step booking modal and a draggable before/after slider. Copy it for a new client rather than editing it in place.",
           "description": "Premium pickup-and-delivery laundry landing page — Next.js, Tailwind CSS v4, Framer Motion, Lucide.",
           "relDir": "sites/laundry/laundry-template1",
@@ -216,12 +191,7 @@
           "title": "Laundry — Template 3 (Crisp & Co.)",
           "client": "",
           "status": "template",
-          "tags": [
-            "dark",
-            "membership plans",
-            "stain finder",
-            "Tailwind"
-          ],
+          "tags": ["dark", "membership plans", "stain finder", "Tailwind"],
           "notes": "Crisp & Co.: a dark, aurora-lit members' laundry concierge — an expanding service accordion, membership plans with a bags-per-month recommender, and a searchable stain guide. Copy it rather than editing it in place.",
           "description": "Members' laundry concierge landing page — dark aurora theme, membership plans and a stain finder.",
           "relDir": "sites/laundry/laundry-template3",
@@ -241,17 +211,19 @@
           "id": "school/drdo-kg-school",
           "category": "school",
           "name": "drdo-kg-school",
-          "title": "D.R.D.O KG School",
+          "title": "D.R.D.O KG School (multi-page)",
           "client": "D.R.D.O KG School, C V Raman Nagar, Bengaluru",
           "status": "draft",
           "tags": [
             "kindergarten",
-            "one page",
+            "multi-page",
+            "admissions form",
+            "gallery",
             "Google Maps embed",
-            "Tailwind"
+            "3D"
           ],
-          "notes": "Copied from laundry/laundry-template1. Content taken from the school's Google Maps listing; waiting on the school's own photos, logo, hours, class ages and admission details (highlighted yellow on the page).",
-          "description": "Kindergarten website for D.R.D.O KG School, C V Raman Nagar, Bengaluru — Next.js, Tailwind CSS v4, Framer Motion, Lucide.",
+          "notes": "Name, contact details, hours, photos and review themes come from the school's Google Maps listing and the signboard at its gate (captured 22 Oct 2026). Before launch: get the school's OK on the photos, classes and ages, the DRDO admission priority, documents, and the drafted vision/mission. See the README checklist.",
+          "description": "Premium school website template — editorial design, admissions journey, news, gallery, Next.js 16, Tailwind CSS v4, Framer Motion, React Three Fiber.",
           "relDir": "sites/school/drdo-kg-school",
           "route": "/school/drdo-kg-school/"
         },
@@ -262,12 +234,7 @@
           "title": "Little Angels Modern High School",
           "client": "Little Angels Modern High School, Sadanandanagar, Bengaluru",
           "status": "draft",
-          "tags": [
-            "multi-page",
-            "gallery",
-            "WhatsApp enquiry",
-            "video"
-          ],
+          "tags": ["multi-page", "gallery", "WhatsApp enquiry", "video"],
           "notes": "Content and photos from lamhs.in and the school-owned Google Maps uploads. To confirm with the school: PIN code (560038 on their site, 560043 on Maps), full event write-ups, a transparent logo file and original-resolution photos.",
           "description": "School website for Little Angels Modern High School, Sadanandanagar, Bengaluru — seven pages, Next.js, Tailwind CSS v4, Framer Motion, Lucide.",
           "relDir": "sites/school/little-angels-modern-high-school",
@@ -280,37 +247,11 @@
           "title": "New Pratham Public School",
           "client": "New Pratham Public School, Dooravani Nagar, Bengaluru",
           "status": "draft",
-          "tags": [
-            "school",
-            "CBSE",
-            "admissions",
-            "photo gallery",
-            "Tailwind"
-          ],
+          "tags": ["school", "CBSE", "admissions", "photo gallery", "Tailwind"],
           "notes": "Redesign of www.newprathampublicschool.in. All copy and photos come from the old site (scraped 2026-10-18, see source/). Enquiry form sends via WhatsApp/email — no backend.",
           "description": "CBSE school website — admissions, facilities, gallery, achievements and contact.",
           "relDir": "sites/school/new-pratham-public-school",
           "route": "/school/new-pratham-public-school/"
-        },
-        {
-          "id": "school/scool-template-3",
-          "category": "school",
-          "name": "scool-template-3",
-          "title": "D.R.D.O KG School (multi-page)",
-          "client": "D.R.D.O KG School, C V Raman Nagar, Bengaluru",
-          "status": "draft",
-          "tags": [
-            "kindergarten",
-            "multi-page",
-            "admissions form",
-            "gallery",
-            "Google Maps embed",
-            "3D"
-          ],
-          "notes": "Built on school/scool-template-3. Name, contact details, hours, photos and review themes come from the school's Google Maps listing and the signboard at its gate (captured 22 Oct 2026). Before launch: get the school's OK on the photos, classes and ages, the DRDO admission priority, documents, and the drafted vision/mission. See the README checklist.",
-          "description": "Premium school website template — editorial design, admissions journey, news, gallery, Next.js 16, Tailwind CSS v4, Framer Motion, React Three Fiber.",
-          "relDir": "sites/school/scool-template-3",
-          "route": "/school/scool-template-3/"
         }
       ]
     }

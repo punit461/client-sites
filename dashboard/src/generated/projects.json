@@ -291,6 +291,26 @@
           "description": "CBSE school website — admissions, facilities, gallery, achievements and contact.",
           "relDir": "sites/school/new-pratham-public-school",
           "route": "/school/new-pratham-public-school/"
+        },
+        {
+          "id": "school/scool-template-3",
+          "category": "school",
+          "name": "scool-template-3",
+          "title": "School Template 3 — Aldenmoor",
+          "client": "Template (fictional school: Aldenmoor International School)",
+          "status": "draft",
+          "tags": [
+            "template",
+            "multi-page",
+            "news & events",
+            "admissions form",
+            "gallery",
+            "3D"
+          ],
+          "notes": "Premium international-school template. Every name, figure, date and photo is placeholder content, marked on the page while `demo` is true in src/content/school.ts. Copy it with `npm run new -- school/<name> --from school/scool-template-3`, then follow the README's replacement checklist.",
+          "description": "Premium school website template — editorial design, admissions journey, news, gallery, Next.js 16, Tailwind CSS v4, Framer Motion, React Three Fiber.",
+          "relDir": "sites/school/scool-template-3",
+          "route": "/school/scool-template-3/"
         }
       ]
     }

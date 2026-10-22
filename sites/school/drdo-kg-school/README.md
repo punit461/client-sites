@@ -1,89 +1,156 @@
-# D.R.D.O KG School
+# D.R.D.O KG School — website
 
-A one-page website for D.R.D.O KG School, a kindergarten in C V Raman Nagar,
-Bengaluru.
+A multi-page website for **D.R.D.O KG School** (DRDO Kindergarten School,
+C.V. Raman Nagar, Bengaluru), a kindergarten run by the DRDO Employees
+Educational Trust.
 
-Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Framer Motion · Lucide.
-Statically exported, so it can be published under the dashboard or handed to the
-school to host on their own domain.
+Next.js 16 (App Router, static export) · TypeScript (strict) · Tailwind CSS v4 ·
+Framer Motion · React Three Fiber · React Hook Form + Zod · Lucide.
+
+## Where the content came from
+
+Captured 22 Oct 2026 from the school's
+[Google Maps listing](https://maps.app.goo.gl/p5nMM6NV36uq6svAA) and from the
+signboard over its gate (visible in one of the listing's photos):
+
+- **Listing:** name, address, plus code, phone (080 2524 2042), hours
+  (Mon–Fri 8 am–3 pm, closed weekends), wheelchair-accessible entrance and
+  car park, rating 4.2 from 38 reviews, and the domain drdokgblr.com (which
+  did not resolve on that date).
+- **Signboard:** full name, the DRDO Employees Educational Trust (DEET), the
+  motto "Knowledge is Power", and the lotus seal the logo is based on.
+- **Reviews:** themes only (caring teachers, play area, classrooms, a strong
+  foundation), summarised in our words. One review says DRDO employees'
+  children get admission priority; another recalls the school in 2003, which
+  is the basis for "20+ years".
+- **Photos:** 10 photos posted publicly on the listing, resized and stripped
+  of metadata, in `public/images/`.
+
+The logo (`src/components/ui/Crest.tsx`, `src/app/icon.svg`) redraws the
+school's seal with an open book at the centre in place of the official DRDO
+emblem, which is restricted and should not be reproduced.
+
+## Before launch: confirm with the school
+
+Search the source for `CONFIRM` to find each of these.
+
+1. **Photos.** They were posted on Google by parents and visitors, so they
+   belong to those people. Get the school's permission (or its own photos),
+   and families' consent for any child who can be recognised.
+2. **Classes and ages.** Nursery, LKG and UKG at 3+, 4+ and 5+ are assumed
+   from "kindergarten" and Karnataka's entry rules. The day-in-the-life lists
+   have no times on purpose.
+3. **DRDO admission priority.** From a single review.
+4. **Documents list** on the admissions page.
+5. **Vision, mission and values** (`src/content/campus.ts`). Drafted for
+   approval; the motto is real.
+6. **Activities** beyond play and Annual Day (stories, art, music).
+7. **Email, WhatsApp, social links, website domain.** None were found. Add
+   them in `src/content/school.ts` and they appear across the site; the
+   enquiry forms fall back to the phone number until then.
+8. **Fees.** Not published; the page asks families to call. Add rows to
+   `fees.rows` to publish them.
+9. **Rating figures** on the home page: update or remove at launch.
+10. **Privacy policy:** have the school review it.
+11. **Enquiry form backend:** set `NEXT_PUBLIC_ENQUIRY_ENDPOINT` (see below).
 
 ## Running it
 
 ```bash
 npm install
 npm run dev          # http://localhost:3000
-npm run build        # -> out/
+npm run build        # -> out/  (static files, upload anywhere)
+npm run lint
 ```
 
 From the repo root, `npm run build school/drdo-kg-school` builds it into the
-shared bundle instead.
+dashboard bundle instead.
+
+## Pages
+
+| Route | What it is |
+| --- | --- |
+| `/` | Hero, figures, about and the trust, classes, campus, activities, gallery, what families say, admission steps, visit |
+| `/about/` | Purpose, vision, mission, values, who runs the school (`#trust`), review themes (`#reviews`) |
+| `/academics/` | The three classes, how children learn, what kindergarten builds |
+| `/academics/<class>/` | Nursery, LKG, UKG: one page per entry in `programmes.ts` |
+| `/admissions/` | Steps, ages, priority, documents, how to apply, fees (`#fees`), FAQ (`#faq`), enquiry form (`#enquire`) |
+| `/facilities/` | Campus collage and per-facility details |
+| `/student-life/` | Play and activities, photos |
+| `/gallery/` | Filterable gallery with lightbox |
+| `/contact/` | Phone, directions, hours, map, general enquiry form |
+| `/privacy-policy/` | Privacy policy |
+
+Plus `sitemap.xml`, `robots.txt` and a 404 page.
 
 ## Where to edit
 
-Everything the school will ask to change is data, not markup:
+Content is separate from presentation; routine updates touch only these files.
 
 | File | What it holds |
 | --- | --- |
-| `src/data/site.ts` | Name, contact details, address, map, hours, Google rating, navigation |
-| `src/data/content.ts` | About text, highlight cards, admissions steps and classes, parent themes, gallery |
-| `src/lib/images.ts` | Every image on the page, in one map |
-| `src/app/globals.css` | Colours, type sizes, radii: the whole visual identity |
+| `src/content/school.ts` | **Start here.** Name, trust, motto, phone, email, address, map, hours, socials, navigation, headline figures |
+| `src/content/programmes.ts` | The classes. Delete one and its page goes with it |
+| `src/content/campus.ts` | Facilities, activities, how children learn, philosophy, who runs the school |
+| `src/content/admissions.ts` | Steps, ages, documents, fees, FAQ, classes offered in the form |
+| `src/content/people.ts` | Review themes, and approved testimonials (empty until a parent agrees in writing) |
+| `src/content/gallery.ts` | Gallery photos and captions |
+| `src/lib/images.ts` | The photo catalogue (`photos`) |
+| `src/app/globals.css` | Colours (from the school's blue-and-gold signboard), type scale, radii, shadows |
+| `src/components/ui/Crest.tsx` | The logo mark and the full seal |
 
-Sections live one per file in `src/components/sections/` and are composed in
-`src/app/page.tsx`, in the order they appear.
+To add a photo, put it in `public/images/` and reference it as
+`{ src: "/images/name.jpg", alt: "…" }`. Every photo needs real alt text.
 
-## Content still to come from the school
+## Environment variables
 
-The content comes from the school's Google Maps listing (captured 18 Oct 2026).
-Anything the listing didn't establish is written as `pending("…")` in
-`src/data/` and shows on the page as **highlighted yellow text**, so the gaps
-are obvious when you review the site with the school:
+Copy `.env.example` to `.env.local`. All optional.
 
-- Year founded, who runs the school, teaching approach
-- Age for each class (Nursery, LKG, UKG)
-- Admission documents, dates and age criteria
-- Whether children of DRDO employees get admission priority. This came from a
-  single Google review and must be confirmed before launch
-- School days, closing time and email address
-- Extra facilities (transport, CCTV, day-care…)
-- Parent quotes, with names, used with permission
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Live domain, no trailing slash. Canonical URLs, Open Graph, sitemap, robots |
+| `NEXT_PUBLIC_ENQUIRY_ENDPOINT` | URL the enquiry forms POST JSON to |
+| `NEXT_PUBLIC_ENQUIRY_ACCESS_KEY` | Public key some services want in the body (sent as `access_key`) |
+| `NEXT_PUBLIC_BASE_PATH` | Set by the repo build only. Leave unset for the school's own hosting |
 
-Before handover, search `src/data/` for `pending(`. There should be no matches.
+They are read at **build time**; rebuild after changing them.
 
-## Swapping in the school's photos
+## The enquiry forms
 
-Every image is currently a labelled placeholder in `public/images/placeholders/`.
-To replace one:
+The site is a static export, so the forms post to an external form backend.
+The browser validates with Zod first; the form shows success **only** when the
+backend answers 2xx. Failure says "not sent" and gives the phone number. With no
+endpoint configured, it says online enquiries are not connected and offers the
+phone number (and "Email this enquiry" once the school has an email address) —
+it never pretends.
 
-1. Save the photo as `public/images/<name>.jpg`. Landscape 4:3 works best,
-   about 1600px wide, under 400 KB.
-2. In `src/lib/images.ts`, change `placeholder("<name>")` to
-   `asset("/images/<name>.jpg")`.
+Collected: name, email, phone, class (admissions), message, consent. Nothing else.
 
-| Name | Where it appears | Suggested shot |
-| --- | --- | --- |
-| `hero` | Full-width banner | Building front or the play area |
-| `about` | About section | Entrance with the signboard |
-| `teachers` | "Caring teachers" card | Staff group photo |
-| `play-area` | "Superb play area" card | Outdoor play equipment |
-| `classroom` | "Bright classrooms" card | A classroom set up for the day |
-| `gallery-1` … `gallery-6` | Gallery | Annual day, sports day, festivals, art, play, activities |
+Any service that accepts JSON and returns 2xx works — Formspree, Web3Forms
+(plus `NEXT_PUBLIC_ENQUIRY_ACCESS_KEY`), Basin, a Google Apps Script web app,
+or your own endpoint. It must validate on the server, filter spam (the form
+adds a honeypot and refuses submissions within 3 seconds of page load), and
+allow CORS from the school's domain.
 
-Use only photos the school owns. For any photo showing a child's face, get the
-parents' written consent.
+## Deployment
 
-## Things worth knowing
+`npm run build` writes a self-contained static site to `out/`. Upload it to
+any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages, S3, cPanel).
+From the repo root, `npm run release -- school/drdo-kg-school` produces a
+clean hand-over copy.
 
-**Images are local, unlike the templates.** `next/image` does not apply
-`basePath` to a string `src`, so every path goes through `asset()` in
-`src/lib/images.ts`. A bare `"/images/x.jpg"` works in `npm run dev` but breaks
-once the site is built under the dashboard's sub-path.
+## Design and behaviour notes
 
-**The logo is a stand-in.** `src/components/layout/Wordmark.tsx` draws a yellow
-"KG" badge. Replace it with the school's logo once they send it.
-
-**The map is Google's official embed.** It needs no API key. The coordinates
-are in `contact.geo` in `src/data/site.ts`.
-
-**The Google rating is a snapshot.** Update `rating` in `src/data/site.ts` at
-launch, or remove the hero line and the "What parents say" heading that use it.
+- **Type:** Newsreader (display serif) and Manrope (sans), via `next/font`.
+- **Colour:** royal navy and gold, taken from the school's signboard; ivory
+  for editorial sections; `gold-ink` where gold text sits on a light background.
+- **Motion:** one entrance animation (`Reveal`/`Stagger`), count-up figures,
+  clip-reveal images, gentle parallax. All of it honours `prefers-reduced-motion`.
+- **3D:** the hero's armillary sphere (`components/three/`) loads only on wide
+  screens with WebGL, 4+ CPU cores, no reduced-motion or data-saver preference,
+  and only once the browser is idle. Everyone else sees a static SVG of it.
+- **Accessibility:** skip link, landmark headings, one `h1` per page, visible
+  focus, native `<dialog>` for the mobile menu and lightbox, ARIA tabs with
+  arrow keys, `<details>` accordions, labelled form fields with linked errors.
+- **SEO:** per-page metadata with canonical URLs and Open Graph, breadcrumbs,
+  `Preschool` and `FAQPage` structured data, sitemap and robots.

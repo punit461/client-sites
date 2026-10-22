@@ -1,37 +1,44 @@
 import {
   Accessibility,
-  ArrowRight,
-  Clock,
-  Heart,
-  Mail,
-  MapPin,
-  Navigation,
-  Phone,
-  Plus,
-  Smile,
-  Star,
-  Trees,
+  BedDouble,
+  BookOpen,
+  Bus,
+  Compass,
+  Cpu,
+  FlaskConical,
+  Globe2,
+  HeartPulse,
+  Leaf,
+  Music,
+  Palette,
+  ShieldCheck,
+  Sparkles,
+  Trophy,
+  Users,
+  UtensilsCrossed,
+  Wifi,
   type LucideIcon,
 } from "lucide-react";
+import type { IconName } from "@/content/types";
 
-/**
- * Data files name an icon as a string; this map turns it into a component.
- * Keeping the union derived from the map means a typo in a data file is a
- * compile error rather than a blank space on the page.
- */
-export const icons = {
+/** Content files name icons as strings so they stay plain data. */
+export const icons: Record<IconName, LucideIcon> = {
+  bus: Bus,
+  shield: ShieldCheck,
+  "heart-pulse": HeartPulse,
   accessibility: Accessibility,
-  arrowRight: ArrowRight,
-  clock: Clock,
-  heart: Heart,
-  mail: Mail,
-  mapPin: MapPin,
-  navigation: Navigation,
-  phone: Phone,
-  plus: Plus,
-  smile: Smile,
-  star: Star,
-  trees: Trees,
-} satisfies Record<string, LucideIcon>;
-
-export type IconName = keyof typeof icons;
+  utensils: UtensilsCrossed,
+  bed: BedDouble,
+  wifi: Wifi,
+  leaf: Leaf,
+  trophy: Trophy,
+  palette: Palette,
+  music: Music,
+  users: Users,
+  flask: FlaskConical,
+  cpu: Cpu,
+  globe: Globe2,
+  book: BookOpen,
+  sparkles: Sparkles,
+  compass: Compass,
+};

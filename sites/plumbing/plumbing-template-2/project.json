@@ -1,0 +1,15 @@
+{
+  "title": "Plumbing — Template 2 (FlowForce)",
+  "client": "",
+  "status": "template",
+  "tags": [
+    "bold",
+    "service selector",
+    "area checker",
+    "project filters",
+    "estimate form",
+    "Tailwind",
+    "Framer Motion"
+  ],
+  "notes": "FlowForce: bold high-contrast plumbing site in charcoal, electric blue and lime. 42 static pages incl. /projects/[slug]. Interactive service selector, postal-code area checker against configured coverage, project filters, estimate form with conditional fields. Every business detail is a placeholder in src/config/business.ts; credentials, emergency cover and reviews stay hidden until verified. Form needs NEXT_PUBLIC_QUOTE_ENDPOINT (worker included). Photos are free-licence Unsplash stock."
+}

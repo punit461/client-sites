@@ -1,0 +1,13 @@
+{
+  "title": "Plumbing — Template 1 (AquaCraft)",
+  "client": "",
+  "status": "template",
+  "tags": [
+    "editorial",
+    "quote form",
+    "service areas",
+    "Tailwind",
+    "Framer Motion"
+  ],
+  "notes": "AquaCraft: premium editorial plumbing site on warm ivory, navy and copper. 33 static pages. Every business detail is a placeholder in src/config/business.ts, and credentials, emergency cover and reviews stay hidden until verified there. Quote form needs NEXT_PUBLIC_QUOTE_ENDPOINT (worker included). Photos are free-licence Unsplash stock."
+}

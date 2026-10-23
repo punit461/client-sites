@@ -23,7 +23,7 @@ import {
   ROOT, OUT_DIR, DASHBOARD_DIR, BASE_PREFIX, isWin, npm,
 } from './config.mjs';
 import {
-  listProjects, listCategories, findProject, newestMtime, checkProject, checkCategory,
+  listProjects, listCategories, findProject, newestMtime, checkProject, checkCategory, exportedBasePath,
 } from './projects.mjs';
 import { copyDir, flattenPrefetchPayloads } from './fsx.mjs';
 import { writeManifest } from './manifest.mjs';
@@ -60,11 +60,13 @@ function exportApp({ dir, label, basePath, outDir, preserve }) {
 
   const exportDir = path.join(dir, 'out');
   const stamp = readStamp(dir);
+  const actual = exportedBasePath(exportDir);
   const reason = !fs.existsSync(exportDir) ? 'no export yet'
     : force ? 'forced'
       : !stamp ? 'no build stamp'
         : stamp.basePath !== basePath ? `base path changed (${stamp.basePath || '/'} -> ${basePath || '/'})`
-          : newestMtime(dir) > stamp.builtAt ? 'source changed'
+          : actual !== null && actual !== basePath ? `out/ was rebuilt outside the repo tools for ${actual || '/'}`
+            : newestMtime(dir) > stamp.builtAt ? 'source changed'
             : null;
 
   if (reason) {

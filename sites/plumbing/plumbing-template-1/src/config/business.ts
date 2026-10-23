@@ -5,9 +5,10 @@
  * credentials — is read from here, so the pages, the footer, the structured
  * data and the quote form can never disagree with each other.
  *
- * The values below are PLACEHOLDERS, and deliberately recognisable as such:
- * 555-01xx is the reserved fictional phone range, and `.example` is a reserved
- * domain. Replace every one before launch (see the checklist in README.md).
+ * The values below are Blue Diamond Plumbing of Texas's public details, taken
+ * from its Google Business Profile (October 2026). The licence number is the
+ * one painted on the company van in its own Google photos. The business lists
+ * no email address, so `email` is null and every email link is hidden.
  */
 
 import { env } from "./env";
@@ -31,55 +32,64 @@ export const business = {
    * "template preview" note wherever placeholder details appear. Set to false
    * only once every value in this file is the company's real information.
    */
-  demo: true,
+  demo: false,
 
-  name: "AquaCraft Plumbing Co.",
-  shortName: "AquaCraft",
+  name: "Blue Diamond Plumbing of Texas",
+  shortName: "Blue Diamond",
   /** Two letters for the logo mark. */
-  monogram: "AC",
-  tagline: "Residential & commercial plumbing",
+  monogram: "BD",
+  tagline: "Plumber in Fort Worth, TX",
   description:
-    "Plumbing repairs, installations and maintenance for homes and businesses — with a clear estimate before any work begins.",
+    "Owner-led plumbing in North Fort Worth and Keller — leak detection, pipe and faucet repairs, water heaters, drains and bathroom remodels. Open 24 hours.",
 
   /** The live address, no trailing slash. NEXT_PUBLIC_SITE_URL overrides it. */
-  url: env.siteUrl || "https://www.aquacraft-plumbing.example",
+  url: env.siteUrl || "https://bluediamondplumbingoftexas.com",
   locale: "en_US",
   /** ISO 3166-1 alpha-2 — used in structured data. */
   country: "US",
 
   phone: {
-    display: "(555) 010-2040",
+    display: "(817) 852-9498",
     /** E.164, used for tel: links. */
-    e164: "+15550102040",
+    e164: "+18178529498",
   },
-  email: "hello@aquacraft-plumbing.example",
+  /** None published. Null hides every email link; the phone is used instead. */
+  email: null as string | null,
 
   /**
    * A public street address. Leave null if the company works from vehicles and
    * customers never visit — Google treats that as a service-area business, and
    * the site will not show or publish an address it should not.
    */
-  address: null as null | {
+  address: {
+    street: "5508 Eastwedge Dr",
+    locality: "Fort Worth",
+    region: "TX",
+    postalCode: "76137",
+  } as null | {
     street: string;
     locality: string;
     region: string;
     postalCode: string;
   },
 
+  /** 00:00–23:59 every day is how structured data spells "open 24 hours". */
   hours: [
-    { label: "Monday – Friday", days: ["Mo", "Tu", "We", "Th", "Fr"], opens: "08:00", closes: "17:30" },
-    { label: "Saturday", days: ["Sa"], opens: "09:00", closes: "13:00" },
+    { label: "Monday – Sunday", days: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"], opens: "00:00", closes: "23:59" },
   ] as OpeningHours[],
-  hoursNote: "Closed Sundays and public holidays.",
+  hoursNote: "Open 24 hours, 7 days a week — weekends and holidays included.",
 
   /** Only real, active profiles. An empty list renders no icons at all. */
-  socials: [] as Link[],
+  socials: [{ label: "Facebook", href: "https://www.facebook.com/bluediamondplumbingoftexas/" }] as Link[],
 
   /**
    * Where customers can read and leave reviews (Google Business Profile, Yelp,
    * etc.). Reviews themselves live in src/content/reviews.ts.
    */
-  reviewProfiles: [] as Link[],
+  reviewProfiles: [{ label: "Google", href: "https://maps.app.goo.gl/a99nfdgpsXcT7mNv8" }] as Link[],
+
+  /** The public star rating, shown beside the reviews. Update it now and then. */
+  rating: { value: 4.7, count: 29, source: "Google" } as null | { value: number; count: number; source: string },
 
   /**
    * Claims that need evidence. Each one stays false until the company can show
@@ -88,9 +98,9 @@ export const business = {
    */
   verified: {
     /** Answers the phone for emergencies outside the hours above. */
-    emergencyService: false,
+    emergencyService: true,
     /** Holds the plumbing licence required where it works. */
-    licensed: false,
+    licensed: true,
     /** Carries liability insurance for the work. */
     insured: false,
     /** Offers written workmanship warranty terms. */
@@ -99,51 +109,59 @@ export const business = {
 
   /** Shown only when the matching `verified` flag is true. */
   credentials: {
-    licenseNumber: "",
+    /** Texas Responsible Master Plumber licence, as shown on the company van. */
+    licenseNumber: "Texas RMP 15647",
     warrantySummary: "",
   },
 };
 
 /**
  * The company's working standards. These are promises about how the business
- * operates, not credentials — but they are still promises. Remove any the
- * company does not actually keep.
+ * operates, not credentials — but they are still promises. Each one below is
+ * something the company's Google reviewers describe it doing.
  */
 export const standards = [
   {
-    title: "A written estimate before work begins",
-    body: "We assess the problem, explain what we found and give you the price for the work in writing. Nothing starts until you approve it.",
-    short: "Written estimate first",
+    title: "Fast response, day or night",
+    body: "The phone is answered around the clock. When one customer's pipe froze on Christmas Eve, Cameron was at the door within 20 minutes of the call.",
+    short: "Open 24 hours",
+  },
+  {
+    title: "Honest, upfront pricing",
+    body: "You hear what the job involves and what it costs before anything starts. Customers describe us as fair, honest and upfront — and we intend to keep it that way.",
+    short: "Upfront pricing",
+  },
+  {
+    title: "Every detail explained",
+    body: "We walk you through what we found and what the repair involves, so you understand every part of the work before you agree to it.",
+    short: "Full explanations",
   },
   {
     title: "Clear communication throughout",
-    body: "You will know who is coming, roughly when, and what they are there to do. If plans change, we call you rather than leave you waiting.",
-    short: "Clear arrival windows",
+    body: "You will know who is coming and when. We keep in touch on the way to you, and if anything changes we call rather than leave you waiting.",
+    short: "We keep you posted",
   },
   {
-    title: "Respect for your home or premises",
-    body: "Floor protection where we walk and work, dust sheets around the job, and tools that stay in the work area.",
-    short: "Your property protected",
+    title: "Flexible around your schedule",
+    body: "Repairs are arranged around your work day, not ours — including last-minute and same-day calls when your water is off.",
+    short: "Flexible scheduling",
   },
   {
-    title: "Practical recommendations",
-    body: "We tell you what needs doing now, what can wait, and what you can safely leave alone — so you can decide with the full picture.",
-    short: "Honest repair options",
-  },
-  {
-    title: "Workmanship we put our name to",
-    body: "Proper fittings, tested joints and neat pipe runs. We check the repair under pressure before we call the job finished.",
-    short: "Tested before we leave",
-  },
-  {
-    title: "A clean finish",
-    body: "Old parts removed, the work area wiped down and everything put back. You should be able to use the room as soon as we leave.",
-    short: "Clean job completion",
+    title: "The owner on the job",
+    body: "Cameron, the owner, comes out to do the work with the team, so the person you speak to is usually the person who fixes it.",
+    short: "Owner-led service",
   },
 ];
 
 export const telHref = `tel:${business.phone.e164}`;
-export const mailHref = `mailto:${business.email}`;
+/** Null when the business publishes no email — callers hide the link. */
+export const mailHref = business.email ? `mailto:${business.email}` : null;
+
+/** True when every day runs 00:00–23:59: the business never closes. */
+export const isOpen24Hours = () =>
+  business.hours.length > 0 &&
+  business.hours.reduce((n, h) => n + h.days.length, 0) === 7 &&
+  business.hours.every((h) => h.opens === "00:00" && h.closes === "23:59");
 
 const dayNames: Record<Weekday, string> = {
   Mo: "Monday",
@@ -164,11 +182,13 @@ export function formatTime(hhmm: string) {
 }
 
 export function hoursLine(h: OpeningHours) {
+  if (h.opens === "00:00" && h.closes === "23:59") return "Open 24 hours";
   return `${formatTime(h.opens)} – ${formatTime(h.closes)}`;
 }
 
 /** One line for the announcement bar: "Mon–Fri 8:00 am – 5:30 pm · Sat 9:00 am – 1:00 pm" */
 export function compactHours() {
+  if (isOpen24Hours()) return "24 hours, 7 days a week";
   return business.hours
     .map((h) => {
       const first = h.days[0];

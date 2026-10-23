@@ -22,7 +22,7 @@ export function pageMetadata({
   title,
   description,
   path,
-  photo = "plumberBathroom",
+  photo = "teamAndVans",
   noindex = false,
 }: {
   title: string;
@@ -64,8 +64,9 @@ export function businessJsonLd() {
     description: business.description,
     url: `${siteUrl}/`,
     telephone: business.phone.e164,
-    email: business.email,
-    image: photoUrl(photos.plumberBathroom, 1200),
+    ...(business.email ? { email: business.email } : {}),
+    // Local photos are published at the company's domain root.
+    image: photos.teamAndVans.src.startsWith("/") ? absolute(photos.teamAndVans.src) : photoUrl(photos.teamAndVans, 1200),
     ...(business.address
       ? {
           address: {

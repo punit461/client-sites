@@ -2,20 +2,21 @@ import Link from "next/link";
 import { business } from "@/config/business";
 
 /**
- * Placeholder mark: a drop beside a pipe elbow, in copper and ivory on navy.
- * Replace with the company's own logo (an SVG in public/ is ideal) — keep the
+ * A faceted blue diamond on navy, after the diamond on the company's van.
+ * Replace with the company's own logo file when it supplies one — keep the
  * link and its accessible name.
  */
 export function LogoMark({ className = "h-10 w-10", dark = false }: { className?: string; dark?: boolean }) {
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
       <rect x="0.5" y="0.5" width="39" height="39" rx="9.5" fill="#101D32" stroke={dark ? "#F5F3EE" : "#101D32"} strokeOpacity={dark ? 0.25 : 1} />
-      <path d="M11 29V18a7 7 0 0 1 7-7h11" fill="none" stroke="#C87948" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M14 11h12l5 6H9Z" fill="#8EC3F0" />
+      <path d="M9 17h22L20 31Z" fill="#2F7BD0" />
       <path
-        d="M24.5 19.5c0 0 4.5 5 4.5 8a4.5 4.5 0 0 1-9 0c0-3 4.5-8 4.5-8Z"
+        d="M14 11h12l5 6-11 14L9 17Zm-5 6h22M14 11l2.5 6L20 11l3.5 6L26 11M16.5 17 20 31l3.5-14"
         fill="none"
         stroke="#F5F3EE"
-        strokeWidth="1.8"
+        strokeWidth="1.1"
         strokeLinejoin="round"
       />
     </svg>
@@ -33,7 +34,7 @@ export function Logo({ dark = false }: { dark?: boolean }) {
         <span
           className={`mt-1 block text-[0.62rem] font-semibold uppercase tracking-[0.24em] ${dark ? "text-copper-soft" : "text-copper-ink"}`}
         >
-          Plumbing Co.
+          Plumbing of Texas
         </span>
       </span>
     </Link>

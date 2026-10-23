@@ -8,9 +8,9 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Our Work",
   description:
-    "Residential repairs, bathroom installations, water heaters and commercial plumbing — a look at the kinds of work we carry out.",
+    "Bathroom remodels, fixture repairs, drain lines and underground line replacement — photos of our own work around Fort Worth.",
   path: "/projects/",
-  photo: "bathroomRoughIn",
+  photo: "showerPanRoughIn",
 });
 
 export default function ProjectsPage() {
@@ -31,12 +31,12 @@ export default function ProjectsPage() {
             Gallery
           </h2>
           <GalleryFilter items={gallery} categories={galleryCategories} />
-          {gallery.some((g) => !g.caseStudy) ? (
-            <p className="mt-8 max-w-2xl text-sm text-slate">
-              Photographs show representative plumbing work and are not specific customer projects. Detailed case studies
-              are published only for real jobs, with the customer&apos;s agreement.
-            </p>
-          ) : null}
+          <p className="mt-8 max-w-2xl text-sm text-slate">
+            {gallery.some((g) => g.stock)
+              ? "Some photographs show representative plumbing work and are not specific customer projects."
+              : "Photographs of our own work, from our Google Business Profile."}{" "}
+            Detailed case studies are published only for real jobs, with the customer&apos;s agreement.
+          </p>
         </div>
       </section>
 

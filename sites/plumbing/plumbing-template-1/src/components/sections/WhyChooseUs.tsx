@@ -1,7 +1,7 @@
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { Photo } from "@/components/ui/Photo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { standards } from "@/config/business";
+import { business, standards } from "@/config/business";
 
 export function WhyChooseUs() {
   return (
@@ -10,20 +10,25 @@ export function WhyChooseUs() {
         <Reveal className="relative lg:col-span-5">
           <div className="group relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-sand">
             <div className="zoom-img absolute inset-0">
-              <Photo name="plumberBathroom" width={900} sizes="(min-width: 1024px) 30rem, 100vw" />
+              <Photo
+                name="yardExcavation"
+                width={900}
+                sizes="(min-width: 1024px) 30rem, 100vw"
+                className="object-cover object-[60%_50%]"
+              />
             </div>
           </div>
           <div className="absolute -right-4 -bottom-8 hidden aspect-square w-44 overflow-hidden rounded-xl border-[6px] border-ivory shadow-[var(--shadow-lift)] sm:block lg:-right-10 lg:w-52">
-            <Photo name="basinTrapCloseUp" width={420} sizes="13rem" />
+            <Photo name="serviceVan" width={420} sizes="13rem" className="object-cover object-[22%_50%]" />
           </div>
         </Reveal>
 
         <div className="lg:col-span-7">
           <SectionHeading
             id="why-title"
-            eyebrow="Why AquaCraft"
-            title="The standards we work to, on every job."
-            lead="Good plumbing is mostly invisible once it is done. How the job is run is what you remember."
+            eyebrow={`Why ${business.shortName}`}
+            title="What our customers count on, every job."
+            lead="Every promise below is something our Google reviewers have described us doing — not a slogan."
           />
           <Stagger className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
             {standards.map((s, i) => (

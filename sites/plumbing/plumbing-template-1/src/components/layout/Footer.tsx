@@ -22,14 +22,16 @@ export function Footer() {
                 </a>
               </dd>
             </div>
-            <div>
-              <dt className="t-eyebrow text-ivory/50">Email</dt>
-              <dd className="mt-1">
-                <a href={mailHref} className="link-underline break-all text-ivory">
-                  {business.email}
-                </a>
-              </dd>
-            </div>
+            {mailHref ? (
+              <div>
+                <dt className="t-eyebrow text-ivory/50">Email</dt>
+                <dd className="mt-1">
+                  <a href={mailHref} className="link-underline break-all text-ivory">
+                    {business.email}
+                  </a>
+                </dd>
+              </div>
+            ) : null}
             {business.address ? (
               <div>
                 <dt className="t-eyebrow text-ivory/50">Address</dt>
@@ -82,7 +84,7 @@ export function Footer() {
       <div className="border-t border-ivory/10">
         <div className="shell flex flex-col gap-4 py-6 text-sm text-ivory/60 md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {business.name.replace(/.$/, "")}. All rights reserved.
+            © {year} {business.name.replace(/\.$/, "")}. All rights reserved.
           </p>
           {business.socials.length ? (
             <ul className="flex flex-wrap gap-5">
@@ -107,8 +109,8 @@ export function Footer() {
         </div>
         {business.demo ? (
           <p className="shell pb-6 text-xs text-ivory/55">
-            Template preview: the business name, phone, email, hours and service areas on this site are placeholders.
-            Photographs are licensed stock images, not the company&apos;s own projects.
+            Template preview: the business details on this site are placeholders. Photographs not taken by the company
+            are licensed stock images, not its own projects.
           </p>
         ) : null}
       </div>

@@ -18,9 +18,11 @@ export function Footer() {
             <a href={telHref} className="nav-line self-start text-2xl font-bold text-white sm:text-3xl">
               {business.phone.display}
             </a>
-            <a href={mailHref} className="nav-line self-start break-all text-lg font-semibold text-white sm:text-xl">
-              {business.email}
-            </a>
+            {mailHref ? (
+              <a href={mailHref} className="nav-line self-start break-all text-lg font-semibold text-white sm:text-xl">
+                {business.email}
+              </a>
+            ) : null}
           </div>
         </div>
       </div>

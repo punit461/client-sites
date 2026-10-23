@@ -276,6 +276,26 @@
           "description": "FlowForce Plumbing — bold high-contrast plumbing site: service selector, area checker, project filters, estimate form, Next.js 16, Tailwind v4, Framer Motion.",
           "relDir": "sites/plumbing/plumbing-template-2",
           "route": "/plumbing/plumbing-template-2/"
+        },
+        {
+          "id": "plumbing/plumbing-template-3",
+          "category": "plumbing",
+          "name": "plumbing-template-3",
+          "title": "Plumbing — Template 3 (ClearFlow)",
+          "client": "",
+          "status": "template",
+          "tags": [
+            "Scandinavian editorial",
+            "area checker",
+            "project filters",
+            "quote form",
+            "Tailwind",
+            "Motion for React"
+          ],
+          "notes": "ClearFlow: calm Scandinavian-editorial plumbing site in forest teal, warm sand and sage, with arched photo frames and organic water shapes. 41 static pages incl. /projects/[slug]. Postal-code checker against configured coverage, project filters, animated service timeline, quote form with home/business and urgency conditional fields. One-screen hero. Every business detail is a placeholder in src/config/business.ts; credentials, emergency cover, reviews and company story stay hidden until supplied. Form needs NEXT_PUBLIC_QUOTE_ENDPOINT (worker included). Photos are free-licence Unsplash stock.",
+          "description": "ClearFlow Plumbing — calm Scandinavian-editorial plumbing site: teal, sand and sage, organic shapes, area checker, project filters, quote form. Next.js 16, Tailwind v4, Motion for React.",
+          "relDir": "sites/plumbing/plumbing-template-3",
+          "route": "/plumbing/plumbing-template-3/"
         }
       ]
     },

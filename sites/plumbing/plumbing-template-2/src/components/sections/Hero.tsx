@@ -2,6 +2,7 @@ import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/Buttons";
 import { Photo } from "@/components/ui/Photo";
 import { Label } from "@/components/ui/SectionHead";
+import { business } from "@/config/business";
 import { areas, listNames } from "@/content/areas";
 
 /**
@@ -21,7 +22,7 @@ export function Hero() {
       <div className="shell flex min-h-0 flex-1 flex-col gap-6 pt-[clamp(1rem,3vh,2.5rem)] pb-5 lg:grid lg:grid-cols-12 lg:items-stretch lg:gap-8 lg:py-[clamp(1.5rem,5vh,3.5rem)]">
         <div className="shrink-0 lg:col-span-7 lg:self-center">
           <div className="in">
-            <Label dark>Residential &amp; commercial plumbing</Label>
+            <Label dark>Houston plumbers · Licensed {business.credentials.licenseNumber}</Label>
           </div>
           <h1 id="hero-title" className="t-mega hero-title mt-[clamp(0.75rem,2.5vh,1.5rem)]">
             <span className="mask">
@@ -39,9 +40,12 @@ export function Hero() {
             </span>
           </h1>
           <p className="in mt-[clamp(0.75rem,2.5vh,2rem)] max-w-xl text-[1rem] leading-relaxed text-gray sm:text-[1.1rem]" style={{ animationDelay: "240ms" }}>
-            From everyday leaks and blocked drains to plumbing installations and maintenance
+            Drain cleaning and hydro-jetting, sewer and water lines, water heaters and gas lines
             <span className="sm:hidden">.</span>
-            <span className="hidden sm:inline">, get practical solutions from a team that puts clear communication first.</span>
+            <span className="hidden sm:inline">
+              {" "}
+              — from a family-owned, {business.yearsExperience}-year Houston team. Service with a Smile.
+            </span>
           </p>
           <div className="in mt-[clamp(1rem,3vh,2.25rem)] grid gap-3 min-[360px]:grid-cols-2 sm:flex" style={{ animationDelay: "300ms" }}>
             <Button href="/request-a-quote/" className="px-3 sm:px-5">
@@ -65,7 +69,10 @@ export function Hero() {
             <p className="flex items-start gap-2.5 text-gray">
               <span aria-hidden="true" className="mt-1.5 h-2 w-2 shrink-0 bg-lime" />
               <span>
-                A clear written estimate before any work — <span className="text-white">you approve it first.</span>
+                {business.rating
+                  ? `Rated ${business.rating.value}/5 from ${business.rating.count} ${business.rating.source} reviews. `
+                  : null}
+                <span className="text-white">Free estimates — you approve the price first.</span>
               </span>
             </p>
           </div>
@@ -79,7 +86,7 @@ export function Hero() {
             style={{ animationDelay: "200ms" }}
           />
           <div className="wipe absolute inset-0 overflow-hidden rounded-[var(--radius-box)] bg-charcoal-3" style={{ animationDelay: "80ms" }}>
-            <Photo name="plumberBathroom" width={1000} priority sizes="(min-width: 1024px) 34vw, 100vw" className="object-cover object-[60%_35%]" />
+            <Photo name="teamAndVans" width={1100} priority sizes="(min-width: 1024px) 34vw, 100vw" className="object-cover object-[50%_60%]" />
           </div>
           <div aria-hidden="true" className="panel-in absolute -top-2 -left-2 h-5 w-5 bg-lime lg:-top-3 lg:-left-3 lg:h-6 lg:w-6" style={{ animationDelay: "420ms" }} />
         </div>

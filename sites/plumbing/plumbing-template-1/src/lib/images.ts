@@ -1,17 +1,17 @@
 import { env } from "@/config/env";
 
 /**
- * The photography library. Every image is a free-licence Unsplash photo
- * (https://unsplash.com/license) chosen because it shows real plumbing work or
- * finished bathrooms and kitchens — no generic office scenes.
+ * The photography library.
  *
- * These are stock photographs, not the company's own jobs. Replace them with
- * the company's photographs as soon as it has them, and never caption a stock
- * photo as a customer project.
+ * Most photos are Blue Diamond Plumbing's own, downloaded from its Google
+ * Business Profile into public/images/. The four Unsplash photos at the end
+ * (https://unsplash.com/license) cover work the profile has no photo of —
+ * water heaters, commercial premises and valves. Replace them as the company
+ * photographs those jobs, and never caption a stock photo as a customer job.
  *
- * The static export cannot resize images (images.unoptimized), so each photo is
- * requested from the CDN at the width it is shown, in AVIF/WebP where the
- * browser supports it.
+ * The static export cannot resize images (images.unoptimized), so each remote
+ * photo is requested from the CDN at the width it is shown, in AVIF/WebP where
+ * the browser supports it.
  */
 
 export type Photo = {
@@ -21,37 +21,52 @@ export type Photo = {
 };
 
 export const photos = {
-  plumberUnderBasin: {
-    src: "1676210134188-4c05dd172f89",
-    alt: "A plumber in a red shirt tightening the waste pipe under a bathroom basin",
+  // The company's own photos (Google Business Profile).
+  bathroomTub: {
+    src: "/images/bathroom-freestanding-tub.jpg",
+    alt: "A finished bathroom with a curbless walk-in shower, marble-look tile, a linear drain and a freestanding soaking tub",
   },
-  plumberBathroom: {
-    src: "1749532125405-70950966b0e5",
-    alt: "A plumber in work overalls fitting pipework behind the toilet in a tiled bathroom, toolbox beside him",
+  subwayShower: {
+    src: "/images/subway-tile-shower.jpg",
+    alt: "A walk-in shower in white subway tile with matte black fixtures and a linear drain, beside a newly fitted toilet",
   },
-  basinTrapCloseUp: {
-    src: "1676210133055-eab6ef033ce3",
-    alt: "Close-up of hands fitting a white waste trap beneath a basin",
+  clawfootShower: {
+    src: "/images/clawfoot-tub-glass-shower.jpg",
+    alt: "A primary bathroom with a clawfoot tub and a frameless glass shower enclosure",
   },
-  basinConnection: {
-    src: "1676210134190-3f2c0d5cf58d",
-    alt: "A plumber reaching up to tighten the tap connection under a basin",
+  showerPanRoughIn: {
+    src: "/images/shower-pan-rough-in.jpg",
+    alt: "A new mortar shower base and drain set inside open stud walls, with insulated supply pipes ready for the valve",
   },
-  flushPlateInstall: {
-    src: "1676210134050-6f12c6898395",
-    alt: "A plumber in work gloves fitting a wall-mounted flush plate on marble-effect tiles",
+  doubleVanity: {
+    src: "/images/double-vanity-faucets.jpg",
+    alt: "Matte black widespread faucets installed on a double vanity with a granite top",
   },
+  yardExcavation: {
+    src: "/images/yard-line-excavation.jpg",
+    alt: "The Blue Diamond crew working in a trench dug across a front yard to reach an underground line",
+  },
+  pvcDrainCleanout: {
+    src: "/images/pvc-drain-cleanout.jpg",
+    alt: "A new section of 3-inch PVC drain line with a cleanout fitting, coupled to the existing pipe",
+  },
+  washerBoxValves: {
+    src: "/images/washer-box-valves.jpg",
+    alt: "Worn washing-machine supply valves dripping into a cup inside the wall outlet box",
+  },
+  barSinkFaucet: {
+    src: "/images/bar-sink-faucet.jpg",
+    alt: "A worn, corroded gooseneck faucet on a small stainless-steel bar sink",
+  },
+  serviceVan: {
+    src: "/images/service-van.jpg",
+    alt: "The white Blue Diamond Plumbing service van with the blue diamond logo, phone number and Texas RMP licence number",
+  },
+
+  // Licensed stock photos, for work the company has no photo of yet.
   waterHeaterWrench: {
     src: "1620653713380-7a34b773fef8",
     alt: "Adjustable pliers on the pipe fitting at the top of a hot water cylinder",
-  },
-  kitchenTapRunning: {
-    src: "1542013936693-884638332954",
-    alt: "A hand opening a chrome kitchen tap as water fills a glass",
-  },
-  bathroomRoughIn: {
-    src: "1768321913920-d3ac011e0683",
-    alt: "New insulated supply and waste pipes roughed in to a timber stud wall during a bathroom renovation",
   },
   plantRoom: {
     src: "1650551182991-b07558247564",
@@ -61,45 +76,9 @@ export const photos = {
     src: "1761758674188-2b8e4c89c5e2",
     alt: "A red isolation valve handle above a pressure gauge on a water line",
   },
-  bathroomBright: {
-    src: "1584622650111-993a426fbf0a",
-    alt: "A bright bathroom with a glass walk-in shower, white toilet and a double vanity",
-  },
-  bathroomStone: {
-    src: "1763485956310-55f3c0e822d5",
-    alt: "A stone-tiled bathroom with a matte black wall-mounted tap and rainfall shower",
-  },
-  bathroomWarm: {
-    src: "1781344334947-60c704bafd51",
-    alt: "A warm-toned bathroom with twin vessel basins and a freestanding bathtub",
-  },
-  bathroomWhite: {
-    src: "1629079447777-1e605162dc8d",
-    alt: "A white bathroom with twin vessel basins, wall-mounted taps and a tiled shower",
-  },
   commercialKitchen: {
     src: "1589109807644-924edf14ee09",
     alt: "A commercial kitchen with a stainless-steel dishwashing line and pre-rinse spray tap",
-  },
-  brassLeak: {
-    src: "1596394723269-b2cbca4e6313",
-    alt: "Water running from a worn brass pipe outlet",
-  },
-  pipeRuns: {
-    src: "1646009445351-b8192e095f3a",
-    alt: "Parallel runs of grey pipe with elbow joints on an exterior wall",
-  },
-  kitchenSink: {
-    src: "1775359924006-557dba8c862b",
-    alt: "A white farmhouse kitchen sink with a matte black pull-down tap beneath a window",
-  },
-  serviceMain: {
-    src: "1607472586893-edb57bdc0e39",
-    alt: "Large flanged water pipework with valves mounted against a brick wall",
-  },
-  ceilingPipework: {
-    src: "1639600993675-2281b2c939f0",
-    alt: "A steel pipe with a brass drain valve hung from the ceiling of a commercial building",
   },
 } satisfies Record<string, Photo>;
 

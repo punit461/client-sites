@@ -8,7 +8,7 @@ const steps = [
   { title: "Choose your plumbing service", body: "Pick the problem closest to yours — or tell us it's something else." },
   { title: "Tell us about the issue", body: "What's happening, where, and how urgent. Photos help us prepare." },
   { title: "Arrange a visit or assessment", body: "We call to talk it through and agree a time. It's booked when we confirm it with you." },
-  { title: "Review the estimate, approve the work", body: "You get the price in writing. Nothing starts until you say yes." },
+  { title: "Review the estimate, approve the work", body: "You get a free estimate with a clear price. Nothing starts until you say yes." },
 ];
 
 export function HowItWorks() {

@@ -10,9 +10,9 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "About",
-  description: `${business.name}: practical plumbing from a team that puts clear communication first.`,
+  description: `${business.name} is a family-owned, 5th-generation plumbing company in Houston, TX — ${business.yearsExperience} years' experience, licensed and insured. Service with a Smile.`,
   path: "/about/",
-  photo: "plumberUnderBasin",
+  photo: "teamAndVans",
 });
 
 export default function AboutPage() {
@@ -28,28 +28,30 @@ export default function AboutPage() {
       <PageHero
         crumbs={[{ name: "About", href: "/about/" }]}
         label="About"
-        title="Plumbing, explained. Then fixed."
-        lead={`${business.name} handles plumbing repairs, installations and maintenance for homes and businesses — and we think how a job is communicated matters as much as the job itself.`}
-        photo="plumberUnderBasin"
+        title="Five generations of plumbing. One Houston family."
+        lead={`${business.name} is a family-owned and operated plumbing company serving homes and businesses across Houston, with ${business.yearsExperience} years of experience behind every job.`}
+        photo="teamAndVans"
       />
       <section aria-labelledby="why-title" className="section-y bg-white">
         <div className="shell grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <SectionHead id="why-title" label="Why we exist" title="Because nobody likes chasing a plumber." />
+            <SectionHead id="why-title" label="Who we are" title="Plumbing is part of our family history." />
             <div className="mt-6 space-y-4 text-lg text-ink-soft">
               <p>
-                Most frustrations with tradespeople aren&apos;t about the work. They&apos;re about not knowing when someone
-                will turn up, what the problem actually is, or what it&apos;s going to cost.
+                We&apos;re a 5th-generation plumbing company, fully licensed and insured, working from our office in Spring
+                Branch. Our {business.yearsExperience} years of experience let us diagnose problems quickly and fix them
+                properly — from drain cleaning to hydro-jetting, sewer lines to water heaters.
               </p>
               <p>
-                So we built FlowForce around fixing that: agreed arrival windows, plain explanations, a written estimate
-                before any work, and a tidy finish.
+                You may know us by our earlier name, {business.formerName}. The name on the vans changed; the licence
+                number on them didn&apos;t. Our office picks up from 5am, seven days a week, and
+                every job is priced at fair, competitive rates.
               </p>
-              <p className="font-display text-xl font-semibold text-charcoal">Good plumbing, clearly communicated. That&apos;s it.</p>
+              <p className="font-display text-xl font-semibold text-charcoal">{business.tagline} — every job, every time.</p>
             </div>
           </div>
           <Reveal x={24} className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-box)] bg-charcoal-3 lg:col-span-6">
-            <Photo name="flushPlateInstall" width={1000} sizes="(min-width: 1024px) 45vw, 100vw" />
+            <Photo name="officeDispatch" width={1000} sizes="(min-width: 1024px) 45vw, 100vw" />
           </Reveal>
         </div>
       </section>

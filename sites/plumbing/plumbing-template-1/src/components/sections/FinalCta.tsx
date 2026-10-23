@@ -5,7 +5,7 @@ import { business, telHref } from "@/config/business";
 
 export function FinalCta({
   title = "Let's get your plumbing sorted, properly.",
-  body = "Tell us what's going on and we'll come back to you to talk it through. You'll have a written estimate before any work begins.",
+  body = "Tell us what's going on and we'll come back to you to talk it through. You'll know the price before any work begins.",
 }: {
   title?: string;
   body?: string;
@@ -28,7 +28,7 @@ export function FinalCta({
               </div>
             </div>
             <div className="relative min-h-[14rem] lg:col-span-5 lg:min-h-full">
-              <Photo name="bathroomStone" width={900} sizes="(min-width: 1024px) 32rem, 100vw" />
+              <Photo name="clawfootShower" width={900} sizes="(min-width: 1024px) 32rem, 100vw" />
               <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent lg:bg-gradient-to-r lg:from-navy lg:via-navy/20" />
             </div>
           </div>

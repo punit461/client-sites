@@ -1,4 +1,4 @@
-import { business, compactHours, telHref } from "@/config/business";
+import { business, compactHours, isOpen24Hours, telHref } from "@/config/business";
 
 /**
  * A slim bar with the real opening hours — never a 24/7 claim unless the
@@ -11,7 +11,9 @@ export function AnnouncementBar() {
         <p>
           <span className="font-semibold text-ivory">Open</span> {compactHours()}
           {business.verified.emergencyService ? (
-            <span className="text-copper-soft"> · Emergency line answered outside these hours</span>
+            <span className="text-copper-soft">
+              {isOpen24Hours() ? " · Emergency calls answered day and night" : " · Emergency line answered outside these hours"}
+            </span>
           ) : null}
         </p>
         <p className="hidden sm:block">

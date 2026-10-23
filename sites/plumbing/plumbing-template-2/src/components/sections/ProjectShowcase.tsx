@@ -16,11 +16,11 @@ export function ProjectShowcase() {
         <div className="mt-10">
           <ProjectGrid projects={projects} categories={projectCategories} limit={6} />
         </div>
-        {projects.some((p) => !p.caseStudy) ? (
-          <p className="mt-6 text-sm text-ink-soft">
-            Photography shows representative plumbing work, not specific customer projects.
-          </p>
-        ) : null}
+        <p className="mt-6 text-sm text-ink-soft">
+          {projects.some((p) => p.stock)
+            ? "Some photography shows representative plumbing work, not specific customer projects."
+            : "Photos of our own team and work, from our Google Business Profile."}
+        </p>
       </div>
     </section>
   );

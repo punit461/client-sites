@@ -15,7 +15,7 @@ const steps: { title: string; body: string; icon: IconName }[] = [
   },
   {
     title: "Assessment and estimate",
-    body: "We find the cause, explain what we found and what we recommend, and give you the price in writing.",
+    body: "We find the cause, explain what we found and what we recommend, and give you the price upfront.",
     icon: "file",
   },
   {

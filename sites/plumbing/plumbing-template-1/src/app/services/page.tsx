@@ -10,9 +10,9 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Plumbing Services",
   description:
-    "Leak detection, drain cleaning, water heaters, fixtures, toilets, bathroom plumbing, sewer line inspection and preventive maintenance — with a written estimate before work begins.",
+    "Leak detection, drain cleaning, water heaters, fixtures, toilets, bathroom plumbing, sewer line inspection and preventive maintenance — with an upfront price before work begins.",
   path: "/services/",
-  photo: "basinConnection",
+  photo: "doubleVanity",
 });
 
 export default function ServicesPage() {
@@ -23,7 +23,7 @@ export default function ServicesPage() {
         eyebrow="Our services"
         title="Every plumbing job, done the same careful way."
         lead="Choose a service to see what it covers, how a visit runs and what to do while you wait. Not sure which you need? Describe the problem in a quote request and we will work it out with you."
-        photo="basinConnection"
+        photo="doubleVanity"
       />
       <ServicesGrid services={services} heading={false} />
       <section aria-label="Services by property type" className="pb-8">

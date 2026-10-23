@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+/**
+ * ClearFlow tokens. Forest teal carries headings and primary actions; warm sand
+ * and white alternate as section grounds; sage is for secondary panels;
+ * terracotta is a sparing highlight.
+ *
+ * Contrast notes (WCAG AA, normal text):
+ *   - teal on sand 7.7:1, white on teal 9.4:1 — primary pairs.
+ *   - muted gray #6B7774 passes on white only (4.6:1). On sand or sage,
+ *     secondary text uses --color-stone (#525D5A).
+ *   - terracotta #C86F52 is a fill/accent, never small text. Text-weight
+ *     terracotta uses --color-clay (#9A4A30).
+ */
+@theme {
+  --color-teal: #164e4a;
+  --color-teal-deep: #0f3834;
+  --color-teal-soft: #22625c;
+  --color-sand: #f3ebdd;
+  --color-sand-deep: #e9dcc6;
+  --color-sage: #dde8df;
+  --color-sage-deep: #c5d6c9;
+  --color-terracotta: #c86f52;
+  --color-clay: #9a4a30;
+  --color-charcoal: #24302f;
+  --color-muted: #6b7774;
+  --color-stone: #525d5a;
+  --color-line: #e2d8c6;
+  --color-line-cool: #dbe3dd;
+  --color-danger: #b3361d;
+  --color-success: #1f6b45;
+
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 0.75rem;
+  --radius-photo: 1.75rem;
+  --shadow-soft: 0 1px 2px rgb(36 48 47 / 0.04), 0 12px 32px -16px rgb(36 48 47 / 0.18);
+  --shadow-lift: 0 2px 6px rgb(36 48 47 / 0.05), 0 24px 48px -20px rgb(22 78 74 / 0.32);
+  --ease-flow: cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Anchors land below the sticky header. */
+    scroll-padding-top: 6rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    background: #fff;
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-teal);
+    text-wrap: balance;
+  }
+  .on-teal h1,
+  .on-teal h2,
+  .on-teal h3 {
+    color: #fff;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-sage-deep);
+    color: var(--color-teal-deep);
+  }
+  :focus-visible {
+    outline: 2.5px solid var(--color-terracotta);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* ---------- Layout ---------- */
+
+@utility shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (min-width: 640px) {
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility section-y {
+  padding-block: clamp(4rem, 9vw, 7.5rem);
+}
+
+/* ---------- Type scale ---------- */
+
+@utility t-h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.15rem, 1.55rem + 2.6vw, 3.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+@utility t-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 1.4rem + 1.7vw, 2.85rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+@utility t-h3 {
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(1.12rem, 1.05rem + 0.35vw, 1.32rem);
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+}
+@utility t-lead {
+  font-size: clamp(1.04rem, 0.98rem + 0.3vw, 1.18rem);
+  line-height: 1.65;
+}
+@utility t-label {
+  font-size: 0.74rem;
+  font-weight: 650;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ---------- Buttons: rounded rectangles, not pills ---------- */
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  font-size: 0.97rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition:
+    background-color 200ms var(--ease-flow),
+    color 200ms var(--ease-flow),
+    border-color 200ms var(--ease-flow),
+    box-shadow 200ms var(--ease-flow);
+}
+@utility btn-teal {
+  background: var(--color-teal);
+  color: #fff;
+  &:hover {
+    background: var(--color-teal-soft);
+    box-shadow: 0 10px 24px -14px rgb(22 78 74 / 0.8);
+  }
+}
+@utility btn-light {
+  background: #fff;
+  color: var(--color-teal);
+  &:hover {
+    background: var(--color-sand);
+  }
+}
+@utility btn-outline {
+  border: 1.5px solid rgb(22 78 74 / 0.3);
+  color: var(--color-teal);
+  &:hover {
+    border-color: var(--color-teal);
+    background: rgb(255 255 255 / 0.6);
+  }
+}
+@utility btn-outline-light {
+  border: 1.5px solid rgb(255 255 255 / 0.45);
+  color: #fff;
+  &:hover {
+    border-color: #fff;
+    background: rgb(255 255 255 / 0.08);
+  }
+}
+
+/* CTA arrows move a little on hover/focus of their group. */
+.arrow {
+  transition: transform 220ms var(--ease-flow);
+}
+.group:hover .arrow,
+.group:focus-visible .arrow {
+  transform: translateX(4px);
+}
+
+/* Navigation and text-link underline that draws in from the left. */
+.underline-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 280ms var(--ease-flow);
+}
+.underline-draw:hover,
+.underline-draw:focus-visible,
+.underline-draw[aria-current="page"] {
+  background-size: 100% 1.5px;
+}
+
+/* Soft zoom on photos inside a hovered group. */
+.zoom img {
+  transition: transform 700ms var(--ease-flow);
+}
+.group:hover .zoom img {
+  transform: scale(1.04);
+}
+
+/* Arched frame: Scandinavian architecture, and the curve of a pipe bend. */
+.arch {
+  border-radius: 999px 999px var(--radius-photo) var(--radius-photo);
+}
+
+/* ---------- Organic shapes ---------- */
+
+/* Very slow drift for the background shapes — a few pixels, never distracting. */
+@keyframes drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate(12px, -10px) rotate(6deg) scale(1.03);
+  }
+}
+.drift {
+  animation: drift 16s ease-in-out infinite alternate;
+}
+
+/* ---------- Forms ---------- */
+
+.field {
+  width: 100%;
+  min-height: 3rem;
+  border-radius: 0.65rem;
+  border: 1.5px solid var(--color-line-cool);
+  background: #fff;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  transition:
+    border-color 180ms,
+    box-shadow 180ms;
+}
+.field::placeholder {
+  color: #87918e;
+}
+.field:hover {
+  border-color: var(--color-sage-deep);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgb(22 78 74 / 0.18);
+}
+.field[aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+
+/* ---------- Hero entrance (CSS, so it plays before hydration) ---------- */
+
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes unveil {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.06em;
+}
+.line > span {
+  display: block;
+  animation: rise 650ms var(--ease-flow) both;
+}
+.enter {
+  animation: fade-rise 520ms var(--ease-flow) both;
+}
+.unveil {
+  animation: unveil 1000ms var(--ease-flow) both;
+}
+
+/* ---------- One-screen hero ----------
+ * The homepage hero fills exactly the visible screen below the site chrome:
+ *   phones:  header 4.5rem + mobile action bar ~4.6rem
+ *   md+:     announcement 2.25rem + header 4.5rem (no action bar)
+ *   lg+:     announcement 2.25rem + header 5rem
+ */
+.hero-screen {
+  --chrome: 9.1rem;
+  height: calc(100svh - var(--chrome));
+}
+@media (min-width: 768px) {
+  .hero-screen {
+    --chrome: 6.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-screen {
+    --chrome: 7.25rem;
+    min-height: 30rem;
+  }
+}
+/* Short phone screens: the photo steps aside so text and buttons still fit. */
+@media (max-width: 1023px) and (max-height: 700px) {
+  .hero-photo {
+    display: none;
+  }
+  .hero-screen > .shell {
+    justify-content: center;
+  }
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: clamp(2.1rem, min(1.4rem + 3.6vw, 7.4vh), 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

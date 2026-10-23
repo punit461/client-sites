@@ -29,12 +29,7 @@ export type Service = {
   related: string[];
 };
 
-export type ProjectCategory =
-  | "Residential repairs"
-  | "Bathroom installations"
-  | "Water heater work"
-  | "Pipe replacement"
-  | "Commercial plumbing";
+export type ProjectCategory = "Drain cleaning" | "Sewer & water lines" | "Water heaters" | "Commercial work";
 
 export type Project = {
   slug: string;
@@ -47,6 +42,8 @@ export type Project = {
   summary: string;
   /** What this kind of job typically involves — general, not a claim about one customer. */
   involves: string[];
+  /** A licensed stock photo rather than the company's own — labelled as such. */
+  stock?: boolean;
   /**
    * A verified record of a real job. Only for the company's own work, with
    * the customer's agreement. Stock photography never gets one.

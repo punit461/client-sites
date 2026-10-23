@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!a) return {};
   return pageMetadata({
     title: `Plumbing in ${a.name}`,
-    description: `Plumbing repairs, installations and maintenance in ${a.name} (${a.postalCodes.join(", ")}). How visits work and how to get an estimate.`,
+    description: `Plumbing repairs, installations and maintenance in ${a.name}${a.postalCodes.length ? ` (${a.postalCodes.join(", ")})` : ""}. How visits work and how to get an estimate.`,
     path: `/service-areas/${a.slug}/`,
-    photo: "plumberUnderBasin",
+    photo: "teamAndVans",
     // Indexed only once it has genuinely local content.
     noindex: !isIndexable(a),
   });
@@ -45,7 +45,7 @@ export default async function AreaPage({ params }: Props) {
           { name: "Service Areas", href: "/service-areas/" },
           { name: area.name, href: `/service-areas/${area.slug}/` },
         ]}
-        label={`${area.region} · ${area.postalCodes.join(", ")}`}
+        label={area.postalCodes.length ? `${area.region} · ${area.postalCodes.join(", ")}` : area.region}
         title={`Plumbing in ${area.name}`}
         lead={
           confirm
@@ -110,15 +110,19 @@ export default async function AreaPage({ params }: Props) {
             <p className="mt-4 text-sm text-ink-soft">Visits are arranged within our opening hours: {compactHours()}.</p>
           </div>
           <div>
-            <h2 className="t-label">Postal codes</h2>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {area.postalCodes.map((p) => (
-                <li key={p} className="rounded-[4px] bg-charcoal px-3 py-1.5 font-display font-semibold text-white">
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <h2 className="t-label mt-10">Nearby</h2>
+            {area.postalCodes.length ? (
+              <>
+                <h2 className="t-label">Postal codes</h2>
+                <ul className="mt-3 mb-10 flex flex-wrap gap-2">
+                  {area.postalCodes.map((p) => (
+                    <li key={p} className="rounded-[4px] bg-charcoal px-3 py-1.5 font-display font-semibold text-white">
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
+            <h2 className="t-label">Nearby</h2>
             <ul className="mt-3 flex flex-wrap gap-x-6">
               {areas
                 .filter((a) => a.slug !== area.slug)

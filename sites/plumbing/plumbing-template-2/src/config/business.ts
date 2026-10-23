@@ -5,9 +5,12 @@
  * structured data all read from here — change a value once and it changes
  * everywhere.
  *
- * The values below are PLACEHOLDERS and deliberately look like it: 555-01xx is
- * the reserved fictional phone range and `.example` is a reserved domain.
- * Replace every one before launch (README.md has the checklist).
+ * The values below are Tx-Star Plumbing's public details, from its Google
+ * Business Profile (October 2026): name, phone, hours, rating and reviews. The
+ * licence number is the one on the company's vans in its own Google photos, and
+ * "licensed and insured" is the company's own statement in its profile. The
+ * business publishes no email address, so `email` is null and every email
+ * link is hidden.
  */
 
 import { env } from "./env";
@@ -29,35 +32,47 @@ export const business = {
    * True while any value here is a placeholder: the site is kept out of search
    * results and says so in the footer. Set false only when everything is real.
    */
-  demo: true,
+  demo: false,
 
-  name: "FlowForce Plumbing",
-  shortName: "FlowForce",
-  tagline: "Residential & commercial plumbing",
+  name: "Tx-Star Plumbing",
+  shortName: "Tx-Star",
+  /** The company's own motto. */
+  tagline: "Service with a Smile",
   description:
-    "Practical plumbing repairs, installations and maintenance — from a team that puts clear communication first.",
+    "Family-owned, 5th-generation Houston plumbers — drain cleaning and hydro-jetting, sewer and water line repair, water heaters and gas lines for homes and businesses.",
+  /** What the company traded as before; older reviews use this name. */
+  formerName: "Beacon Plumbing",
+  /** From the company's own profile: "Our 23 years of experience…" */
+  yearsExperience: 23,
 
   /** The live address, no trailing slash. NEXT_PUBLIC_SITE_URL overrides it. */
-  url: env.siteUrl || "https://www.flowforce-plumbing.example",
+  url: env.siteUrl || "https://www.tx-starplumbing.com",
   locale: "en_US",
   country: "US",
 
-  phone: { display: "(555) 010-3070", e164: "+15550103070" },
-  email: "hello@flowforce-plumbing.example",
+  phone: { display: "(832) 219-6222", e164: "+18322196222" },
+  /** None published. Null hides every email link; the phone is used instead. */
+  email: null as string | null,
 
-  /** Null for a mobile business with no customer-facing premises. */
+  /**
+   * Null: the Google profile doesn't publish a street address, so neither
+   * does the site.
+   */
   address: null as null | { street: string; locality: string; region: string; postalCode: string },
 
   hours: [
-    { label: "Mon – Fri", days: ["Mo", "Tu", "We", "Th", "Fr"], opens: "07:30", closes: "17:00" },
-    { label: "Saturday", days: ["Sa"], opens: "08:00", closes: "12:00" },
+    { label: "Mon – Sat", days: ["Mo", "Tu", "We", "Th", "Fr", "Sa"], opens: "05:00", closes: "18:00" },
+    { label: "Sunday", days: ["Su"], opens: "07:00", closes: "18:00" },
   ] as OpeningHours[],
-  hoursNote: "Closed Sundays and public holidays.",
+  hoursNote: "Open 7 days a week, from 5am most days.",
 
   /** Real, active profiles only. Empty renders nothing. */
   socials: [] as Link[],
   /** Where customers can read the company's reviews (Google, Yelp…). */
-  reviewProfiles: [] as Link[],
+  reviewProfiles: [{ label: "Google", href: "https://maps.app.goo.gl/rnhZ86juSRGFhfVm6" }] as Link[],
+
+  /** The public star rating, shown beside the reviews. Update it now and then. */
+  rating: { value: 4.7, count: 156, source: "Google" } as null | { value: number; count: number; source: string },
 
   /**
    * Claims that need evidence. Each stays false until the company can show it;
@@ -65,45 +80,47 @@ export const business = {
    */
   verified: {
     emergencyService: false,
-    licensed: false,
-    insured: false,
+    licensed: true,
+    insured: true,
     workmanshipWarranty: false,
   },
-  credentials: { licenseNumber: "", warrantySummary: "" },
+  /** Texas Responsible Master Plumber licence, as shown on the company vans. */
+  credentials: { licenseNumber: "Texas RMP 42130", warrantySummary: "" },
 };
 
 /**
- * "The FlowForce standard": how the company works. Promises, not credentials —
- * keep only the ones the company actually keeps.
+ * "The Tx-Star standard": how the company works. Each one is something its
+ * Google reviewers describe — keep only the ones the company actually keeps.
  */
 export const principles = [
   {
-    title: "Straightforward communication",
-    body: "You'll know who's coming, when, and why. If anything changes, we call — no chasing us for updates.",
+    title: "Service with a smile",
+    body: "It's our motto, and our customers notice: polite staff come up in more of our Google reviews than anything else.",
   },
   {
-    title: "Clear estimates before approved work",
-    body: "We explain what we found and put the price in writing. Work starts when you say yes, not before.",
+    title: "Every step explained",
+    body: "We walk you through what we found and what we're doing — and you hear everything before any work is done.",
   },
   {
-    title: "Respect for homes and workspaces",
-    body: "Floors covered, work area contained, mess removed. Your space looks the way we found it — minus the problem.",
+    title: "Free estimates, fair prices",
+    body: "Clear, competitive pricing agreed up front, and the job finished for the price we agreed. No surprises on the invoice.",
   },
   {
-    title: "Practical recommendations",
-    body: "What needs fixing now, what can wait, and what doesn't need doing at all. Honest options, not upsells.",
+    title: "The root cause, found",
+    body: "We don't just clear today's blockage. Camera inspections show what's really going on, so the fix lasts.",
   },
 ];
 
 /** What happens after a request is sent — the same promise everywhere. */
 export const afterRequest = [
-  "We review your request during opening hours.",
+  "We review your request during opening hours — from 5am, 7 days a week.",
   "We contact you to talk it through and, if needed, arrange a visit.",
-  "You get a clear estimate. Work starts only when you approve it.",
+  "You get a free, clear estimate. Work starts only when you approve it.",
 ];
 
 export const telHref = `tel:${business.phone.e164}`;
-export const mailHref = `mailto:${business.email}`;
+/** Null when the business publishes no email — callers hide the link. */
+export const mailHref = business.email ? `mailto:${business.email}` : null;
 
 const dayNames: Record<Weekday, string> = {
   Mo: "Monday",

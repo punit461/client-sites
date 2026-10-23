@@ -8,8 +8,8 @@ const content: AudienceContent = {
   eyebrow: "For homeowners",
   title: "Plumbing for the home you live in.",
   lead: "Repairs, replacements and upgrades carried out in an occupied home — which means arriving when we said, keeping the work area contained, and explaining your options before anything is changed.",
-  photo: "plumberBathroom",
-  sidePhoto: "bathroomBright",
+  photo: "subwayShower",
+  sidePhoto: "doubleVanity",
   commitmentsTitle: "Working in your home, the way you'd want.",
   commitments: [
     {
@@ -25,7 +25,7 @@ const content: AudienceContent = {
     {
       icon: "file",
       title: "Your options, explained",
-      body: "What needs fixing now, what can wait, and the price for each, in writing.",
+      body: "What needs fixing now, what can wait, and the price for each, upfront.",
     },
     {
       icon: "sparkles",
@@ -53,7 +53,7 @@ const content: AudienceContent = {
     },
     {
       q: "Will you explain what's wrong before you start?",
-      a: "Always. We tell you what we found, what we recommend, and the price in writing. Nothing starts until you approve it.",
+      a: "Always. We tell you what we found, what we recommend, and the price upfront. Nothing starts until you approve it.",
     },
   ],
   ctaTitle: "Plumbing problem at home? Let's talk it through.",
@@ -62,7 +62,7 @@ const content: AudienceContent = {
 export const metadata = pageMetadata({
   title: "Residential Plumbing",
   description:
-    "Plumbing repairs, replacements and bathroom plumbing for homeowners and landlords — clear arrival windows, protected floors and a written estimate first.",
+    "Plumbing repairs, replacements and bathroom plumbing for homeowners and landlords — clear arrival windows, protected floors and an upfront price first.",
   path: content.path,
   photo: content.photo,
 });

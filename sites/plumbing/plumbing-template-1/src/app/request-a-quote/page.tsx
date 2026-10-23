@@ -10,14 +10,14 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Request a Quote",
   description:
-    "Describe your plumbing problem, add photos and tell us when suits you. We will get back to you to talk it through — with a written estimate before any work begins.",
+    "Describe your plumbing problem, add photos and tell us when suits you. We will get back to you to talk it through — with an upfront price before any work begins.",
   path: "/request-a-quote/",
 });
 
 const next = [
   "We read your request during opening hours and get back to you by phone or email.",
   "We talk it through, and arrange a visit if the job needs one. The time is confirmed only when we confirm it with you.",
-  "You receive a written estimate. Nothing starts until you approve it.",
+  "You get an upfront price. Nothing starts until you approve it.",
 ];
 
 export default function QuotePage() {

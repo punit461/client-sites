@@ -8,12 +8,12 @@ const c: AudienceContent = {
   label: "For homeowners",
   title: "Home plumbing, minus the hassle.",
   lead: "Leaks, blockages, water heaters, new fixtures and bathroom projects — handled by a team that shows up when agreed, explains everything, and leaves your home tidy.",
-  photo: "plumberBathroom",
-  sidePhoto: "bathroomWarm",
+  photo: "drainMachineYard",
+  sidePhoto: "gasWaterHeater",
   pointsTitle: "Built around life at home.",
   points: [
-    { title: "Agreed arrival windows", body: "A time window you can plan your day around, and a call if anything changes." },
-    { title: "Written estimates", body: "The price in writing before work starts. No surprises on the invoice." },
+    { title: "A heads-up before we arrive", body: "We let you know before we arrive, and call if anything changes." },
+    { title: "Free estimates", body: "A clear price agreed before work starts. No surprises on the invoice." },
     { title: "Home protected", body: "Floor protection down, work area contained, everything cleaned up after." },
     { title: "Straight advice", body: "Fix now, fix later, or leave it — we'll tell you honestly which." },
   ],
@@ -39,7 +39,7 @@ const c: AudienceContent = {
 export const metadata = pageMetadata({
   title: "Residential Plumbing",
   description:
-    "Home plumbing repairs, water heaters, fixtures and bathroom plumbing — agreed arrival windows, written estimates, and a tidy finish.",
+    "Home plumbing repairs, water heaters, fixtures and bathroom plumbing — agreed arrival times, free estimates, and every step explained.",
   path: c.path,
   photo: c.photo,
 });

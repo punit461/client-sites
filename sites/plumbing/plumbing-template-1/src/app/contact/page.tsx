@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Contact Us",
-  description: `Call ${business.phone.display}, email us, or request a quote online. Opening hours and the areas we cover.`,
+  description: `Call ${business.phone.display}${mailHref ? ", email us," : ""} or request a quote online. Opening hours and the areas we cover.`,
   path: "/contact/",
 });
 
@@ -24,7 +24,7 @@ export default function ContactPage() {
       />
 
       <section aria-label="Ways to contact us" className="section-y">
-        <div className="shell grid gap-5 lg:grid-cols-3">
+        <div className={`shell grid gap-5 ${mailHref ? "lg:grid-cols-3" : "md:grid-cols-2"}`}>
           <Reveal className="flex flex-col rounded-2xl border border-line bg-white p-7">
             <Icon name="phone" className="h-7 w-7 text-copper-ink" />
             <h2 className="t-h3 mt-5 text-navy">Call</h2>
@@ -33,14 +33,16 @@ export default function ContactPage() {
               {business.phone.display}
             </a>
           </Reveal>
-          <Reveal delay={0.05} className="flex flex-col rounded-2xl border border-line bg-white p-7">
-            <Icon name="mail" className="h-7 w-7 text-copper-ink" />
-            <h2 className="t-h3 mt-5 text-navy">Email</h2>
-            <p className="mt-2 flex-1 text-slate">For general questions, documents and follow-ups.</p>
-            <a href={mailHref} className="mt-5 self-start break-all font-semibold text-navy link-underline">
-              {business.email}
-            </a>
-          </Reveal>
+          {mailHref ? (
+            <Reveal delay={0.05} className="flex flex-col rounded-2xl border border-line bg-white p-7">
+              <Icon name="mail" className="h-7 w-7 text-copper-ink" />
+              <h2 className="t-h3 mt-5 text-navy">Email</h2>
+              <p className="mt-2 flex-1 text-slate">For general questions, documents and follow-ups.</p>
+              <a href={mailHref} className="mt-5 self-start break-all font-semibold text-navy link-underline">
+                {business.email}
+              </a>
+            </Reveal>
+          ) : null}
           <Reveal delay={0.1} className="on-dark flex flex-col rounded-2xl bg-navy p-7 text-ivory">
             <Icon name="file" className="h-7 w-7 text-copper-soft" />
             <h2 className="t-h3 mt-5">Request a quote</h2>

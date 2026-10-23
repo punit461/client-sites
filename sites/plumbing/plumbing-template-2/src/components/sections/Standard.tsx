@@ -26,7 +26,7 @@ export function Standard() {
         </div>
         <Reveal x={30} className="relative lg:col-span-5">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-box)] bg-charcoal-3 lg:sticky lg:top-28">
-            <Photo name="basinTrapCloseUp" width={900} sizes="(min-width: 1024px) 34vw, 100vw" />
+            <Photo name="drainMachineYard" width={900} sizes="(min-width: 1024px) 34vw, 100vw" className="object-cover object-[0%_50%]" />
           </div>
         </Reveal>
       </div>

@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   title: "Projects",
   description: "Residential repairs, bathroom installations, water heater work, pipe replacement and commercial plumbing.",
   path: "/projects/",
-  photo: "bathroomRoughIn",
+  photo: "sewerPipeRepair",
 });
 
 export default function ProjectsPage() {
@@ -26,12 +26,12 @@ export default function ProjectsPage() {
             Projects
           </h2>
           <ProjectGrid projects={projects} categories={projectCategories} />
-          {projects.some((p) => !p.caseStudy) ? (
-            <p className="mt-8 max-w-2xl text-sm text-ink-soft">
-              Photography shows representative plumbing work, not specific customer projects. Case studies are published
-              only for real jobs, with the customer&apos;s agreement.
-            </p>
-          ) : null}
+          <p className="mt-8 max-w-2xl text-sm text-ink-soft">
+            {projects.some((p) => p.stock)
+              ? "Some photography shows representative plumbing work, not specific customer projects."
+              : "Photos of our own team and work, from our Google Business Profile."}{" "}
+            Case studies are published only for real jobs, with the customer&apos;s agreement.
+          </p>
         </div>
       </section>
       <FinalCta />

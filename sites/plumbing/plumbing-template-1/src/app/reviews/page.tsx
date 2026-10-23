@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
     ? `What customers say about ${business.name}, with links to the original reviews.`
     : `The service standards ${business.name} holds every visit to — from written estimates to a clean finish.`,
   path: "/reviews/",
-  photo: "bathroomWhite",
+  photo: "bathroomTub",
 });
 
 export default function ReviewsPage() {

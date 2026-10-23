@@ -19,6 +19,7 @@ import {
   ShieldCheck,
   ShowerHead,
   Sparkles,
+  Star,
   Toilet,
   TriangleAlert,
   Waves,
@@ -53,6 +54,7 @@ const icons = {
   calendar: CalendarClock,
   alert: TriangleAlert,
   sparkles: Sparkles,
+  star: Star,
   arrow: ArrowRight,
   arrowUpRight: ArrowUpRight,
 } satisfies Record<string, LucideIcon>;

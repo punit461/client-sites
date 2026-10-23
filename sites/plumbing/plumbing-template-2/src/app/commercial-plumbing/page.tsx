@@ -7,30 +7,30 @@ const c: AudienceContent = {
   crumb: "Commercial",
   label: "For businesses",
   title: "Commercial plumbing that keeps you open.",
-  lead: "Restaurants, shops, offices and managed buildings: we plan around your operation, keep you updated, and document every job.",
-  photo: "commercialKitchen",
-  sidePhoto: "plantRoom",
+  lead: "Restaurants, shops, offices and apartment complexes across Houston: we start early, work around your operation, and keep you updated.",
+  photo: "vansDowntown",
+  sidePhoto: "floorDrainCabling",
   pointsTitle: "Less downtime. More clarity.",
   points: [
-    { title: "Scheduled around you", body: "Visits within our opening hours, timed for the quietest part of your day where possible." },
-    { title: "One point of contact", body: "One person who knows your job from estimate to sign-off." },
-    { title: "Written records", body: "A summary of every job for your maintenance file, landlord or insurer." },
-    { title: "Planned maintenance", body: "Regular checks that catch problems before they close a kitchen or washroom." },
+    { title: "Early starts", body: "We open at 5am, seven days a week, so many jobs can be done before you open your doors." },
+    { title: "Drain specialists", body: "Floor drains, grease-heavy kitchen lines and restroom drains cleared by cable machine or hydro-jetting." },
+    { title: "Water and sewer lines", body: "Water and sewer lines under parking lots and common areas repaired or replaced." },
+    { title: "Kept in the loop", body: "Every step explained, and a call before we arrive and whenever plans change." },
   ],
   forTitle: "Plumbing for the places people work.",
   forList: ["Restaurants and commercial kitchens", "Retail units", "Offices and studios", "Property and facilities managers", "Multi-unit residential buildings"],
   faqs: [
     {
-      q: "Can you work outside our trading hours?",
-      a: "We schedule within our published opening hours and pick the least disruptive slot we can. Tell us your constraints and we'll plan around them as far as possible.",
+      q: "Can you work before we open?",
+      a: "Often, yes. We open at 5am Monday to Saturday and 7am on Sunday, and pick the least disruptive slot we can. Tell us your hours when you get in touch.",
     },
     {
-      q: "Do we get documentation?",
-      a: "Yes — a written summary of the work for your records, landlord or insurer.",
+      q: "Do you clear grease-heavy kitchen lines?",
+      a: "Yes. Cable machines clear the blockage; hydro-jetting scours the grease off the pipe walls so it doesn't come straight back.",
     },
     {
-      q: "Can we set up planned maintenance?",
-      a: "Yes. We agree what each visit covers and how often, and send a written report after each one.",
+      q: "Do you work on apartment complexes?",
+      a: "Yes — including water lines that run under parking lots and common areas, where the work has to be planned around residents.",
     },
   ],
   cta: "Keep your business flowing.",
@@ -39,7 +39,7 @@ const c: AudienceContent = {
 export const metadata = pageMetadata({
   title: "Commercial Plumbing",
   description:
-    "Plumbing repairs and planned maintenance for restaurants, shops, offices and managed buildings — scheduled around your operation, with written records.",
+    "Drain cleaning, hydro-jetting, water and sewer line repairs for Houston restaurants, shops, offices and apartment complexes — from 5am, seven days a week.",
   path: c.path,
   photo: c.photo,
 });

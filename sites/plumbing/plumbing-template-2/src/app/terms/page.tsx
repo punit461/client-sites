@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LegalPage } from "@/components/templates/LegalPage";
-import { business, mailHref } from "@/config/business";
+import { business, mailHref, telHref } from "@/config/business";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -13,14 +13,14 @@ export default function TermsPage() {
   return (
     <LegalPage title="Terms of Use" path="/terms/" updated="October 2026">
       <p>
-        These terms cover your use of this website. The terms for any plumbing work are set out in the written estimate we
-        give you before that work begins.
+        These terms cover your use of this website. The terms for any plumbing work are the ones in the estimate we give
+        you before that work begins.
       </p>
 
       <h2>Estimate requests are not bookings</h2>
       <p>
         Sending an estimate request does not create an appointment or a contract. We will contact you to discuss your request,
-        and a visit is booked only when we confirm a time with you directly. Work begins only after you approve a written
+        and a visit is booked only when we confirm a time with you directly. Work begins only after you approve an
         estimate.
       </p>
 
@@ -33,8 +33,8 @@ export default function TermsPage() {
 
       <h2>Photographs</h2>
       <p>
-        Some photographs on this website are licensed images showing representative work rather than specific jobs we have
-        completed. They are labeled where they appear.
+        Most photographs on this website are of our own team and work. A few service pages use licensed images that show
+        representative work rather than jobs we have completed.
       </p>
 
       <h2>Using the website</h2>
@@ -50,7 +50,15 @@ export default function TermsPage() {
 
       <h2>Questions</h2>
       <p>
-        Contact us at <a href={mailHref}>{business.email}</a>.
+        {mailHref ? (
+          <>
+            Contact us at <a href={mailHref}>{business.email}</a>.
+          </>
+        ) : (
+          <>
+            Call us on <a href={telHref}>{business.phone.display}</a>.
+          </>
+        )}
       </p>
     </LegalPage>
   );

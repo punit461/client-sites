@@ -40,7 +40,7 @@ export function EmergencyBanner() {
             <Button href={telHref} variant="lime" icon="phone">
               Call {business.phone.display}
             </Button>
-            {emergency ? null : (
+            {emergency || !mailHref ? null : (
               <Button href={mailHref} variant="line-light" icon={null}>
                 Email us
               </Button>

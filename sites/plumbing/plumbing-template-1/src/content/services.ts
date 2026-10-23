@@ -15,7 +15,7 @@ const all: Service[] = [
     offered: true,
     audiences: ["residential", "commercial"],
     icon: "droplets",
-    photo: "brassLeak",
+    photo: "washerBoxValves",
     summary:
       "Finding the source of a leak — including the ones you can't see — and repairing or replacing the damaged section of pipe.",
     intro:
@@ -49,7 +49,7 @@ const all: Service[] = [
     approach: [
       "Confirm the leak at the water meter and check accessible pipework first.",
       "Isolate sections to narrow down the source with as little disruption as possible.",
-      "Explain what we found and give you a written estimate for the repair.",
+      "Explain what we found and give you an upfront price for the repair.",
       "Repair or replace the affected section once you approve.",
       "Pressure-test the line and check for drips before we leave.",
     ],
@@ -78,7 +78,7 @@ const all: Service[] = [
     offered: true,
     audiences: ["residential", "commercial"],
     icon: "waves",
-    photo: "kitchenSink",
+    photo: "pvcDrainCleanout",
     summary:
       "Clearing slow and blocked sinks, showers, toilets and drain lines — and finding out why they blocked in the first place.",
     intro:
@@ -158,7 +158,7 @@ const all: Service[] = [
       },
       {
         title: "Replacement units",
-        body: "Like-for-like replacements and upgrades, sized to how much hot water your household or business actually uses.",
+        body: "Like-for-like replacements and upgrades — tank or tankless — sized to how much hot water your household or business actually uses.",
       },
       {
         title: "Safety devices",
@@ -172,7 +172,7 @@ const all: Service[] = [
     approach: [
       "Check the supply, controls and safety devices to find the actual fault.",
       "Tell you whether the unit is worth repairing, and why.",
-      "Give you a written estimate for the repair or for a replacement.",
+      "Give you an upfront price for the repair or for a replacement.",
       "Carry out the work and test the heater through a full heating cycle.",
     ],
     meanwhile:
@@ -200,7 +200,7 @@ const all: Service[] = [
     offered: true,
     audiences: ["residential", "commercial"],
     icon: "showerHead",
-    photo: "kitchenTapRunning",
+    photo: "doubleVanity",
     summary:
       "Installing and repairing faucets, mixers, shower valves, sinks and basins — new fixtures you supply or ones we source for you.",
     intro:
@@ -257,7 +257,7 @@ const all: Service[] = [
     offered: true,
     audiences: ["residential", "commercial"],
     icon: "toilet",
-    photo: "flushPlateInstall",
+    photo: "subwayShower",
     summary:
       "Fixing running, leaking, weak-flushing and rocking toilets, and replacing toilets and in-wall tank systems.",
     intro:
@@ -313,7 +313,7 @@ const all: Service[] = [
     offered: true,
     audiences: ["residential"],
     icon: "bath",
-    photo: "bathroomRoughIn",
+    photo: "showerPanRoughIn",
     summary:
       "Rough-in pipework and finish plumbing for new and renovated bathrooms, primary suites and powder rooms.",
     intro:
@@ -344,7 +344,7 @@ const all: Service[] = [
     ],
     approach: [
       "Visit to look at the room, the existing pipework and your plans.",
-      "Agree the scope and give you a written estimate for each stage.",
+      "Agree the scope and give you an upfront price for each stage.",
       "Complete and test the rough-in before the room is closed up.",
       "Return for finish plumbing and test every fixture.",
     ],
@@ -372,7 +372,7 @@ const all: Service[] = [
     offered: true,
     audiences: ["residential", "commercial"],
     icon: "scan",
-    photo: "pipeRuns",
+    photo: "yardExcavation",
     summary:
       "Camera inspections of underground drain and sewer lines, and repairs to cracked, displaced or root-damaged pipe.",
     intro:
@@ -406,7 +406,7 @@ const all: Service[] = [
       "Clear any blockage so the camera can pass.",
       "Inspect the line and record the findings.",
       "Walk you through what we found and the repair options.",
-      "Provide a written estimate for the recommended work.",
+      "Give you an upfront price for the recommended work.",
     ],
     meanwhile: "If sewage is backing up, stop using water in the building — every flush and faucet adds to the problem.",
     faqs: [

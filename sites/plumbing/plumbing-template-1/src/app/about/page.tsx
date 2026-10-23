@@ -11,9 +11,9 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "About Us",
-  description: `How ${business.name} works: clear communication, written estimates before work begins, and respect for your home or premises.`,
+  description: `${business.name} is a licensed, owner-led plumber in North Fort Worth, TX — open 24 hours, with honest, upfront pricing.`,
   path: "/about/",
-  photo: "plumberBathroom",
+  photo: "serviceVan",
 });
 
 export default function AboutPage() {
@@ -36,22 +36,23 @@ export default function AboutPage() {
         crumbs={[{ name: "About Us", href: "/about/" }]}
         eyebrow="About us"
         title="A plumbing company built on doing what we said we would."
-        lead={`${business.name} handles plumbing repairs, installations and maintenance for homes and businesses. We would rather be known for straight answers and tidy work than for slogans.`}
+        lead={`${business.name} is a licensed, owner-led plumbing company in North Fort Worth, handling repairs, remodels and emergencies for homes and businesses — 24 hours a day.`}
       />
 
       <section aria-labelledby="story-title" className="section-y">
         <div className="shell grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <SectionHeading id="story-title" eyebrow="What we believe" title="Plumbing is a trust business." />
+            <SectionHeading id="story-title" eyebrow="Who we are" title="Plumbing is a trust business." />
             <div className="mt-6 space-y-5 text-slate">
               <p>
-                Inviting a tradesperson into your home or business means trusting them with your property, your time and
-                your budget. Most people have a story about a contractor who didn&apos;t turn up, didn&apos;t explain, or
-                left a mess.
+                We work out of Eastwedge Drive in North Fort Worth and cover the neighborhoods around it, out to Keller.
+                Cameron, the owner, still comes out on jobs with the team — so the person you talk to on the phone is
+                usually the person who fixes the problem.
               </p>
               <p>
-                We built the way we work around avoiding those stories: a clear arrival window, a written estimate before
-                anything starts, honest advice about what needs doing now and what doesn&apos;t, and a clean finish.
+                The phone is answered 24 hours a day. A frozen pipe on Christmas Eve gets the same answer as a dripping
+                faucet on a Tuesday afternoon: we tell you what we found, explain every detail of the repair and the
+                price, and only start once you&apos;re happy.
               </p>
               <p className="text-navy">
                 That&apos;s the whole pitch. If we can help with your plumbing, we will tell you. If we can&apos;t, we
@@ -60,7 +61,7 @@ export default function AboutPage() {
             </div>
           </div>
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-sand lg:col-span-6">
-            <Photo name="basinConnection" width={1000} sizes="(min-width: 1024px) 36rem, 100vw" />
+            <Photo name="serviceVan" width={1000} sizes="(min-width: 1024px) 36rem, 100vw" />
           </Reveal>
         </div>
       </section>
@@ -68,7 +69,11 @@ export default function AboutPage() {
       {creds.length ? (
         <section aria-labelledby="creds-title" className="section-y bg-white">
           <div className="shell">
-            <SectionHeading id="creds-title" eyebrow="Credentials" title="Licensed, insured and accountable." />
+            <SectionHeading
+              id="creds-title"
+              eyebrow="Credentials"
+              title={verified.insured ? "Licensed, insured and accountable." : "Licensed and accountable."}
+            />
             <div className="mt-10 grid gap-5 md:grid-cols-3">
               {creds.map((c) => (
                 <div key={c.title} className="rounded-2xl border border-line bg-ivory p-6">

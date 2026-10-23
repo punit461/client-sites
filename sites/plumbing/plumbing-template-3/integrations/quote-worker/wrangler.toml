@@ -1,0 +1,21 @@
+# Cloudflare Worker that receives the website's quote requests.
+# See README.md in this folder. Secrets are never stored in this file.
+name = "clearflow-quote"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Comma-separated list of sites allowed to post (no trailing slash).
+ALLOWED_ORIGINS = "https://www.clearflow-plumbing.example"
+# Where quote requests are emailed.
+QUOTE_TO = "office@clearflow-plumbing.example"
+# Sender on a domain you have verified in Resend.
+QUOTE_FROM = "Website quotes <quotes@clearflow-plumbing.example>"
+
+# At most 5 requests per minute from one IP address.
+[[ratelimits]]
+name = "QUOTE_LIMITER"
+namespace_id = "1001"
+  [ratelimits.simple]
+  limit = 5
+  period = 60

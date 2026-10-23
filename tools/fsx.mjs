@@ -25,23 +25,30 @@ export function copyDir(from, to, { skip = [] } = {}) {
  * asks for it flat, as about/__next.about.__PAGE__.txt. Every prefetch then
  * 404s and each navigation falls back to a full page load.
  *
+ * Dynamic segments nest one level deeper — services/x/__next.services/$d$slug/
+ * __PAGE__.txt is asked for as services/x/__next.services.$d$slug.__PAGE__.txt —
+ * so the payload directory is flattened all the way down.
+ *
  * So write the flat name alongside the directory. Purely additive: nothing is
  * moved or deleted, and when Next writes the flat name itself this becomes a
  * no-op that can be deleted.
  */
 export function flattenPrefetchPayloads(root) {
   let written = 0;
+  const flatten = (dir, target, prefix) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) { flatten(full, target, `${prefix}.${entry.name}`); continue; }
+      if (!entry.isFile()) continue;
+      const flat = path.join(target, `${prefix}.${entry.name}`);
+      if (!fs.existsSync(flat)) { fs.copyFileSync(full, flat); written += 1; }
+    }
+  };
   const walk = (dir) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, entry.name);
       if (!entry.isDirectory()) continue;
-      if (entry.name.startsWith('__next.')) {
-        for (const file of fs.readdirSync(full, { withFileTypes: true })) {
-          if (!file.isFile()) continue;
-          const flat = path.join(dir, `${entry.name}.${file.name}`);
-          if (!fs.existsSync(flat)) { fs.copyFileSync(path.join(full, file.name), flat); written += 1; }
-        }
-      }
+      if (entry.name.startsWith('__next.')) flatten(full, dir, entry.name);
       if (entry.name !== '_next') walk(full);
     }
   };

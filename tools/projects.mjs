@@ -61,6 +61,21 @@ const monogramOf = (name) => {
   return letters.toUpperCase();
 };
 
+/**
+ * The base path an export was actually built for, read from its own HTML
+ * rather than from .build-stamp.json. A plain `npm run build` inside a
+ * project rewrites out/ for the site root without touching the stamp, and a
+ * stamp that lies means pages served with every CSS and JS URL pointing at
+ * the wrong place. Null when it cannot tell (no index.html, no assets).
+ */
+export function exportedBasePath(exportDir) {
+  try {
+    const html = fs.readFileSync(path.join(exportDir, 'index.html'), 'utf8');
+    const match = html.match(/(?:src|href)="([^"]*?)\/_next\/static\//);
+    return match ? match[1] : null;
+  } catch { return null; }
+}
+
 /** A folder is a project only if it is a Next.js app. Nothing else is built. */
 export function isNextApp(dir) {
   if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) return false;

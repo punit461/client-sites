@@ -280,11 +280,16 @@ export function EstimateForm({ serviceOptions, initialService = "" }: { serviceO
                 Your details have <strong>not</strong> been sent. Everything you typed is still here — please call{" "}
                 <a href={telHref} className="font-semibold text-charcoal underline underline-offset-2">
                   {business.phone.display}
-                </a>{" "}
-                or email{" "}
-                <a href={mailHref} className="font-semibold text-charcoal underline underline-offset-2">
-                  {business.email}
                 </a>
+                {mailHref ? (
+                  <>
+                    {" "}
+                    or email{" "}
+                    <a href={mailHref} className="font-semibold text-charcoal underline underline-offset-2">
+                      {business.email}
+                    </a>
+                  </>
+                ) : null}
                 .
               </p>
               {process.env.NODE_ENV !== "production" ? (

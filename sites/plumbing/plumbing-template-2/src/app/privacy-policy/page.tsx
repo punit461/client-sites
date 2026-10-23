@@ -55,7 +55,14 @@ export default function PrivacyPage() {
       <h2>Your choices</h2>
       <p>
         You can ask us what information we hold about you, ask us to correct it, or ask us to delete it where we are not
-        required to keep it. Contact us at <a href={mailHref}>{business.email}</a> or{" "}
+        required to keep it. Contact us{" "}
+        {mailHref ? (
+          <>
+            at <a href={mailHref}>{business.email}</a> or{" "}
+          </>
+        ) : (
+          "on "
+        )}
         <a href={telHref}>{business.phone.display}</a>.
       </p>
     </LegalPage>

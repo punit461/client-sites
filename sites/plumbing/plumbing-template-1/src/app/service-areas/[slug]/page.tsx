@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Plumbing in ${area.name}`,
     description: `Plumbing repairs, installations and maintenance in ${area.name} (${area.postalCodes.join(", ")}). Services available, how visits work and how to request a quote.`,
     path: `/service-areas/${slug}/`,
-    photo: "plumberBathroom",
+    photo: "serviceVan",
     // A page with nothing local to say is kept out of search results.
     noindex: !isIndexable(area),
   });
@@ -118,7 +118,7 @@ export default async function AreaPage({ params }: Props) {
               </li>
               <li className="flex gap-3">
                 <Icon name="file" className="mt-0.5 h-5 w-5 shrink-0 text-copper-ink" />
-                You receive a written estimate before any work begins.
+                You get an upfront price before any work begins.
               </li>
             </ul>
           </div>

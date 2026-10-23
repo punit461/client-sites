@@ -70,8 +70,8 @@ export function ServiceBento({ services }: { services: Service[] }) {
           <SectionHead
             id="services-title"
             label="Services"
-            title="Everything from a drip to a full install."
-            lead="Every job starts the same way: find the real cause, explain it plainly, put the price in writing."
+            title="From a slow drain to a new sewer line."
+            lead="Every job starts the same way: find the real cause, explain every step, agree the price up front."
           />
           <ArrowLink href="/services/" className="shrink-0">
             All services

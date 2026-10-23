@@ -2,7 +2,7 @@ import { ButtonLink } from "@/components/ui/ArrowLink";
 import { Icon } from "@/components/ui/Icon";
 import { Photo } from "@/components/ui/Photo";
 import { Eyebrow } from "@/components/ui/SectionHeading";
-import { compactHours, telHref } from "@/config/business";
+import { business, compactHours, telHref } from "@/config/business";
 
 /**
  * The hero fills exactly one screen (.hero-screen in globals.css): on wide
@@ -19,7 +19,7 @@ export function Hero() {
       <div className="shell flex min-h-0 flex-1 flex-col gap-5 pt-[clamp(1rem,3vh,2rem)] pb-4 lg:grid lg:grid-cols-12 lg:items-stretch lg:gap-10 lg:py-[clamp(1.5rem,4vh,3rem)]">
         <div className="shrink-0 lg:col-span-6 lg:self-center">
           <div className="enter" style={{ animationDelay: "40ms" }}>
-            <Eyebrow>Residential &amp; Commercial Plumbing</Eyebrow>
+            <Eyebrow>Fort Worth Plumber · Open 24 Hours</Eyebrow>
           </div>
 
           <h1 id="hero-title" className="t-display hero-title mt-[clamp(0.75rem,2.5vh,1.5rem)] text-navy">
@@ -34,10 +34,10 @@ export function Hero() {
           </h1>
 
           <p className="enter mt-[clamp(0.75rem,2.5vh,1.75rem)] max-w-xl text-[1rem] leading-relaxed text-slate sm:text-[1.1rem]" style={{ animationDelay: "360ms" }}>
-            Dependable repairs, installations and maintenance for homes and businesses.
+            Leak detection, pipe and faucet repairs, water heaters and bathroom remodels across North Fort Worth and Keller.
             <span className="hidden sm:inline">
               {" "}
-              We find the real cause, explain your options in plain language, and leave your space as clean as we found it.
+              Owner-led, honest and upfront — and the phone is answered day and night.
             </span>
           </p>
 
@@ -46,7 +46,7 @@ export function Hero() {
               Request a Quote
             </ButtonLink>
             <ButtonLink href={telHref} variant="outline" icon="phone" className="px-3 sm:px-5">
-              Call Our Team
+              Call Now
             </ButtonLink>
           </div>
 
@@ -54,9 +54,12 @@ export function Hero() {
             className="enter mt-[clamp(1rem,3vh,2rem)] hidden max-w-md items-start gap-3 border-t border-line pt-[clamp(0.75rem,2vh,1.5rem)] text-[0.95rem] text-slate sm:flex"
             style={{ animationDelay: "520ms" }}
           >
-            <Icon name="file" className="mt-0.5 h-5 w-5 shrink-0 text-copper-ink" />
+            <Icon name="star" className="mt-0.5 h-5 w-5 shrink-0 text-copper-ink" />
             <span>
-              Every job starts with a written estimate. <span className="text-navy">You approve the price before any work begins.</span>
+              {business.rating
+                ? `Rated ${business.rating.value}/5 from ${business.rating.count} ${business.rating.source} reviews.`
+                : "Honest, upfront pricing."}{" "}
+              <span className="text-navy">You approve the price before any work begins.</span>
             </span>
           </p>
         </div>
@@ -70,11 +73,11 @@ export function Hero() {
           />
           <div className="clip-in absolute inset-0 overflow-hidden rounded-[1.25rem] bg-sand shadow-[var(--shadow-lift)] lg:left-auto lg:w-full lg:max-w-[34rem]">
             <Photo
-              name="plumberUnderBasin"
+              name="bathroomTub"
               width={1100}
               priority
               sizes="(min-width: 1024px) 34rem, 100vw"
-              className="object-cover object-[62%_40%]"
+              className="object-cover object-[58%_55%]"
             />
           </div>
 
@@ -82,9 +85,9 @@ export function Hero() {
             className="enter absolute bottom-6 left-0 hidden max-w-[17rem] rounded-xl border border-line bg-white/95 p-5 shadow-[var(--shadow-card)] backdrop-blur lg:block xl:-left-8"
             style={{ animationDelay: "720ms" }}
           >
-            <p className="t-eyebrow text-copper-ink">Book an assessment</p>
+            <p className="t-eyebrow text-copper-ink">Licensed · {business.credentials.licenseNumber}</p>
             <p className="mt-2 font-display text-[1.05rem] leading-snug font-semibold text-navy">
-              Repairs, installations &amp; planned maintenance
+              Repairs, remodels &amp; emergency callouts
             </p>
             <p className="mt-3 flex items-start gap-2 text-sm text-slate">
               <Icon name="clock" className="mt-0.5 h-4 w-4 shrink-0" />

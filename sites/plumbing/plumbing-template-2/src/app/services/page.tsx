@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
   description:
     "Leaking pipes, blocked drains, water heaters, toilet and faucet repairs, new installations, bathroom plumbing, commercial plumbing and inspections.",
   path: "/services/",
-  photo: "basinConnection",
+  photo: "sewerPipeRepair",
 });
 
 export default function ServicesPage() {
@@ -23,7 +23,7 @@ export default function ServicesPage() {
         label="Services"
         title="Plumbing services, done properly."
         lead="Pick the problem closest to yours to see how we handle it — or describe it in an estimate request and we'll work it out together."
-        photo="basinConnection"
+        photo="sewerPipeRepair"
       >
         <Button href="/request-a-quote/">Request an Estimate</Button>
       </PageHero>

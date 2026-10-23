@@ -30,6 +30,16 @@ export function Feedback({ as: H = "h2" }: { as?: "h1" | "h2" }) {
           <H id="feedback-title" className="t-h2 mt-4 max-w-3xl">
             In our customers&apos; own words.
           </H>
+          {business.rating || business.formerName ? (
+            <p className="t-lead mt-5 max-w-3xl text-ink-soft">
+              {business.rating
+                ? `Rated ${business.rating.value} out of 5 from ${business.rating.count} reviews on ${business.rating.source}. `
+                : null}
+              {business.formerName
+                ? `Some reviews mention ${business.formerName} — our name before we became ${business.name}.`
+                : null}
+            </p>
+          ) : null}
           <Stagger className="mt-12 grid gap-4 md:grid-cols-2">
             {reviews.map((r, i) => (
               <Item key={i} className="border-l-4 border-blue bg-white p-7 sm:p-9">

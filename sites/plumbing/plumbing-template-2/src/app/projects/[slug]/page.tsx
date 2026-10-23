@@ -43,8 +43,10 @@ export default async function ProjectPage({ params }: Props) {
         lead={project.summary}
         photo={project.photo}
       >
-        {project.caseStudy ? null : (
+        {project.caseStudy ? null : project.stock ? (
           <p className="text-sm text-gray">Representative photograph — not a specific customer&apos;s job.</p>
+        ) : (
+          <p className="text-sm text-gray">Photo from our Google Business Profile.</p>
         )}
       </PageHero>
 

@@ -69,11 +69,13 @@ export type Review = {
 
 export type GalleryItem = {
   photo: PhotoKey;
-  category: "Residential repairs" | "Bathroom installations" | "Water heaters" | "Commercial";
+  category: "Bathroom remodels" | "Repairs & fixtures" | "Drains & sewer lines";
   title: string;
   /** What the photo shows. Not a claim about a specific customer job. */
   caption: string;
   service: string;
+  /** A licensed stock photo rather than the company's own — labelled as such. */
+  stock?: boolean;
   /**
    * A real, verified job record. Only fill this in for the company's own
    * work, with the customer's agreement. Stock photos must leave it empty.

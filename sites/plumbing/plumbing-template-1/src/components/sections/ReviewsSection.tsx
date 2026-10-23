@@ -13,7 +13,17 @@ export function ReviewsSection({ headingLevel = "h2" }: { headingLevel?: "h1" | 
     return (
       <section aria-labelledby="reviews-title" className="section-y">
         <div className="shell">
-          <SectionHeading as={headingLevel} id="reviews-title" eyebrow="Customer reviews" title="In our customers' words." />
+          <SectionHeading
+            as={headingLevel}
+            id="reviews-title"
+            eyebrow="Customer reviews"
+            title="In our customers' words."
+            lead={
+              business.rating
+                ? `Rated ${business.rating.value} out of 5 from ${business.rating.count} reviews on ${business.rating.source}.`
+                : undefined
+            }
+          />
           <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {reviews.map((r, i) => (
               <StaggerItem key={i} className="flex flex-col rounded-2xl border border-line bg-white p-7">

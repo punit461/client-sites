@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: `Call ${business.phone.display}, email us, or request an estimate online. Hours and service areas.`,
+  description: `Call ${business.phone.display}${mailHref ? ", email us," : ""} or request an estimate online. Hours and service areas.`,
   path: "/contact/",
 });
 
@@ -23,7 +23,7 @@ export default function ContactPage() {
         lead="Urgent? Call. Everything else: an estimate request lets you describe the job and add photos, and we'll get back to you during opening hours."
       />
       <section aria-label="Ways to reach us" className="section-y bg-white">
-        <Stagger as="div" className="shell grid gap-3 lg:grid-cols-3">
+        <Stagger as="div" className={`shell grid gap-3 ${mailHref ? "lg:grid-cols-3" : "md:grid-cols-2"}`}>
           <Item as="div" className="flex flex-col rounded-[var(--radius-box)] bg-charcoal p-7 text-white">
             <Phone className="h-7 w-7 text-lime" strokeWidth={1.8} aria-hidden="true" />
             <h2 className="t-label mt-6 text-gray">Call</h2>
@@ -32,14 +32,16 @@ export default function ContactPage() {
             </a>
             <p className="mt-3 text-gray">Best for anything urgent.</p>
           </Item>
-          <Item as="div" className="flex flex-col rounded-[var(--radius-box)] border-[1.5px] border-rule p-7">
-            <Mail className="h-7 w-7 text-blue" strokeWidth={1.8} aria-hidden="true" />
-            <h2 className="t-label mt-6 text-ink-soft">Email</h2>
-            <a href={mailHref} className="mt-2 break-all font-display text-xl font-bold hover:text-blue">
-              {business.email}
-            </a>
-            <p className="mt-3 text-ink-soft">Questions, documents and follow-ups.</p>
-          </Item>
+          {mailHref ? (
+            <Item as="div" className="flex flex-col rounded-[var(--radius-box)] border-[1.5px] border-rule p-7">
+              <Mail className="h-7 w-7 text-blue" strokeWidth={1.8} aria-hidden="true" />
+              <h2 className="t-label mt-6 text-ink-soft">Email</h2>
+              <a href={mailHref} className="mt-2 break-all font-display text-xl font-bold hover:text-blue">
+                {business.email}
+              </a>
+              <p className="mt-3 text-ink-soft">Questions, documents and follow-ups.</p>
+            </Item>
+          ) : null}
           <Item as="div" className="flex flex-col rounded-[var(--radius-box)] bg-blue p-7 text-white">
             <h2 className="t-label text-white">Estimate</h2>
             <p className="mt-2 flex-1 font-display text-2xl font-bold">Describe the job, add photos, pick a time that suits.</p>
@@ -82,7 +84,9 @@ export default function ContactPage() {
                 {business.address.street}, {business.address.locality}, {business.address.region} {business.address.postalCode}
               </address>
             ) : (
-              <p className="mt-4 text-ink-soft">We&apos;re a mobile team with no walk-in office.</p>
+              <p className="mt-4 text-ink-soft">
+                Our plumbers come to your home or business. Call or request an estimate to book a visit.
+              </p>
             )}
             <ul className="mt-4 flex flex-wrap gap-2">
               {areas.map((a) => (

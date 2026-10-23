@@ -26,8 +26,8 @@ export function faqs(): Faq[] {
       a: `${listNames(covered)}${edge.length ? `, and ${listNames(edge)} by arrangement` : ""}. Use the area checker on our homepage to check your postal code.`,
     },
     {
-      q: "Can I book a plumbing inspection?",
-      a: "Yes. We check valves, visible pipework, your water heater, fixtures and drains, then give you a written summary with recommendations in priority order. No obligation to go ahead with any repairs.",
+      q: "Can you inspect my sewer line with a camera?",
+      a: "Yes. If your drains keep blocking or several back up at once, we run a camera through the line to find the real cause — roots, a crack or a sag — and explain what we see before recommending any repair.",
     },
     {
       q: "What information should I provide when requesting service?",
@@ -41,7 +41,11 @@ export function faqs(): Faq[] {
     },
     {
       q: "What affects the cost of plumbing work?",
-      a: "Mainly the time the job takes, access to the pipework, the parts needed and whether anything unexpected turns up once work starts. That's why we assess first and put the price in writing — and if something changes mid-job, we stop and talk to you before going further.",
+      a: "Mainly the time the job takes, access to the pipework, the parts needed and whether anything unexpected turns up once work starts. That's why we assess first and agree the price with you up front — and if something changes mid-job, we stop and talk to you before going further.",
+    },
+    {
+      q: "Do you give free estimates?",
+      a: `Yes. Call ${business.phone.display} or send an estimate request, and we'll talk the job through and give you a clear price before any work starts.`,
     },
     {
       q: "How can I prepare for a scheduled visit?",

@@ -46,8 +46,8 @@ export function FeaturedWork() {
           <SectionHeading
             id="work-title"
             eyebrow="Our work"
-            title="Repairs, installations and everything between."
-            lead="A look at the kinds of work we take on, from single-fixture repairs to commercial pipework."
+            title="Repairs, remodels and everything between."
+            lead="Recent work around Fort Worth — from a leaking washer valve to a full bathroom remodel and underground line replacement."
           />
           <TextLink href="/projects/" className="shrink-0 text-navy">
             See the full gallery
@@ -61,9 +61,11 @@ export function FeaturedWork() {
             </StaggerItem>
           ))}
         </Stagger>
-        {items.some((i) => !i.caseStudy) ? (
-          <p className="mt-6 text-sm text-slate">Photographs show representative work and are not specific customer projects.</p>
-        ) : null}
+        {items.some((i) => i.stock) ? (
+          <p className="mt-6 text-sm text-slate">Some photographs show representative work and are not specific customer projects.</p>
+        ) : (
+          <p className="mt-6 text-sm text-slate">Photographs of our own work, from our Google Business Profile.</p>
+        )}
       </div>
     </section>
   );

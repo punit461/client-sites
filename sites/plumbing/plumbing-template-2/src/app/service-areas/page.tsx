@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
   title: "Service Areas",
   description: `${business.name} works in ${listNames(areas.filter((a) => a.coverage === "covered").map((a) => a.name))}. Check your postal code.`,
   path: "/service-areas/",
-  photo: "pipeRuns",
+  photo: "waterLineTrench",
 });
 
 export default function AreasPage() {
@@ -25,7 +25,7 @@ export default function AreasPage() {
         lead={
           business.address
             ? "Check your postal code below, or browse the areas we cover."
-            : "We're a mobile team — we come to you, and there's no walk-in office. Check your postal code below, or browse the areas we cover."
+            : "Our plumbers come to you, across Spring Branch, downtown and the rest of Houston. Check your postal code below, or browse the areas we cover."
         }
       />
       <AreaFinder />
@@ -41,7 +41,9 @@ export default function AreasPage() {
                 >
                   <span className="t-label text-ink-soft">{a.region}</span>
                   <span className="mt-2 font-display text-2xl font-bold">{a.name}</span>
-                  <span className="mt-2 text-sm text-ink-soft">Postal codes {a.postalCodes.join(", ")}</span>
+                  <span className="mt-2 text-sm text-ink-soft">
+                    {a.postalCodes.length ? `Postal codes ${a.postalCodes.join(", ")}` : "Other Houston ZIP codes — call to confirm"}
+                  </span>
                   <span
                     className={`t-label mt-5 self-start rounded-[4px] px-2.5 py-1.5 ${
                       a.coverage === "covered" ? "bg-lime text-charcoal" : "bg-off text-charcoal"

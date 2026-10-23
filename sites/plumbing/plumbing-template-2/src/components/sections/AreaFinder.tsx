@@ -76,7 +76,7 @@ export function AreaFinder({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 autoComplete="postal-code"
-                placeholder="e.g. 00113 or Midtown"
+                placeholder="e.g. 77080 or Spring Branch"
                 aria-describedby={empty ? `${id}-empty` : undefined}
                 aria-invalid={empty || undefined}
                 className="field flex-1 text-lg"

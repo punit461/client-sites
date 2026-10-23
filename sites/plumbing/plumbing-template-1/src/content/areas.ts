@@ -2,10 +2,9 @@ import type { Area, Service } from "./types";
 import { services } from "./services";
 
 /**
- * Where the company works. PLACEHOLDERS: the names are generic and the postal
- * codes are from the unassigned 001xx range, so nothing here points at a real
- * place. Replace them with the towns, neighborhoods or postal codes the
- * company genuinely covers — and nowhere it does not.
+ * Where the company works. Blue Diamond is based in North Fort Worth (76137),
+ * and its Google reviews and owner replies place its work there and in Keller.
+ * Add other towns only once the company confirms it covers them.
  *
  * Every area gets a page, but only areas with `localNotes` are indexed and
  * listed in the sitemap. Write those notes from real experience in the area
@@ -13,19 +12,25 @@ import { services } from "./services";
  * filler with the place name swapped in.
  */
 export const areas: Area[] = [
-  { slug: "northside", name: "Northside", region: "Example County", postalCodes: ["00101", "00102"], localNotes: [] },
-  { slug: "riverside", name: "Riverside", region: "Example County", postalCodes: ["00103"], localNotes: [] },
-  { slug: "old-town", name: "Old Town", region: "Example County", postalCodes: ["00104", "00105"], localNotes: [] },
-  { slug: "westbrook", name: "Westbrook", region: "Example County", postalCodes: ["00106"], localNotes: [] },
   {
-    slug: "lakeview",
-    name: "Lakeview",
-    region: "Example County",
-    postalCodes: ["00107"],
-    localNotes: [],
-    excludedServices: ["sewer-line-inspection-repair"],
+    slug: "north-fort-worth",
+    name: "North Fort Worth",
+    region: "Fort Worth, TX",
+    postalCodes: ["76137", "76131", "76244"],
+    localNotes: [
+      "Our base is on Eastwedge Drive in 76137, so homes across North Fort Worth are usually the quickest for us to reach — late at night and on holidays included.",
+      "Customers here recommend us on Google “for any plumbing need in the North Fort Worth area” — from frozen pipes to water heater replacements.",
+    ],
   },
-  { slug: "eastgate", name: "Eastgate", region: "Example County", postalCodes: ["00108", "00109"], localNotes: [] },
+  {
+    slug: "keller",
+    name: "Keller",
+    region: "Tarrant County, TX",
+    postalCodes: ["76248"],
+    localNotes: [
+      "Keller is a short drive up from our North Fort Worth base. One Keller customer called us last-minute about a broken faucet and had the water back on the same day.",
+    ],
+  },
 ];
 
 export function getArea(slug: string) {

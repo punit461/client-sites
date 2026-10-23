@@ -1,69 +1,75 @@
 import type { GalleryItem } from "./types";
 
 /**
- * The work gallery. Right now these are licensed stock photographs that show
- * the kinds of work the company does — they are labelled as such on the page
- * and carry no `caseStudy`.
+ * The work gallery: Blue Diamond Plumbing's own photos, from its Google
+ * Business Profile. Captions describe what each photo shows — nothing more.
  *
- * As the company photographs its own jobs, replace them. Add a `caseStudy`
- * only for a real job, written from the job record, with the customer's
- * agreement. Never invent a problem, a fix or an outcome.
+ * Add a `caseStudy` only for a real job, written from the job record, with the
+ * customer's agreement. Never invent a problem, a fix or an outcome. Mark any
+ * stock photo added here with `stock: true` so the page labels it.
  */
 export const gallery: GalleryItem[] = [
   {
-    photo: "plumberUnderBasin",
-    category: "Residential repairs",
-    title: "Basin waste and trap repair",
-    caption: "Replacing and resealing the waste connection under a bathroom basin.",
-    service: "leak-detection-pipe-repair",
-  },
-  {
-    photo: "bathroomRoughIn",
-    category: "Bathroom installations",
-    title: "Bathroom rough-in",
-    caption: "Supply and waste pipework routed through a stud wall before it is closed up.",
+    photo: "bathroomTub",
+    category: "Bathroom remodels",
+    title: "Curbless shower and freestanding tub",
+    caption: "A finished bathroom with a walk-in shower, linear drain and freestanding soaking tub.",
     service: "bathroom-plumbing-renovations",
   },
   {
-    photo: "waterHeaterWrench",
-    category: "Water heaters",
-    title: "Water heater connections",
-    caption: "Working on the pipe connections at the top of a hot water tank.",
-    service: "water-heater-repair-installation",
+    photo: "yardExcavation",
+    category: "Drains & sewer lines",
+    title: "Underground line replacement",
+    caption: "The crew trenching across a front yard to reach an underground line.",
+    service: "sewer-line-inspection-repair",
   },
   {
-    photo: "commercialKitchen",
-    category: "Commercial",
-    title: "Commercial kitchen plumbing",
-    caption: "Dishwashing lines and pre-rinse fixtures in a commercial kitchen.",
+    photo: "subwayShower",
+    category: "Bathroom remodels",
+    title: "Walk-in shower and new toilet",
+    caption: "Subway-tiled shower with matte black fixtures, a linear drain and a newly fitted toilet.",
+    service: "bathroom-plumbing-renovations",
+  },
+  {
+    photo: "doubleVanity",
+    category: "Repairs & fixtures",
+    title: "Double vanity faucets",
+    caption: "Matte black widespread faucets installed on a new double vanity.",
     service: "faucet-fixture-installation",
   },
   {
-    photo: "flushPlateInstall",
-    category: "Bathroom installations",
-    title: "Wall-hung toilet finish",
-    caption: "Installing the flush plate for an in-wall toilet tank system.",
-    service: "toilet-repair-replacement",
+    photo: "pvcDrainCleanout",
+    category: "Drains & sewer lines",
+    title: "New drain line with cleanout",
+    caption: "A section of 3-inch PVC drain with a cleanout fitting, coupled to the existing pipe.",
+    service: "drain-cleaning-blockage-removal",
   },
   {
-    photo: "plantRoom",
-    category: "Commercial",
-    title: "Plant room pipework",
-    caption: "Insulated distribution pipework, valves and gauges in a plant room.",
-    service: "preventive-plumbing-maintenance",
-  },
-  {
-    photo: "bathroomStone",
-    category: "Bathroom installations",
-    title: "Finished stone bathroom",
-    caption: "Wall-mounted faucet and rainfall shower in a stone-tiled bathroom.",
+    photo: "showerPanRoughIn",
+    category: "Bathroom remodels",
+    title: "Shower base rough-in",
+    caption: "A new mortar shower base and drain, set before the walls are closed and tiled.",
     service: "bathroom-plumbing-renovations",
   },
   {
-    photo: "basinConnection",
-    category: "Residential repairs",
-    title: "Faucet supply connection",
-    caption: "Tightening the supply connection beneath a bathroom basin.",
+    photo: "clawfootShower",
+    category: "Bathroom remodels",
+    title: "Clawfoot tub and glass shower",
+    caption: "A primary bathroom with a clawfoot tub and a frameless glass shower enclosure.",
+    service: "bathroom-plumbing-renovations",
+  },
+  {
+    photo: "washerBoxValves",
+    category: "Repairs & fixtures",
+    title: "Leaking washer valves",
+    caption: "Worn washing-machine supply valves dripping inside the outlet box — a slow leak that is easy to miss.",
+    service: "leak-detection-pipe-repair",
+  },
+  {
+    photo: "barSinkFaucet",
+    category: "Repairs & fixtures",
+    title: "Corroded bar-sink faucet",
+    caption: "A worn, corroded faucet on a small stainless-steel bar sink, due for replacement.",
     service: "faucet-fixture-installation",
   },
 ];

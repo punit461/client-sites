@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
   title: "Service Areas",
   description: `${business.name} works in ${listNames(areaNames)}. See which services are available in your area and how to check coverage.`,
   path: "/service-areas/",
-  photo: "pipeRuns",
+  photo: "yardExcavation",
 });
 
 export default function ServiceAreasPage() {

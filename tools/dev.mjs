@@ -32,7 +32,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawn, execFileSync } from 'node:child_process';
 import { DASHBOARD_DIR, BASE_PREFIX, isWin, npm } from './config.mjs';
-import { listProjects, newestMtime } from './projects.mjs';
+import { exportedBasePath, listProjects, newestMtime } from './projects.mjs';
 import { writeManifest } from './manifest.mjs';
 import { resolveFile, sendFile, sendHtml } from './static.mjs';
 
@@ -80,7 +80,11 @@ function survey() {
       exportDir,
       built,
       expected,
-      wrongPath: built && stamp ? stamp.basePath !== expected : false,
+      // Trust the export's own HTML over the stamp: a plain `npm run build`
+      // in the project changes out/ without updating the stamp.
+      wrongPath: built
+        ? (exportedBasePath(exportDir) ?? stamp?.basePath ?? expected) !== expected
+        : false,
       stale: built && stamp ? newestMtime(project.dir) > stamp.builtAt : false,
     };
   });
